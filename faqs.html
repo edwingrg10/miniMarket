@@ -18,9 +18,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+	<!-- LOGO E INGRESO-->
+	<div class="header-bot">
+		<div class="col-md-4 logo_agile">
+			<h1>
+				<a href="index.html">
+					<img src="images/logo2.png" alt=" ">
+				</a>
+			</h1>
+		</div>
+		<div class="header">
+			<ul>
+				<li>
+					<a href="login.php">
+						<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
+				</li>
+				<li>
+					<a href="create_account.php">
+						<span class="fa fa-pencil-square-o"></span> Registrarse </a>
+				</li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 	
 	<!-- IMPORTANDO HEADER -->
-	<div class="menuContainer"></div>
+	<div class="menu"></div>
 	
 	<!-- page -->
 	<div class="services-breadcrumb">
@@ -28,10 +51,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">Home</a>
+						<a href="index.html">INICIO</a>
 						<i>|</i>
 					</li>
-					<li>Faqs</li>
+					<li>PREGUNTAS FRECUENTES</li>
 				</ul>
 			</div>
 		</div>
@@ -240,13 +263,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--IMPORTANDO COMPONENTES-->
 	<script>
 		$(document).ready(function () {
-			$('.menuContainer').load('./header.html');
+			$('.menu').load('./templates/header.html');
 		});
 	</script>
 
 	<script>
 		$(document).ready(function () {
-			$('.footer').load('./footer.html');
+			$('.footer').load('./templates/footer.html');
 		});
 	</script>
 </body>

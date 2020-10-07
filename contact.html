@@ -18,10 +18,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+	<div class="header-bot">
+		<div class="col-md-4 logo_agile">
+			<h1>
+				<a href="index.html">
+					<img src="images/logo2.png" alt=" ">
+				</a>
+			</h1>
+		</div>
+		<div class="header">
+			<ul>
+				<li>
+					<a href="login.php">
+						<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
+				</li>
+				<li>
+					<a href="create_account.php">
+						<span class="fa fa-pencil-square-o"></span> Registrarse </a>
+				</li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 
 	<!-- IMPORTANDO HEADER -->
-	<div class="carrito"></div>
-	<div class="menuContainer"></div>
+	<div class="menu"></div>
 
 	<!-- page -->
 	<div class="services-breadcrumb">
@@ -29,19 +50,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">Home</a>
+						<a href="index.html">INICIO</a>
 						<i>|</i>
 					</li>
-					<li>contact Us</li>
+					<li>Contacto</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<!-- //page -->
-	<!-- contact page -->
 	<div class="contact-w3l">
 		<div class="container">
-			<!-- tittle heading -->
 			<h3 class="tittle-w3l">Contact Us
 				<span class="heading-style">
 					<i></i>
@@ -49,8 +67,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<i></i>
 				</span>
 			</h3>
-			<!-- //tittle heading -->
-			<!-- contact -->
 			<div class="contact agileits">
 				<div class="contact-agileinfo">
 					<div class="contact-form wthree">
@@ -94,24 +110,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 			</div>
-			<!-- //contact -->
 		</div>
 	</div>
+
 	<!-- map -->
 	<div class="map w3layouts">
 		<iframe
 			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55565170.29301636!2d-132.08532758867793!3d31.786060306224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1512365940398"
 			allowfullscreen></iframe>
 	</div>
-	<!-- //map -->
 
 	<!-- IMPORTANDO FOOTER -->
 	<div class="footer"></div>
 
-	<!-- js-files -->
+	<!-- JS  -->
 	<!-- jquery -->
 	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- //jquery -->
 
 	<!-- BOTON DE SUBIR -->
 	<script src="js/move-top.js"></script>
@@ -143,20 +157,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--IMPORTANDO COMPONENTES-->
 	<script>
 		$(document).ready(function () {
-			$('.menuContainer').load('./header.html');
+			$('.menu').load('./templates/header.html');
 		});
 	</script>
 
 	<script>
 		$(document).ready(function () {
-			$('.footer').load('./footer.html');
-		});
-	</script>
-
-
-	<script>
-		$(document).ready(function () {
-			$('.carrito').load('./carrito.html');
+			$('.footer').load('./templates/footer.html');
 		});
 	</script>
 </body>
