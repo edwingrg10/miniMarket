@@ -17,23 +17,21 @@
 
 	include 'conexion.php';
 
-	
-
-	// Check connection
+	// Validar conexion BD
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 	
-	// Query to check if the email already exist
+	// Consulta para validar si el correo ya existe
 	$validarcorreo = "SELECT * FROM usuario WHERE correo = '$_POST[correo]' ";
 
-	// Variable $result hold the connection data and the query
+	// Variable $resultado que recibe datos de la consulta
 	$resultado = $conn-> query($validarcorreo);
 
-	// Variable $count hold the result of the query
+	// Variable $contar que espera el resultado en filas
 	$contar = mysqli_num_rows($resultado);
 
-	// If count == 1 that means the email is already on the database
+	//Si contar == 1 entonces indica que ya existe el usuario
 	if ($contar == 1) {
 	echo "<div class='alert alert-warning mt-4' role='alert'>
 					<p>Este correo ya existe en la base de datos.</p>
@@ -42,8 +40,7 @@
 	} else {	
 	
 	/*
-	If the email don't exist, the data from the form is sended to the
-	database and the account is created
+	Si el correo no existe , la informacion enviada desde el formulario se creara en la BD
 	*/
 	$cedula = $_POST['cedula'];
 	$primer_apellido = $_POST['primer_apellido'];
@@ -59,10 +56,10 @@
 	$id_perfil = $_POST['id_perfil'];
 	$id_estado = 1;
 	
-	// The password_hash() function convert the password in a hash before send it to the database
+	// La función password_hash() convierte la contraseña en un hash antes de enviarlo a la BD.
 	$passHash = password_hash($contrasena, PASSWORD_DEFAULT);
 	
-	// Query to send Name, Email and Password hash to the database
+	// Consulta de envio de datos a la BD.
 	$query = "INSERT INTO usuario (cedula, primer_apellido, segundo_apellido, primer_nombre, segundo_nombre, direccion, celular, telefono, fecha_nacimiento, correo, contrasena, id_perfil, id_estado) 
 	VALUES ('$cedula', '$primer_apellido', '$segundo_apellido', '$primer_nombre', '$segundo_nombre', '$direccion', '$celular', '$telefono', '$fecha_nacimiento', '$correo', '$passHash', '$id_perfil', '$id_estado')";
 
