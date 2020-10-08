@@ -1,6 +1,6 @@
 <!--Conexión BD-->
 <?php 
-include '../conexion.php';
+include '../../conexion.php';
 
   //var_dump($conn);
     
@@ -20,10 +20,10 @@ include '../conexion.php';
     if (!$crear_marca = $conn -> query($insertar_marca)) {
       echo "Marca ingresada correctamente";
       echo $insertar_marca;
-      header("Location: http://localhost:8000/miniMarket/Crear_Marca.html?guardar_marca=true"); 
+      header("Location: http://localhost:8000/miniMarket/Admin/Crear_Marca.html?guardar_marca=true"); 
   } else {
       echo "Error: " . $insertar_marca . "<br>" . $conn->error;
-      header("Location: http://localhost:8000/miniMarket/Crear_Marca.html?guardar_marca=false");
+      header("Location: http://localhost:8000/miniMarket/Admin/Crear_Marca.html?guardar_marca=false");
   }
    
 
