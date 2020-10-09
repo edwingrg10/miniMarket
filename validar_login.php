@@ -54,7 +54,7 @@ session_start();
         if ($num_row > 0) {
           $_SESSION['cedula'] = $row['cedula'];
           if ($row['id_perfil'] == 0) {
-            header('location:index.html');
+            header('location:products.html');
           } else if ($row['id_perfil'] == 1) {
             header('location:Admin/Crear_Marca.html');
           } else if ($row['id_perfil'] == 2) {

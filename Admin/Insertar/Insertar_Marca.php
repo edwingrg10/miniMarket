@@ -26,6 +26,7 @@ include '../../conexion.php';
       header("Location: http://localhost:8000/miniMarket/Admin/Crear_Marca.html?guardar_marca=false");
   }
    
+ 
 
     $conn->close();
   }

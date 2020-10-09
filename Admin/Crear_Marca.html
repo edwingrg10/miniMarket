@@ -34,6 +34,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="stylesheet" type="text/css" href="../css/jquery-ui1.css">
 	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -381,11 +384,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-sm-4 form-group row">
 				
 					<div class="col-sm-6" align="right">Estado:</div>
-					<select class="form-control col-sm-2" id="estado_marca" name="estado_marca" required >
-					<option label="ACTIVO" value="1">ACTIVO</option>
-					<option label="INACTIVO" value="2">INACTIVO</option>
-					
-					</select>
+					<select class="form-control" name="eps" id="eps" required>
+							<option value="">Estado</option>
+							<?php		
+							while($query_estado= $consulta_estado->fetch_object()){
+								echo "<option value='".$query_estado->cod_estado."'>".$query_estado->descripcion."</option>";
+							}
+							?>
+						</select>
 				
 				</div>
 			<span class="mr-4 d-lg-inline"></span>
