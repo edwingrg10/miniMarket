@@ -384,13 +384,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-sm-4 form-group row">
 				
 					<div class="col-sm-6" align="right">Estado:</div>
-					<select class="form-control" name="eps" id="eps" required>
-							<option value="">Estado</option>
-							<?php		
-							while($query_estado= $consulta_estado->fetch_object()){
-								echo "<option value='".$query_estado->cod_estado."'>".$query_estado->descripcion."</option>";
-							}
-							?>
+					<select class="form-control col-sm-2" id="estado_tipo_est" name="estado_tipo_est" required >
+						<option label="ACTIVO" value="1">ACTIVO</option>
+						<option label="INACTIVO" value="2">INACTIVO</option>
+						
 						</select>
 				
 				</div>
