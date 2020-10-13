@@ -71,7 +71,7 @@
                         if ($num_row > 0) {
                           $_SESSION['idUsuario'] = $row['idUsuario'];
                           if ($row['idPerfil'] == 0) {
-                            header('location:home.php');
+                            header('location:admin/home.php');
                           } else if ($row['idPerfil'] == 1) {
                             header('location:vendedor.php');
                           } else if ($row['idPerfil'] == 2) {
