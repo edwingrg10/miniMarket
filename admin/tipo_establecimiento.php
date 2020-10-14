@@ -1,13 +1,4 @@
-<?php
-include('../dbcon.php');
-include('../session.php');
 
-$result = mysqli_query($con, "select * from usuario where idUsuario='$session_id'") or die('Error In Session');
-$row = mysqli_fetch_array($result);
-$query = "SELECT * FROM perfil";
-$usuarios = mysqli_query($con, $query);
-$numfilas = mysqli_num_rows($usuarios);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,23 +41,14 @@ $numfilas = mysqli_num_rows($usuarios);
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Topbar Navbar -->
-          <?php
-          for ($i = 0; $i < $numfilas; $i++) {
-          ?>
-            <?php
-            $roww = mysqli_fetch_array($usuarios);
-            if ($roww['idPerfil'] == $row['idPerfil']) {
-              echo "Perfil ";
-              echo $roww['descripcion'];
-            }
-            ?>
-          <?php } ?>
+        <p>Perfil Administrador</p>
+          <?php /*}*/ ?>
           <ul class="navbar-nav ml-auto">
             <!-- Nav Item - User Information -->
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $row['descripcion']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->

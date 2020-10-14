@@ -1,5 +1,6 @@
 <?php
 session_start();
+$session_id=$_SESSION['id_usuario'];
 ?>
 
 <!doctype html>
@@ -30,11 +31,12 @@ session_start();
 			$contrasena = $_POST['contrasena'];
 			
 			// Query sent to database
-			$result = mysqli_query($conn, "SELECT cedula, correo, contrasena, id_perfil FROM usuario WHERE correo = '$correo'");
+			$result = mysqli_query($conn, "SELECT cedula, correo, contrasena, cod_perfil FROM usuario WHERE correo = '$correo'");
 			
 			// Variable $row contiene el resultado de la consulta a la BD
       $row = mysqli_fetch_assoc($result);
-      $num_row = mysqli_num_rows($result);
+	  $num_row = mysqli_num_rows($result);
+	  
 			
 			// Variable $hash toma la contraseña encriptada para poder ser verificada
 			$hash = $row['contrasena'];
@@ -53,11 +55,11 @@ session_start();
 			
         if ($num_row > 0) {
           $_SESSION['cedula'] = $row['cedula'];
-          if ($row['id_perfil'] == 0) {
-            header('location:index.html');
-          } else if ($row['id_perfil'] == 1) {
-            header('location:Admin/Crear_Marca.html');
-          } else if ($row['id_perfil'] == 2) {
+          if ($row['cod_perfil'] == 1) {
+            header('location:admin/home.php');
+          } else if ($row['cod_perfil'] == 2) {
+            header('location:admin/home.php');
+          } else if ($row['cod_perfil'] == 3) {
             header('location:Index.html');
           }
         }

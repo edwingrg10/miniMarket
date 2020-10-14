@@ -1,4 +1,4 @@
-<?php
+<?php /*
 include('../dbcon.php');
 include('../session.php');
 
@@ -6,7 +6,7 @@ $result = mysqli_query($con, "select * from usuario where idUsuario='$session_id
 $row = mysqli_fetch_array($result);
 $query = "SELECT * FROM perfil";
 $usuarios = mysqli_query($con, $query);
-$numfilas = mysqli_num_rows($usuarios);
+$numfilas = mysqli_num_rows($usuarios);*/
 ?>
 
 <html lang="en">
