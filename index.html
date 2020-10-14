@@ -50,11 +50,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header">
 				<ul>
 					<li>
-						<a href="login.php">
+						<a href="login.html">
 							<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="#" data-toggle="modal" data-target="#myModal2">
 							<span class="fa fa-pencil-square-o"></span> Registrarse </a>
 					</li>
 				</ul>
@@ -513,30 +513,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="fa fa-envelope-o" aria-hidden="true"></span>
 					</div>
 					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Sign Up</h3>
+						<h3 class="agileinfo_sign">Regístrate</h3>
 						<p>
-							Come join the Grocery Shoppy! Let's set up your Account.
+							<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
 						</p>
-						<form action="#" method="post">
+						<form action="Crear_Cuenta.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="Name" required="">
+								<input type="text"  name="cedula" placeholder="Cedula" required>
 							</div>
 							<div class="styled-input">
-								<input type="email" placeholder="E-mail" name="Email" required="">
+								<input type="text"  name="primer_apellido" placeholder="Primer Apellido" required>
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Password" name="password" id="password1"
-									required="">
+								<input type="text"  name="segundo_apellido" placeholder="Segundo Apellido" required>
 							</div>
 							<div class="styled-input">
-								<input type="password" placeholder="Confirm Password" name="Confirm Password"
-									id="password2" required="">
+								<input type="text"  name="primer_nombre" placeholder="Primer Nombre" required>			
 							</div>
-							<input type="submit" value="Sign Up">
+							<div class="styled-input">
+								<input type="text"  name="segundo_nombre" placeholder="Segundo Nombre">
+							</div>
+							<div class="styled-input">
+								<input type="text"  name="direccion" placeholder="Dirección" required>			
+							</div>
+							<div class="styled-input">
+								<input type="text"  name="celular" placeholder="Celular" required>
+							</div>
+							<div class="styled-input">
+								<input type="text"  name="telefono" placeholder="Teléfono" required>			
+							</div>
+							<div class="styled-input">
+								<label for="">Fecha Nacimiento</label>
+								<input type="date"  name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>			
+							</div>
+							<div class="styled-input">
+								
+							</div>
+							<div class="styled-input">
+								
+							</div>
+							<div class="styled-input">
+								<input type="email"  name="correo" aria-describedby="emailHelp" placeholder="Correo Electronico" required="">
+							</div>
+							<div class="styled-input">
+								<input type="password"  name="contrasena" placeholder="Contraseña" required>
+							</div>
+							<div class="styled-input">
+								<input type="text"  name="id_perfil" placeholder="Perfil" required>			
+							</div>
+							
+							<input type="submit" value="Crear Cuenta">
 						</form>
-						<p>
-							<a href="#">By clicking register, I agree to your terms</a>
-						</p>
+						
 					</div>
 				</div>
 			</div>

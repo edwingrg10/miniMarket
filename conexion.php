@@ -1,6 +1,6 @@
 <!-- Conexión BD -->
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "minimarket");
+    $conn = mysqli_connect("localhost", "root", "", "minimarketapp");
     $conn -> set_charset("utf8");
 
     // Existe un error o fallo en la conexión
