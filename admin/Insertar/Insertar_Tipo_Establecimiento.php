@@ -3,7 +3,7 @@
   
   
   include ("../../conexion.php");
-
+ 
   class consultas{
 
     public function insertar_tipo_establecimiento($codigo,$descripcion,$estado){
@@ -65,31 +65,35 @@
     
     $consultas=new consultas();
     $mensaje=$consultas->insertar_tipo_establecimiento($codigo,$desc,$estado);
-    // echo "<a href='../tipo_establecimiento.html'> Nuevo tipo de establecimiento </a>";
-    // echo $mensaje;
+    
     
     
     header ("location: http://localhost/miniMarket/admin/tipo_establecimiento_pr.php");  
     
   }
   
+  
+  
 
-  if(isset($_POST["Consulta_tipo_est"])){
+    if(isset($_GET['cod_tipo_est'])){
+      $cod=$_GET['cod_tipo_est'];
+      $accion=$_GET['accion'];
+      if ($accion==1){
 
-    $consultas=new consultas();
-    
-    $arreglo=$consultas->consultar_tipo_establecimiento();
-    
-    header ("location: http://localhost/miniMarket/vista_tipo_establecimiento.php");
-    
-  }
- 
-
-  // if(isset($_POST["consulta_tipo_est"])){
-
-  //   echo "hola";
+        echo($cod);
+        echo "editar";
+      } 
+      elseif ($accion==2){
+        echo($cod);
+        echo "borrar";
+      }
+    }
       
-  // }
+ 
+  
+
+  
+
 
 
 ?>

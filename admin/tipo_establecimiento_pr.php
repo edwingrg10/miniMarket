@@ -115,8 +115,11 @@
                         <td><?php echo $dato["cod_tipo_est"] ?> </td>   
                         <td><?php echo $dato["desc_tipo_est"] ?> </td>     
                         <td><?php echo $dato["estado"] ?> </td> 
-
-                    </tr> 
+                        <td> 
+                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="Insertar/Insertar_Tipo_Establecimiento.php?accion=1 & cod_tipo_est=<?php echo $dato["cod_tipo_est"]?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="Insertar/Insertar_Tipo_Establecimiento.php?accion=2 & cod_tipo_est=<?php echo $dato['cod_tipo_est']?>"></a></button></td> 
+                        </td> 
+                      </tr> 
 
                       <?php } ?>  
                   
@@ -130,15 +133,7 @@
                         <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
                       </td>
                     </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
+                  
 
                   </tbody>
                 </table>
