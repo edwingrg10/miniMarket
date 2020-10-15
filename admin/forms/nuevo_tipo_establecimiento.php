@@ -83,34 +83,34 @@
                                                     <div class="text-left">
                                                         <h1 class="h4 text-gray-900 mb-4">Creando Tipo Establecimiento</h1>
                                                     </div>
-                                                    <form class="user">
+
+                                                    <!--FORMULARIO -->        
+
+                                                    <form class="user" name="Insertar_Tipo_est" action="..\Insertar\Insertar_Tipo_Establecimiento.php" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Código">
+                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_est" id="codigo_tipo_est" placeholder="Código">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Descripción">
+                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción">
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nombre Propietario">
-                                                            </div>
-                                                        </div>
+                                                        
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                                                                <label class="custom-control-label" for="defaultUnchecked">Activo</label>
+                                                              
+                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_est" name="estado_tipo_est" checked >
+                                                                <label class="custom-control-label" for="estado_tipo_est">Activo</label>
                                                             </div>
                                                         </div>
                                                         <a href="../tipo_establecimiento.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
-                                                        <a href="tipo_empleado" class="btn btn-primary">
-                                                            Guardar
-                                                        </a>
+
+                                                   
+                                                        <input type="submit" value="Guardar tipo establecimiento" class="btn btn-primary sm" name="guardar_tipo_est">
                                                         <hr>
                                                     </form>
                                                     <hr>
