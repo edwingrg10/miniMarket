@@ -33,24 +33,37 @@
 
     public function borrar_tipo_establecimiento($codigo){
 
-      //funcion para borar los tipos de productos
-    }
-
-    public function consultar_tipo_establecimiento(){
-
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia =  "SELECT * FROM tipo_establecimiento";
+      $sentencia = "DELETE FROM tipo_establecimiento WHERE cod_tipo_est=:cod_tipo_est";
       $resultado=$conexion->prepare($sentencia);
-      return $resultado;
+      $resultado->bindParam(':cod_tipo_est',$codigo);
+      $resultado->execute();
     }
 
+    public function actualizar_tipo_establecimiento($codigo,$descripcion,$estado){
+      $modelo=new Db();
+      $conexion=$modelo->conectar();
+      $sentencia = "UPDATE tipo_establecimiento SET desc_tipo_est=:desc_tipo_est, estado=:estado WHERE cod_tipo_est=:cod_tipo_est";
+      $resultado=$conexion->prepare($sentencia);
+      $resultado->bindParam(':cod_tipo_est',$codigo);
+      $resultado->bindParam(':desc_tipo_est',$descripcion);
+      $resultado->bindParam(':estado',$estado);
+      if (!$resultado){
+        return "error al crear el registro";
+      }
+      else{
+        $resultado->execute();
+       
+        return "registro exitoso!!";
+      }
+    }
 
   }
 
-  //formulario principal tipo de establecimiento
+ 
   
-
+  //Recibe del formulario de creacion de nuevo tipo
   if(isset($_POST["guardar_tipo_est"])){
     
     // Inserta datos en tabla tipo_establecimiento
@@ -68,26 +81,52 @@
     
     
     
-    header ("location: http://localhost/miniMarket/admin/tipo_establecimiento_pr.php");  
+    header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");  
     
   }
-  
-  
-  
 
-    if(isset($_GET['cod_tipo_est'])){
-      $cod=$_GET['cod_tipo_est'];
-      $accion=$_GET['accion'];
-      if ($accion==1){
-
-        echo($cod);
-        echo "editar";
-      } 
-      elseif ($accion==2){
-        echo($cod);
-        echo "borrar";
-      }
+  //Recibe del formulario de actualizacion para hacer UPDATE en la base de datos
+  if(isset($_POST["actualizar_tipo_est"])){
+    
+    // Inserta datos en tabla tipo_establecimiento
+    $codigo=$_POST["codigo_tipo_est"];
+    $desc=$_POST["desc_tipo_est"];
+    $estado=array();
+    if (isset($_POST["estado_tipo_est"])){
+      $estado=1;
+    }else{
+      $estado=0;
     }
+    
+    $consultas=new consultas();
+    $mensaje=$consultas->actualizar_tipo_establecimiento($codigo,$desc,$estado);
+    
+    
+    
+    header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");  
+    
+  }
+  //Recibe del formulario la accion 2 que significa borrar
+  if(isset($_GET['cod_tipo_est'])){
+    $cod=$_GET['cod_tipo_est'];
+    $accion=$_GET['accion'];
+    
+    if ($accion==2){
+
+    //   echo($cod);
+    $consultas=new consultas();
+    $mensaje=$consultas->borrar_tipo_establecimiento($cod);
+    header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");  
+        
+       
+    } 
+}
+  
+  
+  
+
+ 
+
       
  
   

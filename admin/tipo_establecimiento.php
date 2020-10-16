@@ -1,6 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<?php include("../conexion.php"); 
+
+  $modelo=new Db();
+  $conexion=$modelo->conectar();
+  $sentencia =  "SELECT * FROM tipo_establecimiento";
+  $resultado=$conexion->prepare($sentencia);
+  $resultado->execute();
+  $lista=$resultado->fetchAll(PDO::FETCH_ASSOC);
+
+  
+?>
 
 <head>
 
@@ -85,76 +96,36 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Nombre</th>
-                      <th>Ubicación</th>
-                      <th>Nombre Propietario</th>
+                      <th>Código</th>
+                      <th>Descripción</th>
+                      <th>Estado</th>
                       <th>Acciones</th>
+
                     </tr>
                   </thead>
+
+                  <!--Datos tomados de la base de datos-->
                   <tbody>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
+
+                  <?php 
+                      foreach ($lista as $dato){
+                   ?>       
+
+                    <tr> 
+                        <td><?php echo $dato["cod_tipo_est"] ?> </td>   
+                        <td><?php echo $dato["desc_tipo_est"] ?> </td>     
+                        <td><?php echo $dato["estado"] ?> </td> 
+                        <td> 
+                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="forms/editar_Tipo_Establecimiento.php?accion=1 & cod_tipo_est=<?php echo $dato["cod_tipo_est"]?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="Insertar/Insertar_Tipo_Establecimiento.php?accion=2 & cod_tipo_est=<?php echo $dato['cod_tipo_est']?>"></a></button></td> 
+                        </td> 
+                      </tr> 
+
+                      <?php } ?>  
+                  
+
+                                   
+
                   </tbody>
                 </table>
               </div>
