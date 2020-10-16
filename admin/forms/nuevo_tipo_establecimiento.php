@@ -85,13 +85,18 @@
                                                     </div>
 
                                                     <!--FORMULARIO -->        
-
+                                                    <?php include ("../Insertar/Insertar_Tipo_Establecimiento.php"); ?> 
                                                     <form class="user" name="Insertar_Tipo_est" action="..\Insertar\Insertar_Tipo_Establecimiento.php" method="post">
+
+                                                        
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                                 <input type="text" class="form-control form-control-user" name="codigo_tipo_est" id="codigo_tipo_est" placeholder="Código">
                                                             </div>
+                                                            
                                                         </div>
+                                                       <span><?php echo $error_cod; ?></span>
+
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                                 <input type="text" class="form-control form-control-user" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción">
@@ -112,7 +117,11 @@
                                                    
                                                         <input type="submit" value="Guardar tipo establecimiento" class="btn btn-primary sm" name="guardar_tipo_est">
                                                         <hr>
+
+                                                        
+                                                           
                                                     </form>
+                                                    
                                                     <hr>
                                                 </div>
                                             </div>

@@ -60,30 +60,69 @@
     }
 
   }
-
  
   
   //Recibe del formulario de creacion de nuevo tipo
+  
   if(isset($_POST["guardar_tipo_est"])){
-    
-    // Inserta datos en tabla tipo_establecimiento
+
+    $error_cod="sin inicio";
+    $error_desc="";
     $codigo=$_POST["codigo_tipo_est"];
     $desc=$_POST["desc_tipo_est"];
     $estado=array();
-    if (isset($_POST["estado_tipo_est"])){
-      $estado=1;
+      if (isset($_POST["estado_tipo_est"])){
+        $estado=1;
+      }else{
+        $estado=0;
+      }
+
+    
+    $valido=0;  
+
+    if(!$codigo==""){
+      
+      $valido=$valido+1;
     }else{
-      $estado=0;
+      $error_cod= "ingrese un nombre";
+      // echo "<p class='error'>Ingrese un codigo</p>";
     }
+
+    if (!$desc==""){
+
+      $valido=$valido+1;
+
+    }else{
+      $error_desc="Ingrese una descripcion";
+      
+
+    }
+   
+
+    if($valido==2){
+
+      $consultas=new consultas();
+      $mensaje=$consultas->insertar_tipo_establecimiento($codigo,$desc,$estado);
+      header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");  
+      
+      echo "<p>lo logramos</p>";
+    }else{
+      header ("location: http://localhost/miniMarket/admin/forms/nuevo_tipo_establecimiento.php"); 
+
+    }
+   
     
-    $consultas=new consultas();
-    $mensaje=$consultas->insertar_tipo_establecimiento($codigo,$desc,$estado);
     
-    
-    
-    header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");  
-    
-  }
+  } else{
+      // echo $error_cod;
+      
+      // echo $error_desc;
+      
+      
+      $error_cod="sin inicio";
+      $error_desc="";
+
+    } 
 
   //Recibe del formulario de actualizacion para hacer UPDATE en la base de datos
   if(isset($_POST["actualizar_tipo_est"])){
