@@ -60,7 +60,7 @@ $session_id=$_SESSION['id_usuario'];
           } else if ($row['cod_perfil'] == 2) {
             header('location:admin/home.php');
           } else if ($row['cod_perfil'] == 3) {
-            header('location:Index.html');
+            header('location:Crear_Cuenta.html');
           }
         }
 			
