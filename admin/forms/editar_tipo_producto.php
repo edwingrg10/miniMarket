@@ -1,28 +1,50 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <?php 
-include ("../../conexion.php");
-
+require_once ( '../Insertar/Insertar_Tipo_producto.php');
+$consultas=new consultas();
 if(isset($_GET['cod_tipo_producto'])){
     $cod=$_GET['cod_tipo_producto'];
-    $accion=$_GET['accion'];
+    $info=$consultas->buscar($cod);
     
-    if ($accion==1){
+}
 
-    //   echo($cod);
-      $modelo=new Db();
-      $conexion=$modelo->conectar();
-      $sentencia =  "SELECT * FROM tipo_producto WHERE cod_tipo_producto = :cod_tipo_producto";
-      $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':cod_tipo_producto',$cod);
-      $resultado->execute();
-      
-      $info=$resultado->fetch();
+$error_cod="";
+$error_desc="";
+$frm_enviado=false;
+if(isset($_POST["actualizar_tipo_producto"])){
         
-       
-    } 
+    $codigo=$_POST["codigo_tipo_producto"];
+    $desc=$_POST["desc_tipo_producto"];
+    $estado=array();
+    
+    if (isset($_POST["estado_tipo_producto"])){
+        $estado=1;
+    }else{
+        $estado=0;
+    }
+    $valido=0;  
+
+
+    if (!$desc==""){
+
+        $valido=$valido+1;
+
+    }else{
+        $error_desc="Por favor ingrese una descripción";
+    
+    }
+    if($valido==1){
+              
+        $mensaje=$consultas->actualizar_tipo_producto($codigo,$desc,$estado);
+        header ("location: http://localhost/miniMarket/admin/tipo_producto.php");      
+        
+ 
+    }
+
+
 }
 
 
@@ -112,18 +134,20 @@ if(isset($_GET['cod_tipo_producto'])){
 
                                                     <!--FORMULARIO -->        
 
-                                                    <form class="user" name="Insertar_Tipo_producto" action="..\Insertar\Insertar_Tipo_producto.php" method="post">
+                                                    <form class="user" name="Insertar_Tipo_producto" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_tipo_producto']; ?>" name="codigo_tipo_producto" id="codigo_tipo_producto" >
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_tipo_producto']; ?>" name="codigo_tipo_producto" id="codigo_tipo_producto"
+                                                                value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>" readonly="disabled" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_producto']; ?>" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción">
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_producto']; ?>" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
                                                         </div>
-                                                        
+                                                        <span class="text-danger"><?php echo $error_desc; ?></span>
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
                                                               

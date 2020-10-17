@@ -1,6 +1,58 @@
 
+<?php
+require_once ( '../Insertar/Insertar_Tipo_producto.php');
+
+$error_cod="";
+$error_desc="";
+$frm_enviado=false;
+$consultas=new consultas();
+if(isset($_POST["guardar_tipo_producto"])){
+        
+    $codigo=$_POST["codigo_tipo_producto"];
+    $desc=$_POST["desc_tipo_producto"];
+    $estado=array();
+    
+    if (isset($_POST["estado_tipo_producto"])){
+        $estado=1;
+    }else{
+        $estado=0;
+    }
+    $valido=0;  
+
+    if(!$codigo==""){
+        $exist=$consultas->buscar($codigo);
+        if (!$exist){
+
+            $valido=$valido+1;
+        }else{
+            $error_cod="El código ya existe";   
+        }  
+    }else{
+     $error_cod= "Por favor ingrese un código";
+   
+    }
+
+    if (!$desc==""){
+
+        $valido=$valido+1;
+
+    }else{
+        $error_desc="Por favor ingrese una descripción";
+    
+    }
+
+    if($valido==2){
+              
+        $mensaje=$consultas->insertar_tipo_producto($codigo,$desc,$estado);
+        header ("location: http://localhost/miniMarket/admin/tipo_producto.php");      
+   
+ 
+    }
+
+} ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -86,17 +138,22 @@
 
                                                     <!--FORMULARIO -->        
 
-                                                    <form class="user" name="Insertar_Tipo_producto" action="..\Insertar\Insertar_Tipo_producto.php" method="post">
+                                                    <form class="user" name="Insertar_Tipo_producto" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_producto" id="codigo_tipo_producto" placeholder="Código">
+                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_producto" id="codigo_tipo_producto" placeholder="Código"
+                                                                value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>">
                                                             </div>
                                                         </div>
+                                                        <span class="text-danger"><?php echo $error_cod; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción">
+                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
                                                         </div>
+                                                        <span class="text-danger"><?php echo $error_desc; ?></span>
+                                                        
                                                         
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">

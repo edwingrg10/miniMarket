@@ -1,28 +1,62 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <?php 
-include ("../../conexion.php");
-
+require_once ( '../Insertar/Insertar_Tipo_Establecimiento.php');
+$consultas=new consultas();
 if(isset($_GET['cod_tipo_est'])){
     $cod=$_GET['cod_tipo_est'];
-    $accion=$_GET['accion'];
+    $info=$consultas->buscar($cod);
     
-    if ($accion==1){
-
-    //   echo($cod);
-      $modelo=new Db();
-      $conexion=$modelo->conectar();
-      $sentencia =  "SELECT * FROM tipo_establecimiento WHERE cod_tipo_est = :cod_tipo_est";
-      $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':cod_tipo_est',$cod);
-      $resultado->execute();
-      
-      $info=$resultado->fetch();
+    
+}
+$error_cod="";
+$error_desc="";
+$frm_enviado=false;
+if(isset($_POST["actualizar_tipo_est"])){
         
-       
-    } 
+    $codigo=$_POST["codigo_tipo_est"];
+    $desc=$_POST["desc_tipo_est"];
+    $estado=array();
+    
+    if (isset($_POST["estado_tipo_est"])){
+        $estado=1;
+    }else{
+        $estado=0;
+    }
+    $valido=0;  
+
+    // if(!$codigo==""){
+    //     $exist=$consultas->buscar($codigo);
+    //     if (!$exist){
+
+    //         $valido=$valido+1;
+    //     }else{
+    //         $error_cod="El código ya existe";   
+    //     }  
+    // }else{
+    //  $error_cod= "Por favor ingrese un código";
+   
+    // }
+
+    if (!$desc==""){
+
+        $valido=$valido+1;
+
+    }else{
+        $error_desc="Por favor ingrese una descripción";
+    
+    }
+    if($valido==1){
+              
+        $mensaje=$consultas->actualizar_tipo_establecimiento($codigo,$desc,$estado);
+        header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");      
+   
+ 
+    }
+
+
 }
 
 
@@ -112,17 +146,22 @@ if(isset($_GET['cod_tipo_est'])){
 
                                                     <!--FORMULARIO -->        
 
-                                                    <form class="user" name="Insertar_Tipo_est" action="..\Insertar\Insertar_Tipo_Establecimiento.php" method="post">
+                                                    <form class="user" name="Insertar_Tipo_est" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_tipo_est']; ?>" name="codigo_tipo_est" id="codigo_tipo_est" >
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_tipo_est']; ?>" name="codigo_tipo_est" id="codigo_tipo_est"
+                                                                value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>" readonly="disabled" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_est']; ?>" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción">
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_est']; ?>" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
+                                                            
                                                         </div>
+                                                        <span class="text-danger"><?php echo $error_desc; ?></span>
+                                                        
                                                         
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
@@ -130,6 +169,7 @@ if(isset($_GET['cod_tipo_est'])){
                                                                 <input type="checkbox" class="custom-control-input" id="estado_tipo_est" name="estado_tipo_est" checked >
                                                                 <label class="custom-control-label" for="estado_tipo_est">Activo</label>
                                                             </div>
+                                                            
                                                         </div>
                                                         <a href="../tipo_establecimiento.php" class="btn btn-secondary">
                                                             Cancelar

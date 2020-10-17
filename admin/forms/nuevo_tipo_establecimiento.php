@@ -1,6 +1,61 @@
 
+
+<?php
+require_once ( '../Insertar/Insertar_Tipo_Establecimiento.php');
+
+$error_cod="";
+$error_desc="";
+$frm_enviado=false;
+ $consultas=new consultas();
+if(isset($_POST["guardar_tipo_est"])){
+        
+    $codigo=$_POST["codigo_tipo_est"];
+    $desc=$_POST["desc_tipo_est"];
+    $estado=array();
+    
+    if (isset($_POST["estado_tipo_est"])){
+        $estado=1;
+    }else{
+        $estado=0;
+    }
+    $valido=0;  
+
+    if(!$codigo==""){
+        $exist=$consultas->buscar($codigo);
+        if (!$exist){
+
+            $valido=$valido+1;
+        }else{
+            $error_cod="El código ya existe";   
+        }  
+    }else{
+     $error_cod= "Por favor ingrese un nombre";
+   
+    }
+
+    if (!$desc==""){
+
+        $valido=$valido+1;
+
+    }else{
+        $error_desc="Por favor ingrese una descripción";
+    
+    }
+
+    if($valido==2){
+       
+       
+        $mensaje=$consultas->insertar_tipo_establecimiento($codigo,$desc,$estado);
+        header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");      
+             
+       
+ 
+    }
+
+} ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -85,23 +140,32 @@
                                                     </div>
 
                                                     <!--FORMULARIO -->        
-                                                    <?php include ("../Insertar/Insertar_Tipo_Establecimiento.php"); ?> 
-                                                    <form class="user" name="Insertar_Tipo_est" action="..\Insertar\Insertar_Tipo_Establecimiento.php" method="post">
+                                                    
+                                                    <form class="user" name="Insertar_Tipo_est" action="" method="post">
 
                                                         
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_est" id="codigo_tipo_est" placeholder="Código">
+                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_est" id="codigo_tipo_est" placeholder="Código"
+                                                                value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>">
                                                             </div>
                                                             
                                                         </div>
-                                                       <span><?php echo $error_cod; ?></span>
+                                                        
+                                                         <span class="text-danger"><?php echo $error_cod; ?></span>
+                                                        
+                                                       
 
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción">
+                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
                                                         </div>
+                                                          
+                                                         <span class="text-danger"><?php echo $error_desc; ?></span>
+                                                        
+                                                        
                                                         
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
