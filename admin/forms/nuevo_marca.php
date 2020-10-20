@@ -94,7 +94,7 @@
                                                                 <input type="text" class="form-control form-control-user" name="nombre_marca" id="nombre_marca" placeholder="Nombre de la marca">
                                                             </div>
                                                         </div>
-                                                      
+                                                        
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
                                                             <select class="form-control col-sm-3" id="estado_marca" name="estado_marca" required >
