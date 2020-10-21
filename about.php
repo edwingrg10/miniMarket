@@ -138,7 +138,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- welcome -->
 	<div class="welcome">
 		<div class="container">
-			<h3 class="tittle-w3l">Welcome to our Site
+			<h3 class="tittle-w3l">Bienvenidos a nuestro sitio web
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -159,48 +159,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="w3l-welcome-text">
-				<p>Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-					placeat facere possimus
-					omnis optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.Sed ut
-					perspiciatis unde omnis iste
-					natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-					illo inventore veritatis
-					et quasi architecto beatae vitae </p>
-				<p>libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-					placeat facere possimus
-					omnis optio cumque nihil impedit </p>
+				<p>Nos gusta hacer las cosas bien, ponemos atención en todos los detalles de nuestros productos desde su origen, transformación hasta que los llevamos a tus manos. Queremos ser tu mejor compra, la más conveniente, aquella que te permita tener una vida llena de todo lo que necesites, según tu buena planificación, sin pagar más de lo que esperas. Queremos que siempre entres y salgas con una sonrisa de satisfacción en tu cara, no porque conseguiste el precio más barato, sino porque hiciste. </p>
 			</div>
 		</div>
 	</div>
 	<!-- //welcome -->
-
-	<!-- video -->
-	<div class="about">
-		<div class="container">
-			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Our Video
-				<span class="heading-style">
-					<i></i>
-					<i></i>
-					<i></i>
-				</span>
-			</h3>
-			<div class="about-tp">
-				<div class="col-md-8 about-agileits-w3layouts-left">
-					<iframe src="https://player.vimeo.com/video/15520702?color=ffffff&title=0&byline=0"></iframe>
-				</div>
-				<div class="col-md-4 about-agileits-w3layouts-right">
-					<div class="img-video-about">
-						<img src="images/videoimg2.png" alt="">
-					</div>
-					<h4>Grocery Shoppy</h4>
-					<p>No.1 Leading E-commerce marketplace with over 70 million Products</p>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
-	<!-- //video-->
 
 	<!-- IMPORTANDO FOOTER -->
 	<div class="footer"></div>

@@ -23,8 +23,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer-top">
 		<div class="container-fluid">
 			<div class="col-xs-8 agile-leftmk">
-				<h2>Get your Groceries delivered from local stores</h2>
-				<p>Free Delivery on your first order!</p>
+				<h2>Reciba sus pedidos en tú domilio
+				</h2>
+				<p>Entrega gratuita en tú primer pedido!</p>
 				<div class="newsform-w3l">
 					<span class="fa fa-envelope-o" aria-hidden="true"></span>
 				</div>
@@ -36,13 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<footer>
 		<div class="container">
 			<p class="footer-main">
-				<span>"MiniMarket</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-				fugit, sed quia consequuntur
-				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error
-				sit voluptatem
-				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-				quasi architecto
-				beatae vitae dicta sunt explicabo.
+				<span>"MiniMarket</span> Nos gusta hacer las cosas bien, ponemos atención en todos los detalles de nuestros productos desde su origen, transformación hasta que los llevamos a tus manos. Queremos ser tu mejor compra, la más conveniente, aquella que te permita tener una vida llena de todo lo que necesites, según tu buena planificación, sin pagar más de lo que esperas. Queremos que siempre entres y salgas con una sonrisa de satisfacción en tu cara, no porque conseguiste el precio más barato, sino porque hiciste.
 			</p>
 			<div class="w3l-grids-footer">
 				<div class="col-xs-4 offer-footer">
@@ -68,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="fa fa-times" aria-hidden="true"></span>
 					</div>
 					<div class="col-xs-8 text-form-footer">
-						<h3>Lideres en ventas </h3>
+						<h3>No asumes riesgo </h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
