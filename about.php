@@ -18,9 +18,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+	<!-- LOGO E INGRESO-->
 	<div class="header-bot">
 		<div class="col-md-4 logo_agile">
 			<h1>
+				<span>M</span>ini
+				<span>M</span>arket
+				<span>App</span>
 				<a href="index.html">
 					<img src="images/logo2.png" alt=" ">
 				</a>
@@ -29,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header">
 			<ul>
 				<li>
-					<a href="login.php">
+					<a href="login.html">
 						<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
 				</li>
 				<li>
@@ -55,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Regístrate</h3>
 						<p>
-						<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
+							<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
 						</p>
 						<form action="Crear_Cuenta.php" method="post">
 							<div class="styled-input agile-styled-input-top">
@@ -93,8 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							</div>
 							<div class="styled-input">
-								<input type="email" name="correo" aria-describedby="emailHelp"
-									placeholder="Correo Electronico" required="">
+								<input type="email" name="correo" aria-describedby="emailHelp" placeholder="Correo Electronico" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" name="contrasena" placeholder="Contraseña" required>
@@ -125,119 +128,102 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="index.html">INICIO</a>
 						<i>|</i>
 					</li>
-					<li>Contacto</li>
+					<li>Acerca de nosotros</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="contact-w3l">
+	<!-- //page -->
+
+	<!-- welcome -->
+	<div class="welcome">
 		<div class="container">
-			<h3 class="tittle-w3l">Contact Us
+			<h3 class="tittle-w3l">Welcome to our Site
 				<span class="heading-style">
 					<i></i>
 					<i></i>
 					<i></i>
 				</span>
 			</h3>
-			<div class="contact agileits">
-				<div class="contact-agileinfo">
-					<div class="contact-form wthree">
-						<form action="#" method="post">
-							<div class="">
-								<input type="text" name="name" placeholder="Name" required="">
-							</div>
-							<div class="">
-								<input class="text" type="text" name="subject" placeholder="Subject" required="">
-							</div>
-							<div class="">
-								<input class="email" type="email" name="email" placeholder="Email" required="">
-							</div>
-							<div class="">
-								<textarea placeholder="Message" name="message" required=""></textarea>
-							</div>
-							<input type="submit" value="Submit">
-						</form>
-					</div>
-					<div class="contact-right wthree">
-						<div class="col-xs-7 contact-text w3-agileits">
-							<h4>GET IN TOUCH :</h4>
-							<p>
-								<i class="fa fa-map-marker"></i> 123 Sebastian, NY 10002, USA.
-							</p>
-							<p>
-								<i class="fa fa-phone"></i> Telephone : 333 222 3333
-							</p>
-							<p>
-								<i class="fa fa-fax"></i> FAX : +1 888 888 4444
-							</p>
-							<p>
-								<i class="fa fa-envelope-o"></i> Email :
-								<a href="mailto:example@mail.com">mail@example.com</a>
-							</p>
-						</div>
-						<div class="col-xs-5 contact-agile">
-							<img src="images/contact2.jpg" alt="">
-						</div>
-						<div class="clearfix"> </div>
+			<div class="w3l-welcome-info">
+				<div class="col-sm-6 col-xs-6 welcome-grids">
+					<div class="welcome-img">
+						<img src="images/about.jpg" class="img-responsive zoom-img" alt="">
 					</div>
 				</div>
+				<div class="col-sm-6 col-xs-6 welcome-grids">
+					<div class="welcome-img">
+						<img src="images/about2.jpg" class="img-responsive zoom-img" alt="">
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="w3l-welcome-text">
+				<p>Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+					placeat facere possimus
+					omnis optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.Sed ut
+					perspiciatis unde omnis iste
+					natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+					illo inventore veritatis
+					et quasi architecto beatae vitae </p>
+				<p>libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
+					placeat facere possimus
+					omnis optio cumque nihil impedit </p>
 			</div>
 		</div>
 	</div>
+	<!-- //welcome -->
 
-	<!-- map -->
-	<div class="map w3layouts">
-		<iframe
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55565170.29301636!2d-132.08532758867793!3d31.786060306224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1512365940398"
-			allowfullscreen></iframe>
+	<!-- video -->
+	<div class="about">
+		<div class="container">
+			<!-- tittle heading -->
+			<h3 class="tittle-w3l">Our Video
+				<span class="heading-style">
+					<i></i>
+					<i></i>
+					<i></i>
+				</span>
+			</h3>
+			<div class="about-tp">
+				<div class="col-md-8 about-agileits-w3layouts-left">
+					<iframe src="https://player.vimeo.com/video/15520702?color=ffffff&title=0&byline=0"></iframe>
+				</div>
+				<div class="col-md-4 about-agileits-w3layouts-right">
+					<div class="img-video-about">
+						<img src="images/videoimg2.png" alt="">
+					</div>
+					<h4>Grocery Shoppy</h4>
+					<p>No.1 Leading E-commerce marketplace with over 70 million Products</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
 	</div>
+	<!-- //video-->
 
 	<!-- IMPORTANDO FOOTER -->
 	<div class="footer"></div>
 
-	<!-- JS  -->
-	<!-- jquery -->
+
 	<script src="js/jquery-2.1.4.min.js"></script>
-
-	<!-- BOTON DE SUBIR -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
-			});
-		});
-	</script>
-
-	<script>
-		$(document).ready(function () {
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
-
-		});
-	</script>
 
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 
 	<!--IMPORTANDO COMPONENTES-->
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.menu').load('./templates/header.html');
 		});
 	</script>
 
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.footer').load('./templates/footer.php');
 		});
 	</script>
+
 </body>
 
 </html>
