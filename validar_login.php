@@ -1,7 +1,4 @@
-<?php
-session_start();
-$session_id=$_SESSION['id_usuario'];
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -19,7 +16,7 @@ $session_id=$_SESSION['id_usuario'];
 		
 			<?php
 			// Busca la conexion a la BD
-			include '../conexion.php';	
+			include 'conexion/conexion.php';	
 
 			// Valida conexion a la BD
 			if (!$conn) {
