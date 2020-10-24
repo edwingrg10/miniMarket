@@ -148,12 +148,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3l-welcome-info">
 				<div class="col-sm-6 col-xs-6 welcome-grids">
 					<div class="welcome-img">
-						<img src="images/about.jpg" class="img-responsive zoom-img" alt="">
+						<img src="images/tiendasBarrio/9.jpg" class="img-responsive zoom-img" alt="">
 					</div>
 				</div>
 				<div class="col-sm-6 col-xs-6 welcome-grids">
 					<div class="welcome-img">
-						<img src="images/about2.jpg" class="img-responsive zoom-img" alt="">
+						<img src="images/tiendasBarrio/7.jpg" class="img-responsive zoom-img" alt="">
 					</div>
 				</div>
 				<div class="clearfix"> </div>
