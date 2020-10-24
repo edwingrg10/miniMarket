@@ -3,7 +3,7 @@ class InventarioMarca {
   private $pdo;
   
   public function __construct() {
-    require_once '../conexion.php';
+    require_once '../conexion/conexion.php';
     try {
       $this->pdo = Db::conectar();
     } catch (Exception $ex) {
@@ -14,7 +14,7 @@ class InventarioMarca {
   public function obtenerTodos() {
     try {
       /*$busqueda=$_POST['busqueda'];*/
-      $sql = "select * from marca";
+      $sql = "select * from marca where id_estado = 1";
       $prep = $this->pdo->prepare($sql);
       $prep->execute();
       return $prep->fetchAll(PDO::FETCH_OBJ);
@@ -23,7 +23,7 @@ class InventarioMarca {
     }
   }
   
-  public function agregar($inventario) {
+  /*public function agregar($inventario) {
     try {
       $sql = "insert into inventario (cod_empleado, apellidos, nombres, ref_laptop, serial_laptop, serial_mouse, ref_diadema, site) values (?, ?, ?, ?, ?, ?, ?, ?)";
       $this->pdo->prepare($sql)->execute(array(
@@ -40,48 +40,38 @@ class InventarioMarca {
     } catch (Exception $ex) {
       die($ex->getMessage());
     }
-  }
+  }*/
   
-    public function obtenerPorCodigo($codigo) {
+    public function obtenerPorCodigo($cod_marca) {
     try {
-      $sql = "select * from inventario where codigo = ?";
+      $sql = "select * from marca where cod_marca = ?";
       $prep = $this->pdo->prepare($sql);
-      $prep->execute(array($codigo));
+      $prep->execute(array($cod_marca));
       return $prep->fetch(PDO::FETCH_OBJ);
     } catch (Exception $ex) {
       die($ex->getMessage());
     }
   }
   
-  public function modificar($inventario) {
+  public function modificar($marca) {
     try {
-      $sql = "update inventario set cod_empleado = ?, apellidos = ?, nombres = ?, ref_laptop = ?, serial_laptop = ?, serial_mouse = ?, ref_diadema = ?, site = ?  where codigo = ?";
+      $sql = "update marca set nombre_marca = ?, id_estado = ? where cod_marca = ?";
       $this->pdo->prepare($sql)->execute(array(
-       $inventario->getCod_empleado(),
-          $inventario->getApellidos(),
-          $inventario->getNombres(),
-          $inventario->getRef_laptop(),
-          $inventario->getSerial_laptop(),
-          $inventario->getSerial_mouse(),
-		  $inventario->getRef_diadema(),
-		  $inventario->getSite(),
-		  $inventario->getCodigo()
-		  
-		  
+            $marca->getNombre_marca(),
+            $marca->getId_estado(),
+            $marca->getCod_marca()
+
       ));
     } catch (Exception $ex) {
       die($ex->getMessage());
     }
   }
 
-  
-  
-  
-  public function eliminar($codigo) {
+  public function eliminar($cod_marca) {
     try {
-      $sql = "delete from inventario where codigo = ?";
+      $sql = "update marca set id_estado = 2 where cod_marca = ?";
       $prep = $this->pdo->prepare($sql);
-      $prep->execute(array($codigo));
+      $prep->execute(array($cod_marca));
     } catch (Exception $ex) {
       die($ex->getMessage());
     }

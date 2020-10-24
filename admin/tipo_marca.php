@@ -1,6 +1,6 @@
 
 <?php
-require_once '../admin/modelos/control_metodos.php';
+require_once '../modelos/control_metodos.php';
 $inventarioMarca = new InventarioMarca();
 ?>
 
@@ -26,6 +26,18 @@ $inventarioMarca = new InventarioMarca();
 
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+<!--//tags -->
+
+
+
+	<!--pop-up-box-->
+	<link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<!--//pop-up-box-->
+	<!-- price range -->
+	<link rel="stylesheet" type="text/css" href="../css/jquery-ui1.css">
+	<!-- fonts -->
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
 </head>
 
@@ -103,8 +115,9 @@ $inventarioMarca = new InventarioMarca();
                       <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
                       <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
                       <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
+                        <a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button></a>
+                       
+                        <button class="btn btn-danger" title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash"></i></button>                    
                       </td>
                     </tr>
                     
@@ -123,6 +136,36 @@ $inventarioMarca = new InventarioMarca();
 
       </div>
       <!-- Begin Page Content -->
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body modal-body-sub_agile">
+					<div class="main-mailposi">
+						<span class="fa fa-envelope-o" aria-hidden="true"></span>
+					</div>
+					<div class="modal_body_left modal_body_left1">
+					
+						<p>
+							<h4 class="agileinfo_sign">Seguro que desea eliminar el registro ? </h4>
+						</p>
+						<form action="../Eliminar/eliminar.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>" method="post">
+						
+						
+							
+              <input class="btn btn-primary" type="submit" value="Si">
+              <input class="btn btn-primary" type="submit" value="No">
+						</form>
+						
+					</div>
+				</div>
+			</div>
+			<!-- //Modal content-->
+		</div>
+	</div>
 
       <!-- /.container-fluid -->
 

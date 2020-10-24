@@ -19,7 +19,7 @@ $session_id=$_SESSION['id_usuario'];
 		
 			<?php
 			// Busca la conexion a la BD
-			include 'conexion.php';	
+			include '../conexion.php';	
 
 			// Valida conexion a la BD
 			if (!$conn) {
