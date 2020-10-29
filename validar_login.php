@@ -55,9 +55,9 @@
           if ($row['cod_perfil'] == 1) {
             header('location:admin/home.php');
           } else if ($row['cod_perfil'] == 2) {
-            header('location:admin/home.php');
+            header('location:Index.html');
           } else if ($row['cod_perfil'] == 3) {
-            header('location:Crear_Cuenta.html');
+            header('location:Index.html');
           }
         }
 			
