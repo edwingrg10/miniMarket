@@ -94,7 +94,7 @@ $inventarioMarca = new InventarioMarca();
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Lista de marcas</h6>
               <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="forms/nuevo_marca.php" role="button">Nuevo</a>
+                <a class="btn btn-primary" href="../forms/nuevo_marca.php" role="button">Nuevo</a>
               </div>
             </div>
             <div class="card-body">

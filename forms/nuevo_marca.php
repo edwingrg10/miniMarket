@@ -183,13 +183,13 @@
 
     <script>
         $(document).ready(function() {
-            $('.menu').load('../menu_component.php');
+            $('.menu').load('menu_component.php');
         });
     </script>
 
     <script>
         $(document).ready(function() {
-            $('.nav').load('../nav_component.php');
+            $('.nav').load('nav_component.php');
         });
     </script>
 

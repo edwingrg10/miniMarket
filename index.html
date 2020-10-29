@@ -1,15 +1,8 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>MiniMarket App - Crear Marca</title>
-	<!--/tags -->
+	<title>MiniMarket</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -23,165 +16,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<!--//tags -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/font-awesome.css" rel="stylesheet">
-	<!--pop-up-box-->
 	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-	<!--//pop-up-box-->
-	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">
-	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 </head>
 
 <body>
-	<!-- top-header -->
-	<div class="header-most-top">
-		<p>Las mejores ofertas y descuentos</p>
-	</div>
-	<!-- //top-header -->
-	<!-- header-bot-->
+
+	<!-- LOGO E INGRESO-->
 	<div class="header-bot">
-		<div class="header-bot_inner_wthreeinfo_header_mid">
-			<!-- header-bot-->
-			<div class="col-md-4 logo_agile">
-				<h1>
-					<a href="index.html">
-						<span>M</span>ini
-						<span>M</span>arket
-						<span>App</span>
-						<img src="images/logo2.png" alt=" ">
-					</a>
-				</h1>
-			</div>
-			<!-- header-bot -->
-			<div class="col-md-8 header">
-				<!-- header lists -->
-				<ul>
-					<li>
-						<a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-							<span class="fa fa-map-marker" aria-hidden="true"></span> Ubicación</a>
-					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal1">
-							<span class="fa fa-truck" aria-hidden="true"></span>Seguimiento Pedido</a>
-					</li>
-					
-					<li>
-						<a href="login.html" >
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Iniciar Sesión </a>
-					</li>
-					<li>
-						<a href="#" data-toggle="modal" data-target="#myModal2">
-							<span class="fa fa-pencil-square-o" aria-hidden="true"></span> Registro </a>
-					</li>
-				</ul>
-				<!-- //header lists -->
-				<!-- search -->
-				<div class="agileits_search">
-					<form action="#" method="post">
-						<input name="Search" type="search" placeholder="Como te podemos ayudar ?" required="">
-						<button type="submit" class="btn btn-default" aria-label="Left Align">
-							<span class="fa fa-search" aria-hidden="true"> </span>
-						</button>
-					</form>
-				</div>
-				<!-- //search -->
-				<!-- cart details -->
-				<div class="top_nav_right">
-					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-						<form action="#" method="post" class="last">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
-							<button class="w3view-cart" type="submit" name="submit" value="">
-								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-							</button>
-						</form>
-					</div>
-				</div>
-				<!-- //cart details -->
-				<div class="clearfix"></div>
-			</div>
-			<div class="clearfix"></div>
+		<div class="col-md-4 logo_agile">
+			<h1>
+				<span>M</span>ini
+				<span>M</span>arket
+				<span>App</span>
+				<a href="index.html">
+					<img src="images/logo2.png" alt=" ">
+				</a>
+			</h1>
 		</div>
-	</div>
-	<!-- shop locator (popup) -->
-	<!-- Button trigger modal(shop-locator) -->
-	<div id="small-dialog1" class="mfp-hide">
-		<div class="select-city">
-			<h3>Seleccione su ubicación</h3>
-			<select class="list_of_cities">
-				<optgroup label="Ciudades Populares">
-					<option selected style="display:none;color:#eee;">Seleccion Ciudad</option>
-					<option>Medellín</option>
-					<option>Bogotá</option>
-					<option>Cali</option>
-					<option>Barranquilla</option>
-					<option>Cartagena</option>
-					<option>Bucaramanga</option>
-					<option>Tunja</option>
-					<option>Villavicencio</option>
-				</optgroup>
-				<optgroup label="Sabaneta">
-					<option>Calle Larga</option>
-					<option>San Jose</option>
-					<option>La Doctora</option>
-				</optgroup>
-				<optgroup label="Envigado">
-					<option>La Frontera</option>
-					<option>Zuñiga</option>
-					<option>La Mina</option>
-					<option>El Escobero</option>
-				</optgroup>
-				
-			</select>
-			<div class="clearfix"></div>
+		<div class="header">
+			<ul>
+				<li>
+					<a href="login.html">
+						<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
+				</li>
+				<li>
+					<a href="#" data-toggle="modal" data-target="#myModal2">
+						<span class="fa fa-pencil-square-o"></span> Registrarse </a>
+				</li>
+			</ul>
 		</div>
+		<div class="clearfix"></div>
 	</div>
-	<!-- //shop locator (popup) -->
-	<!-- signin Model -->
-	<!-- Modal1 -->
-	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body modal-body-sub_agile">
-					<div class="main-mailposi">
-						<span class="fa fa-envelope-o" aria-hidden="true"></span>
-					</div>
-					<div class="modal_body_left modal_body_left1">
-						<h3 class="agileinfo_sign">Ingresar </h3>
-						<p>
-							Inicie Sesión. No tiene cuenta ?
-							<a href="#" data-toggle="modal" data-target="#myModal2">
-								Regístrese</a>
-						</p>
-						<form action="validar_login.php" method="post">
-							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Correo Electrónico" name="correo" required="">
-							</div>
-							<div class="styled-input">
-								<input type="password" placeholder="Contraseña" name="contrasena" required="">
-							</div>
-							<input type="submit" value="Ingresar">
-						</form>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			<!-- //Modal content-->
-		</div>
-	</div>
-	<!-- //Modal1 -->
-	<!-- //signin Model -->
-	<!-- signup Model -->
-	<!-- Modal2 -->
+
 	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -196,229 +67,610 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Regístrate</h3>
 						<p>
-							<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
+						<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
 						</p>
 						<form action="Crear_Cuenta.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text"  name="cedula" placeholder="Cedula" required>
+								<input type="text" name="cedula" placeholder="Cedula" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="primer_apellido" placeholder="Primer Apellido" required>
+								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="segundo_apellido" placeholder="Segundo Apellido" required>
+								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="primer_nombre" placeholder="Primer Nombre" required>			
+								<input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="segundo_nombre" placeholder="Segundo Nombre">
+								<input type="text" name="segundo_nombre" placeholder="Segundo Nombre">
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="direccion" placeholder="Dirección" required>			
+								<input type="text" name="direccion" placeholder="Dirección" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="celular" placeholder="Celular" required>
+								<input type="text" name="celular" placeholder="Celular" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="telefono" placeholder="Teléfono" required>			
+								<input type="text" name="telefono" placeholder="Teléfono" required>
 							</div>
 							<div class="styled-input">
 								<label for="">Fecha Nacimiento</label>
-								<input type="date"  name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>			
+								<input type="date" name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>
 							</div>
 							<div class="styled-input">
-								
+
 							</div>
 							<div class="styled-input">
-								
+
 							</div>
 							<div class="styled-input">
-								<input type="email"  name="correo" aria-describedby="emailHelp" placeholder="Correo Electronico" required="">
+								<input type="email" name="correo" aria-describedby="emailHelp"
+									placeholder="Correo Electronico" required="">
 							</div>
 							<div class="styled-input">
-								<input type="password"  name="contrasena" placeholder="Contraseña" required>
+								<input type="password" name="contrasena" placeholder="Contraseña" required>
 							</div>
 							<div class="styled-input">
-								<input type="text"  name="id_perfil" placeholder="Perfil" required>			
+								<input type="text" name="id_perfil" placeholder="Perfil" required>
 							</div>
-							
+
 							<input type="submit" value="Crear Cuenta">
 						</form>
-						
+
 					</div>
 				</div>
 			</div>
 			<!-- //Modal content-->
 		</div>
 	</div>
-	<!-- //Modal2 -->
-	<!-- //signup Model -->
-	<!-- //header-bot -->
-	<!-- navigation -->
-	<div class="ban-top">
-		<div class="container">
-			<div class="agileits-navi_search">
-				<form action="#" method="post">
-					<select id="agileinfo-nav_search" name="agileinfo_search" required="">
-						<option value="">Todas las categorias</option>
-						<option value="Cocina">Cocina</option>
-						<option value="Cuidado Personal">Cuidado Personal</option>
-						<option value="Frutas y Vegetales">Frutas y Vegetales</option>
-						<option value="Cuidado para bebes">Cuidado para bebes</option>
-						<option value="Bebidas">Bebidas</option>
-						<option value="Congelados">Congelados</option>
-						<option value="Dulces">Dulces</option>
-					</select>
+
+	<!-- CARRITO-->
+	<div style="margin-top: -80px; padding: 20px;">
+		<div class="top_nav_right">
+			<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+				<form action="#" method="post" class="last">
+					<input type="hidden" name="cmd" value="_cart">
+					<input type="hidden" name="display" value="1">
+					<button class="w3view-cart" type="submit" name="submit" value="">
+						<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+					</button>
 				</form>
 			</div>
-			<div class="top_nav_left">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-							    aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav menu__list">
-								<li class="active">
-									<a class="nav-stylehead" href="index.html">Inicio
-										<span class="sr-only">(current)</span>
-									</a>
-								</li>
-								<li class="">
-									<a class="nav-stylehead" href="about.html">Acerca de</a>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cocina
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu multi-column columns-3">
-										<div class="agile_inner_drop_nav_info">
-											<div class="col-sm-4 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													
-													<li>
-														<a href="product.html">Especias</a>
-													</li>
-													<li>
-														<a href="product.html">Cafe - Té</a>
-													</li>
-													<li>
-														<a href="product.html">Frutas</a>
-													</li>
-													<li>
-														<a href="product.html">Chocolate</a>
-													</li>
-												
-													<li>
-														<a href="product.html">Miel</a>
-													</li>
-												</ul>
-											</div>
-								
-											<div class="col-sm-4 multi-gd-img">
-												<img src="images/nav.png" alt="">
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cuidado Personal
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu multi-column columns-3">
-										<div class="agile_inner_drop_nav_info">
-											<div class="col-sm-6 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="product2.html">Cremas</a>
-													</li>
-													<li>
-														<a href="product2.html">Perfumes</a>
-													</li>
-													<li>
-														<a href="product2.html">Desodorantes</a>
-													</li>
-													<li>
-														<a href="product2.html">Jabón</a>
-													</li>
-												
-												</ul>
-											</div>
-											
-											<div class="clearfix"></div>
-										</div>
-									</ul>
-								</li>
-								
-								<li class="dropdown">
-									<a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Paginas
-										<b class="caret"></b>
-									</a>
-									<ul class="dropdown-menu agile_short_dropdown">
-										<li>
-											<a href="icons.html">Web Icons</a>
-										</li>
-										<li>
-											<a href="typography.html">Typography</a>
-										</li>
-									</ul>
-								</li>
-								<li class="">
-									<a class="nav-stylehead" href="contact.html">Contactenos</a>
-								</li>
-							</ul>
-						</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<!-- MENU -->
+	<div class="menu"></div>
+
+	<!-- SLIDER -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>TIENDAS
+							<span>CERCANAS</span>
+						</h3>
+						<p>MiniMarket App
+						</p>
 					</div>
-				</nav>
+				</div>
+			</div>
+			<div class="item item2">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>CUIDA
+							<span>Tú bolsillo</span>
+						</h3>
+						<p>MiniMarket App
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="item item3">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Grandes
+							<span>Descuentos</span>
+						</h3>
+						<p>MiniMarket App
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="item item4">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>TIENDAS DE
+							<span>BARRIO</span>
+						</h3>
+						<p>MiniMarket App
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+
+	<!-- TOP PRODUCTOS -->
+	<div class="ads-grid">
+		<div class="container">
+			<h3 class="tittle-w3l">Nuestros Mejores Productos
+				<span class="heading-style">
+					<i></i>
+					<i></i>
+					<i></i>
+				</span>
+			</h3>
+			<div class="side-bar col-md-3">
+				<div class="search-hotel">
+					<h3 class="agileits-sear-head">Buscar...</h3>
+					<form action="#" method="post">
+						<input type="search" placeholder="Nombre del producto..." name="search" required="">
+						<input type="submit" value=" ">
+					</form>
+				</div>
+				<div class="range">
+					<h3 class="agileits-sear-head">Rango de precio</h3>
+					<ul class="dropdown-menu6">
+						<li>
+							<div id="slider-range"></div>
+							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+						</li>
+					</ul>
+				</div>
+				
+				<div class="deal-leftmk left-side">
+					<h3 class="agileits-sear-head">Ofertas especiales</h3>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d2.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Papitas Lay's</h3>
+							<a href="single.html">$1.800</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d1.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Bingo Mad Angles</h3>
+							<a href="single.html">$9.000</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d4.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Tata Salt</h3>
+							<a href="single.html">$1.500</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d5.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Gujarat Dry Fruit</h3>
+							<a href="single.html">$52.500</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d3.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Cadbury Dairy Milk</h3>
+							<a href="single.html">$14.900</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="agileinfo-ads-display col-md-9">
+				<div class="wrapper">
+					<div class="product-sec1">
+						<h3 class="heading-tittle">Nueces</h3>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/m1.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Almendras, 100g</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$14.900</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Almendras, 100g" />
+												<input type="hidden" name="amount" value="14.900" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/m2.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Nueces, 100g</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$20.000</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Nueces, 100g" />
+												<input type="hidden" name="amount" value="20.000" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/m3.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Pista..., 250g</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$52.099</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Pista, 250g" />
+												<input type="hidden" name="amount" value="52.099" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="product-sec1 product-sec2">
+						<div class="col-xs-7 effect-bg">
+							<h3 class="">Pura Energia</h3>
+							<h6>Disfruta de todos nuestros productos</h6>
+						</div>
+						<h3 class="w3l-nut-middle">Nueces & Frutas</h3>
+						<div class="col-xs-5 bg-right-nut">
+							<img src="images/nut1.png" alt="">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="product-sec1">
+						<h3 class="heading-tittle">Aceites</h3>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/mk4.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Aceite Oil, 1L</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$7.800</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name"
+													value="Aceite Oil, 1L" />
+												<input type="hidden" name="amount" value="7.800" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/mk5.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Premier, 1L</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$13.000</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Premier, 1L" />
+												<input type="hidden" name="amount" value="13.000" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/mk6.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Fortuna Oil, 5L</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$39.999</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Fortuna Oil, 5L" />
+												<input type="hidden" name="amount" value="39.999" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="product-sec1">
+						<h3 class="heading-tittle">Pastas</h3>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/mk7.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Fideos Yippee, 65g</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$1.500</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Fideos Yippee, 65g" />
+												<input type="hidden" name="amount" value="1.500" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/mk8.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Pasta de trigo, 500g</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$9.800</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Pasta de trigo, 500g" />
+												<input type="hidden" name="amount" value="9.800" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-men">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item">
+									<img src="images/mk9.jpg" alt="">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="single.html" class="link-product-add-cart">Vista rápida</a>
+										</div>
+									</div>
+									<span class="product-new-top">Nuevo</span>
+
+								</div>
+								<div class="item-info-product ">
+									<h4>
+										<a href="single.html">Fideos chinos, 68g</a>
+									</h4>
+									<div class="info-product-price">
+										<span class="item_price">$1.199</span>
+									</div>
+									<div
+										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+										<form action="#" method="post">
+											<fieldset>
+												<input type="hidden" name="cmd" value="_cart" />
+												<input type="hidden" name="add" value="1" />
+												<input type="hidden" name="business" value=" " />
+												<input type="hidden" name="item_name" value="Fideos chinos, 68g" />
+												<input type="hidden" name="amount" value="1.199" />
+												<input type="hidden" name="currency_code" value="USD" />
+												<input type="hidden" name="return" value=" " />
+												<input type="hidden" name="cancel_return" value=" " />
+												<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+											</fieldset>
+										</form>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- //navigation -->
-	<!-- banner -->
-	
-	<!-- //banner -->
 
-	<!-- FORMULARIO -->
-	<div class="container p-3 my-3 border">
-		<div class="dropdown-divider p-1 my-2"></div>
+	<!-- FOOTER -->
+	<div class="footer"></div>
 
-	
-   </div>
-	<!-- //top products -->
-	<!-- special offers -->
-	
-	<!-- //special offers -->
-	<!-- newsletter -->
-	<!-- //newsletter -->
-	<!-- footer -->
-	
-	<!-- //footer -->
-	<!-- copyright -->
-	<div class="copy-right">
-		<div class="container">
-			<p>© 2020 Mini Market App. Todos los derechos reservados | Diseñado por
-				<a href="http://w3layouts.com"> W3layouts.</a>
-			</p>
-		</div>
-	</div>
-	<!-- //copyright -->
-
-	<!-- js-files -->
-	<!-- jquery -->
+	<!-- JS -->
 	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- //jquery -->
-
-	<!-- popup modal (for signin & signup)-->
 	<script src="js/jquery.magnific-popup.js"></script>
 	<script>
 		$(document).ready(function () {
@@ -437,15 +689,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- Large modal -->
-	<!-- <script>
-		$('#').modal('show');
-	</script> -->
-	<!-- //popup modal (for signin & signup)-->
 
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>
 	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
+		paypalm.minicartk
+			.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
 		paypalm.minicartk.cart.on('checkout', function (evt) {
 			var items = this.items(),
@@ -469,7 +718,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- price range (top products) -->
 	<script src="js/jquery-ui.js"></script>
 	<script>
-		//<![CDATA[ 
 		$(window).load(function () {
 			$("#slider-range").slider({
 				range: true,
@@ -480,9 +728,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
 				}
 			});
-			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider(
+				"values", 1));
 
-		}); //]]>
+		});
 	</script>
 	<!-- //price range (top products) -->
 
@@ -531,7 +780,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
 			else
 				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
 		}
 	</script>
 	<!-- //password-script -->
@@ -559,14 +807,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- smooth-scrolling-of-move-up -->
 	<script>
 		$(document).ready(function () {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-			};
-			*/
 			$().UItoTop({
 				easingType: 'easeOutQuart'
 			});
@@ -578,9 +818,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
-	<!-- //js-files -->
 
+	<!-- // JS  -->
 
+	<!-- IMPORTS -->
+	<script>
+		$(document).ready(function () {
+			$('.menu').load('./templates/header.html');
+		});
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			$('.footer').load('./templates/footer.php');
+		});
+	</script>
 </body>
 
 </html>
