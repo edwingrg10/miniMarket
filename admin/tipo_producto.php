@@ -5,7 +5,7 @@
 
   $modelo=new Db();
   $conexion=$modelo->conectar();
-  $sentencia =  "SELECT * FROM tipo_establecimiento where estado = 1";
+  $sentencia =  "SELECT * FROM tipo_producto where estado = 1";
   $resultado=$conexion->prepare($sentencia);
   $resultado->execute();
   $lista=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -86,9 +86,9 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Lista de Establecimientos</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Lista de Tipo productos</h6>
               <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="../forms/nuevo_tipo_establecimiento.php" role="button">Nuevo</a>
+                <a class="btn btn-primary" href="../forms/nuevo_tipo_producto.php" role="button">Nuevo</a>
               </div>
             </div>
             <div class="card-body">
@@ -112,12 +112,12 @@
                    ?>       
 
                     <tr> 
-                        <td><?php echo $dato["cod_tipo_est"] ?> </td>   
-                        <td><?php echo $dato["desc_tipo_est"] ?> </td>     
+                        <td><?php echo $dato["cod_tipo_producto"] ?> </td>   
+                        <td><?php echo $dato["desc_tipo_producto"] ?> </td>     
                         <td><?php echo $dato["estado"] ?> </td> 
                         <td> 
-                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_Establecimiento.php?accion=1 & cod_tipo_est=<?php echo $dato["cod_tipo_est"]?> "></a></button>
-                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_Establecimiento.php?accion=2 & cod_tipo_est=<?php echo $dato['cod_tipo_est']?>"></a></button></td> 
+                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_producto.php?accion=1 & cod_tipo_producto=<?php echo $dato["cod_tipo_producto"]?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_producto.php?accion=2 & cod_tipo_producto=<?php echo $dato['cod_tipo_producto']?>"></a></button></td> 
                         </td> 
                       </tr> 
 

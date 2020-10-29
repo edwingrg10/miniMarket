@@ -50,9 +50,9 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Parametrizaciones</h6>
-        <a class="collapse-item" href="../admin/tipo_marca.php">Tipo Marca</a>
+        <a class="collapse-item" href="tipo_marca.php">Tipo Marca</a>
         <a class="collapse-item" href="tipo_establecimiento.php">Tipo Establecimientos</a>
-        <a class="collapse-item" href="establecimienot.php">Establecimientos</a>
+        <a class="collapse-item" href="tipo_producto.php">Tipo Producto</a>
         <a class="collapse-item" href="perfil.php">Perfil</a>
       </div>
     </div>
