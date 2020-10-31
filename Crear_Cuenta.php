@@ -15,7 +15,7 @@
 
 	<?php
 
-	include 'conexion.php';
+	include 'conexion/conexion.php';
 
 	
 
@@ -56,14 +56,14 @@
 	$fecha_nacimiento = $_POST['fecha_nacimiento'];
 	$correo = $_POST['correo'];
 	$contrasena = $_POST['contrasena'];
-	$id_perfil = $_POST['id_perfil'];
+	$id_perfil = $_POST['cod_perfil'];
 	$id_estado = 1;
 	
 	// The password_hash() function convert the password in a hash before send it to the database
 	$passHash = password_hash($contrasena, PASSWORD_DEFAULT);
 	
 	// Query to send Name, Email and Password hash to the database
-	$query = "INSERT INTO usuario (cedula, primer_apellido, segundo_apellido, primer_nombre, segundo_nombre, direccion, celular, telefono, fecha_nacimiento, correo, contrasena, id_perfil, id_estado) 
+	$query = "INSERT INTO usuario (cedula, primer_apellido, segundo_apellido, primer_nombre, segundo_nombre, direccion, celular, telefono, fecha_nacimiento, correo, contrasena, cod_perfil, id_estado) 
 	VALUES ('$cedula', '$primer_apellido', '$segundo_apellido', '$primer_nombre', '$segundo_nombre', '$direccion', '$celular', '$telefono', '$fecha_nacimiento', '$correo', '$passHash', '$id_perfil', '$id_estado')";
 
 	if (mysqli_query($conn, $query)) {

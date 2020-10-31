@@ -85,7 +85,7 @@
     //   echo($cod);
     $consultas=new consultas();
     $mensaje=$consultas->borrar_tipo_establecimiento($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/tipo_establecimiento.php");  
+    header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");  
         
        
     } 
