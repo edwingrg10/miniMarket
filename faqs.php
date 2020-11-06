@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<span>M</span>ini
 				<span>M</span>arket
 				<span>App</span>
-				<a href="index.html">
+				<a href="index.php">
 					<img src="images/logo2.png" alt=" ">
 				</a>
 			</h1>
@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header">
 			<ul>
 				<li>
-					<a href="login.php">
+					<a href="login.html">
 						<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
 				</li>
 				<li>
@@ -59,23 +59,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Regístrate</h3>
 						<p>
-						<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
+							<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
 						</p>
 						<form action="Crear_Cuenta.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="cedula" placeholder="Cedula" required>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
+								<input type="text" name="cedula" placeholder="Cédula" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="segundo_nombre" placeholder="Segundo Nombre">
+							</div>
+							<div class="styled-input">
+								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="direccion" placeholder="Dirección" required>
@@ -91,20 +91,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="date" name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>
 							</div>
 							<div class="styled-input">
-
-							</div>
-							<div class="styled-input">
-
-							</div>
-							<div class="styled-input">
-								<input type="email" name="correo" aria-describedby="emailHelp"
-									placeholder="Correo Electronico" required="">
+								<input type="email" name="correo" aria-describedby="emailHelp" placeholder="Correo electrónico" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" name="contrasena" placeholder="Contraseña" required>
 							</div>
-							<div class="styled-input">
-								<input type="text" name="id_perfil" placeholder="Perfil" required>
+
+							<?php
+							$conn = mysqli_connect("localhost", "root", "", "minimarketapp");
+							$sql = "SELECT * FROM perfil";
+							$result = mysqli_query($conn, $sql);
+
+							?>
+
+							<div class="form-group">
+								<label for="cod_perfil">Perfil</label>
+								<select class="form-control" id="cod_perfil" name="cod_perfil">
+									<?php
+									while ($row = mysqli_fetch_array($result)) {
+										echo '<option value=' . $row['cod_perfil'] . '>' . $row['descripcion'] . '</option>';
+									}
+									?>
+								</select>
 							</div>
 
 							<input type="submit" value="Crear Cuenta">
@@ -126,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">INICIO</a>
+						<a href="index.php">INICIO</a>
 						<i>|</i>
 					</li>
 					<li>PREGUNTAS FRECUENTES</li>
@@ -152,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="faq-w3agile">
 				<ul class="faq">
 					<li class="item1">
-						<a href="#" title="click here">¿Realiza ventas a domicilio?						</a>
+						<a href="#" title="click here">¿Realiza ventas a domicilio? </a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/1.PNG">
@@ -160,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item2">
-						<a href="#" title="click here">¿Por qué medio le solicitan los productos?						</a>
+						<a href="#" title="click here">¿Por qué medio le solicitan los productos? </a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/2.PNG">
@@ -176,7 +184,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item4">
-						<a href="#" title="click here">¿Estaría usted interesado en realizar sus ventas por internet?</a>
+						<a href="#" title="click here">¿Estaría usted interesado en realizar sus ventas por
+							internet?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/4.PNG">
@@ -184,7 +193,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item5">
-						<a href="#" title="click here">¿Cuál de las siguientes aplicaciones conoce para el servicio de domicilios?</a>
+						<a href="#" title="click here">¿Cuál de las siguientes aplicaciones conoce para el servicio de
+							domicilios?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/5.PNG">
@@ -200,7 +210,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item7">
-						<a href="#" title="click here">¿Qué herramienta utiliza para el control de inventario de su establecimiento?</a>
+						<a href="#" title="click here">¿Qué herramienta utiliza para el control de inventario de su
+							establecimiento?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/7.PNG">
@@ -214,7 +225,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="faq-w3agile">
 				<ul class="faq">
 					<li class="item1">
-						<a href="#" title="click here">¿Qué método prefiere al momento de realizar compras?					</a>
+						<a href="#" title="click here">¿Qué método prefiere al momento de realizar compras? </a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/8.PNG">
@@ -222,7 +233,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item2">
-						<a href="#" title="click here">¿Si usted decide realizar compras a domicilio que método utilizaría?</a>
+						<a href="#" title="click here">¿Si usted decide realizar compras a domicilio que método
+							utilizaría?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/9.PNG">
@@ -230,7 +242,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item3">
-						<a href="#" title="click here">¿Qué dificultades encuentra usted en los pedidos a domicilio como lo realiza actualmente?</a>
+						<a href="#" title="click here">¿Qué dificultades encuentra usted en los pedidos a domicilio como
+							lo realiza actualmente?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/10.PNG">
@@ -238,7 +251,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item4">
-						<a href="#" title="click here">¿Cuál de las siguientes aplicaciones conoce para el servicio de domicilios?</a>
+						<a href="#" title="click here">¿Cuál de las siguientes aplicaciones conoce para el servicio de
+							domicilios?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/11.PNG">
@@ -246,7 +260,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item5">
-						<a href="#" title="click here">¿Estaría usted interesado en realizar sus pedidos a domicilio por medio de una aplicación web que reemplace las existentes?</a>
+						<a href="#" title="click here">¿Estaría usted interesado en realizar sus pedidos a domicilio por
+							medio de una aplicación web que reemplace las existentes?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/12.PNG">
@@ -262,25 +277,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</li>
 					<li class="item7">
-						<a href="#" title="click here">¿Cuál es su dispositivo de preferencia para realizar pedidos a domicilio?</a>
+						<a href="#" title="click here">¿Cuál es su dispositivo de preferencia para realizar pedidos a
+							domicilio?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/14.PNG">
 							</li>
 						</ul>
 					</li>
-					
+
 					<li class="item8">
-						<a href="#" title="click here">¿Qué tiempo considera razonable para la entrega de un pedido a domicilio?</a>
+						<a href="#" title="click here">¿Qué tiempo considera razonable para la entrega de un pedido a
+							domicilio?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/15.PNG">
 							</li>
 						</ul>
 					</li>
-					
+
 					<li class="item9">
-						<a href="#" title="click here">¿Cuánto estaría dispuesto a pagar por el servicio a domicilio?</a>
+						<a href="#" title="click here">¿Cuánto estaría dispuesto a pagar por el servicio a
+							domicilio?</a>
 						<ul>
 							<li class="subitem1">
 								<img src="images/preguntas/16.PNG">
@@ -303,14 +321,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- script for tabs -->
 	<script>
-		$(function () {
+		$(function() {
 
 			var menu_ul = $('.faq > li > ul'),
 				menu_a = $('.faq > li > a');
 
 			menu_ul.hide();
 
-			menu_a.click(function (e) {
+			menu_a.click(function(e) {
 				e.preventDefault();
 				if (!$(this).hasClass('active')) {
 					menu_a.removeClass('active');
@@ -331,13 +349,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!--IMPORTANDO COMPONENTES-->
 	<script>
-		$(document).ready(function () {
-			$('.menu').load('./templates/header.html');
+		$(document).ready(function() {
+			$('.menu').load('./templates/header.php');
 		});
 	</script>
 
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.footer').load('./templates/footer.php');
 		});
 	</script>

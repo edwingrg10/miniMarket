@@ -47,18 +47,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="">
-									<a class="nav-stylehead" href="./index.html">Inicio
+									<a class="nav-stylehead" href="./index.php">Inicio
 									</a>
 								</li>
 								<li class="">
 									<a class="nav-stylehead" href="./about.php">Acerca de nosotros</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="./faqs.html">Preguntas frecuentes
+									<a class="nav-stylehead" href="./faqs.php">Preguntas frecuentes
 									</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="./contact.html">Contáctanos</a>
+									<a class="nav-stylehead" href="./contact.php">Contáctanos</a>
 								</li>
 							</ul>
 						</div>

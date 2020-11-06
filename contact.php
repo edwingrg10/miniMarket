@@ -24,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<span>M</span>ini
 				<span>M</span>arket
 				<span>App</span>
-				<a href="index.html">
+				<a href="index.php">
 					<img src="images/logo2.png" alt=" ">
 				</a>
 			</h1>
@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="header">
 			<ul>
 				<li>
-					<a href="login.php">
+					<a href="login.html">
 						<span class="fa fa-unlock-alt"></span> Iniciar Sesión </a>
 				</li>
 				<li>
@@ -62,19 +62,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</p>
 						<form action="Crear_Cuenta.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="cedula" placeholder="Cedula" required>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
+								<input type="text" name="cedula" placeholder="Cédula" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="segundo_nombre" placeholder="Segundo Nombre">
+							</div>
+							<div class="styled-input">
+								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="direccion" placeholder="Dirección" required>
@@ -90,20 +90,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="date" name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>
 							</div>
 							<div class="styled-input">
-
-							</div>
-							<div class="styled-input">
-
-							</div>
-							<div class="styled-input">
 								<input type="email" name="correo" aria-describedby="emailHelp"
-									placeholder="Correo Electronico" required="">
+									placeholder="Correo electrónico" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" name="contrasena" placeholder="Contraseña" required>
 							</div>
-							<div class="styled-input">
-								<input type="text" name="id_perfil" placeholder="Perfil" required>
+
+							<?php
+							$conn = mysqli_connect("localhost", "root", "", "minimarketapp");
+							$sql = "SELECT * FROM perfil";
+							$result = mysqli_query($conn, $sql);
+
+							?>
+
+							<div class="form-group">
+								<label for="cod_perfil">Perfil</label>
+								<select class="form-control" id="cod_perfil" name="cod_perfil">
+									<?php
+									while ($row = mysqli_fetch_array($result)) {
+										echo '<option value=' . $row['cod_perfil'] . '>' . $row['descripcion'] . '</option>';
+									}
+									?>
+								</select>
 							</div>
 
 							<input type="submit" value="Crear Cuenta">
@@ -125,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">INICIO</a>
+						<a href="index.php">INICIO</a>
 						<i>|</i>
 					</li>
 					<li>Contacto</li>
@@ -165,7 +174,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h4>
 								PONERSE EN CONTACTO :</h4>
 							<p>
-								<i class="fa fa-map-marker"></i> Corporación Universitaria Remington, Medellín-Antioquia.
+								<i class="fa fa-map-marker"></i> Corporación Universitaria Remington,
+								Medellín-Antioquia.
 							</p>
 							<p>
 								<i class="fa fa-phone"></i> Teléfono : 314 856 1616
@@ -232,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--IMPORTANDO COMPONENTES-->
 	<script>
 		$(document).ready(function () {
-			$('.menu').load('./templates/header.html');
+			$('.menu').load('./templates/header.php');
 		});
 	</script>
 

@@ -8,7 +8,7 @@
 	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script>
-		addEventListener("load", function () {
+		addEventListener("load", function() {
 			setTimeout(hideURLbar, 0);
 		}, false);
 
@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<span>M</span>ini
 				<span>M</span>arket
 				<span>App</span>
-				<a href="index.html">
+				<a href="index.php">
 					<img src="images/logo2.png" alt=" ">
 				</a>
 			</h1>
@@ -67,23 +67,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="modal_body_left modal_body_left1">
 						<h3 class="agileinfo_sign">Regístrate</h3>
 						<p>
-						<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
+							<h4 class="agileinfo_sign">Vamos ! ... Crea tu cuenta.</h4>
 						</p>
 						<form action="Crear_Cuenta.php" method="post">
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" name="cedula" placeholder="Cedula" required>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
-							</div>
-							<div class="styled-input">
-								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
+								<input type="text" name="cedula" placeholder="Cédula" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="primer_nombre" placeholder="Primer Nombre" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="segundo_nombre" placeholder="Segundo Nombre">
+							</div>
+							<div class="styled-input">
+								<input type="text" name="primer_apellido" placeholder="Primer Apellido" required>
+							</div>
+							<div class="styled-input">
+								<input type="text" name="segundo_apellido" placeholder="Segundo Apellido" required>
 							</div>
 							<div class="styled-input">
 								<input type="text" name="direccion" placeholder="Dirección" required>
@@ -99,20 +99,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<input type="date" name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>
 							</div>
 							<div class="styled-input">
-
-							</div>
-							<div class="styled-input">
-
-							</div>
-							<div class="styled-input">
-								<input type="email" name="correo" aria-describedby="emailHelp"
-									placeholder="Correo Electronico" required="">
+								<input type="email" name="correo" aria-describedby="emailHelp" placeholder="Correo electrónico" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" name="contrasena" placeholder="Contraseña" required>
 							</div>
-							<div class="styled-input">
-								<input type="text" name="id_perfil" placeholder="Perfil" required>
+
+							<?php
+							$conn = mysqli_connect("localhost", "root", "", "minimarketapp");
+							$sql = "SELECT * FROM perfil";
+							$result = mysqli_query($conn, $sql);
+
+							?>
+
+							<div class="form-group">
+								<label for="cod_perfil">Perfil</label>
+								<select class="form-control" id="cod_perfil" name="cod_perfil">
+									<?php
+									while ($row = mysqli_fetch_array($result)) {
+										echo '<option value=' . $row['cod_perfil'] . '>' . $row['descripcion'] . '</option>';
+									}
+									?>
+								</select>
 							</div>
 
 							<input type="submit" value="Crear Cuenta">
@@ -235,7 +243,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 					</ul>
 				</div>
-				
+
 				<div class="deal-leftmk left-side">
 					<h3 class="agileits-sear-head">Ofertas especiales</h3>
 					<div class="special-sec1">
@@ -312,8 +320,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$14.900</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -351,8 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$20.000</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -389,8 +395,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$52.099</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -442,15 +447,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$7.800</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
 												<input type="hidden" name="add" value="1" />
 												<input type="hidden" name="business" value=" " />
-												<input type="hidden" name="item_name"
-													value="Aceite Oil, 1L" />
+												<input type="hidden" name="item_name" value="Aceite Oil, 1L" />
 												<input type="hidden" name="amount" value="7.800" />
 												<input type="hidden" name="currency_code" value="USD" />
 												<input type="hidden" name="return" value=" " />
@@ -482,8 +485,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$13.000</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -520,8 +522,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$39.999</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -561,8 +562,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$1.500</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -600,8 +600,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$9.800</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -639,8 +638,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="info-product-price">
 										<span class="item_price">$1.199</span>
 									</div>
-									<div
-										class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">
 											<fieldset>
 												<input type="hidden" name="cmd" value="_cart" />
@@ -673,7 +671,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/jquery.magnific-popup.js"></script>
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.popup-with-zoom-anim').magnificPopup({
 				type: 'inline',
 				fixedContentPos: false,
@@ -696,7 +694,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		paypalm.minicartk
 			.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
+		paypalm.minicartk.cart.on('checkout', function(evt) {
 			var items = this.items(),
 				len = items.length,
 				total = 0,
@@ -718,13 +716,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- price range (top products) -->
 	<script src="js/jquery-ui.js"></script>
 	<script>
-		$(window).load(function () {
+		$(window).load(function() {
 			$("#slider-range").slider({
 				range: true,
 				min: 0,
 				max: 9000,
 				values: [50, 6000],
-				slide: function (event, ui) {
+				slide: function(event, ui) {
 					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
 				}
 			});
@@ -738,7 +736,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- flexisel (for special offers) -->
 	<script src="js/jquery.flexisel.js"></script>
 	<script>
-		$(window).load(function () {
+		$(window).load(function() {
 			$("#flexiselDemo1").flexisel({
 				visibleItems: 3,
 				animationSpeed: 1000,
@@ -768,7 +766,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- password-script -->
 	<script>
-		window.onload = function () {
+		window.onload = function() {
 			document.getElementById("password1").onchange = validatePassword;
 			document.getElementById("password2").onchange = validatePassword;
 		}
@@ -792,8 +790,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/move-top.js"></script>
 	<script src="js/easing.js"></script>
 	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event) {
 				event.preventDefault();
 
 				$('html,body').animate({
@@ -806,7 +804,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- smooth-scrolling-of-move-up -->
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$().UItoTop({
 				easingType: 'easeOutQuart'
 			});
@@ -823,13 +821,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- IMPORTS -->
 	<script>
-		$(document).ready(function () {
-			$('.menu').load('./templates/header.html');
+		$(document).ready(function() {
+			$('.menu').load('./templates/header.php');
 		});
 	</script>
 
 	<script>
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.footer').load('./templates/footer.php');
 		});
 	</script>
