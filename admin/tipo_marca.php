@@ -118,9 +118,8 @@ $inventarioMarca = new InventarioMarca();
                         <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
                         <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
                         <td>
-                          <a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button></a>
-
-                          <button class="btn btn-danger" title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash"></i></button>
+                          <button class="btn " title="Editar"><a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <i class="fa fa-pencil-alt"></i></a></button>
+                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash-alt"></i></button>
                         </td>
                       </tr>
 
@@ -153,12 +152,9 @@ $inventarioMarca = new InventarioMarca();
               <div class="modal_body_left modal_body_left1">
 
                 <p>
-                  <h4 class="agileinfo_sign">Seguro que desea eliminar el registro ? </h4>
+                  <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro?</h4>
                 </p>
                 <form action="../Eliminar/eliminar.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>" method="post">
-
-
-
                   <input class="btn btn-primary" type="submit" value="Si">
                   <input class="btn btn-primary" type="submit" value="No">
                 </form>
