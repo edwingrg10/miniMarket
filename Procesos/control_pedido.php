@@ -1,7 +1,7 @@
 <?php 
   
   
-  include ("../conexion.php");
+  include ("../conexion/conexion.php");
  
     class pedido{
 

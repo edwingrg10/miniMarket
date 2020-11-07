@@ -1,7 +1,7 @@
 <?php 
   
   
-  include ("../conexion.php");
+  include ("../conexion/conexion.php");
  
     class consultas{
 
@@ -189,7 +189,7 @@
             //   echo($cod);
             $consultas=new consultas();
             $mensaje=$consultas->borrar_tipo_pago($cod);
-            header ("location: http://localhost/medik/admin/tipo_pago.php"); 
+            header ("location: http://localhost:8000/minimarket/admin/tipo_pago.php"); 
         
             
        

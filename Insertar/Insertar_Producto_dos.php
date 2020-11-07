@@ -14,16 +14,16 @@ if (isset($_POST["guardar_marca"])) {
       ) VALUES (
       '" . $_POST["codigo_marca"] . "',
       '" . $_POST["nombre_marca"] . "',
-      '" . $_POST["estado"] . "'
+      '" . $_POST["estado_marca"] . "'
     )";
   echo $insertar_marca;
   if (!$crear_marca = $conn->query($insertar_marca)) {
     echo "Marca ingresada correctamente";
     echo $insertar_marca;
-    header("Location: http://localhost:8000/miniMarket/admin/tipo_marca.php");
+    header("Location: http://localhost/miniMarket/admin/tipo_marca.php");
   } else {
     echo "Error: " . $insertar_marca . "<br>" . $conn->error;
-    header("Location:http://localhost:8000/miniMarket/admin/tipo_marca.php");
+    header("Location:http://localhost/miniMarket/admin/tipo_marca.php");
   }
 
 

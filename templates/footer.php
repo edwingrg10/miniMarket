@@ -23,7 +23,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer-top">
 		<div class="container-fluid">
 			<div class="col-xs-8 agile-leftmk">
-				<h2>Reciba sus pedidos en tú domilio
+				<h2>Recibe tus pedidos en tú domicilio
 				</h2>
 				<p>Entrega gratuita en tú primer pedido!</p>
 				<div class="newsform-w3l">

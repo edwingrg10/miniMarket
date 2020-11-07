@@ -21,17 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 	<div class="ban-top">
 		<div class="container">
-			<div class="agileits-navi_search">
-				<form action="#" method="post">
-					<select id="agileinfo-nav_search" name="agileinfo_search" required="">
-						<option value="">Todas las categorias</option>
-						<option value="Kitchen">Cremas</option>
-						<option value="Household">Ricardo</option>
-						<option value="Snacks &amp; Beverages">Juan</option>
-						<option value="Personal Care">Edwin</option>
-					</select>
-				</form>
-			</div>
+		
 			<div class="top_nav_left">
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
@@ -47,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="">
-									<a class="nav-stylehead" href="./index.php">Inicio
+									<a class="nav-stylehead" href="../Formularios/form_pedido.php">Inicio
 									</a>
 								</li>
 								<li class="">

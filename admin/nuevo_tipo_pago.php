@@ -1,17 +1,17 @@
 <?php
-require_once ( '../Procesos/control_marca.php');
+require_once ( '../Procesos/control_tipo_pago.php');
 
 $error_cod="";
 $error_desc="";
 $frm_enviado=false;
 $consultas=new consultas();
-if(isset($_POST["guardar_marca"])){
+if(isset($_POST["guardar_tipo_pago"])){
         
-    $codigo=$_POST["cod_marca"];
-    $desc=$_POST["nombre-marca"];
+    $codigo=$_POST["codigo_tipo_pago"];
+    $desc=$_POST["desc_tipo_pago"];
     $estado=array();
     
-    if (isset($_POST["estado_marca"])){
+    if (isset($_POST["estado_tipo_pago"])){
         $estado=1;
     }else{
         $estado=0;
@@ -36,14 +36,14 @@ if(isset($_POST["guardar_marca"])){
         $valido=$valido+1;
 
     }else{
-        $error_desc="Por favor ingrese una marca";
+        $error_desc="Por favor ingrese una descripción";
     
     }
 
     if($valido==2){
               
-        $mensaje=$consultas->insertar_marca($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/minimarket/admin/tipo_marca.php");      
+        $mensaje=$consultas->insertar_tipo_pago($codigo,$desc,$estado);
+        header ("location: http://localhost:8000/minimarket/admin/tipo_pago.php");      
    
  
     }
@@ -62,7 +62,7 @@ if(isset($_POST["guardar_marca"])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MiniMarket</title>
+    <title>Medik Farmacia</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -133,20 +133,20 @@ if(isset($_POST["guardar_marca"])){
                                             <div class="col-lg-8">
                                                 <div class="p-5">
                                                     <div class="text-left">
-                                                        <h1 class="h4 text-gray-900 mb-4">Crear Marca</h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Crear tipo de pago</h1>
                                                     </div>
                                                     <!-- FORMULARIO -->
-                                                    <form class="user" name="insertar_marca" action="" method="post">
+                                                    <form class="user" name="Insertar_Tipo_pago" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="cod_marca" id="cod_marca" placeholder="Código"
+                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_pago" id="codigo_tipo_pago" placeholder="Código"
                                                                 value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>">
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_cod; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="nombre-marca" id="nombre-marca" placeholder="Descripción"
+                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_pago" id="desc_tipo_pago" placeholder="Descripción"
                                                                 value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
                                                         </div>
@@ -156,8 +156,8 @@ if(isset($_POST["guardar_marca"])){
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
                                                               
-                                                                <input type="checkbox" class="custom-control-input" id="estado_marca" name="estado_marca" checked >
-                                                                <label class="custom-control-label" for="estado_marca">Activo</label>
+                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_pago" name="estado_tipo_pago" checked >
+                                                                <label class="custom-control-label" for="estado_tipo_pago">Activo</label>
                                                             </div>
                                                         </div>
                                                         <a href="tipo_pago.php" class="btn btn-secondary">
@@ -165,7 +165,7 @@ if(isset($_POST["guardar_marca"])){
                                                         </a>
 
                                                    
-                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_marca">
+                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_tipo_pago">
                                                         <hr>
                                                     </form>
                                                     <hr>
@@ -190,7 +190,7 @@ if(isset($_POST["guardar_marca"])){
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; MiniMarket 2020</span>
+                        <span>Copyright &copy; Medik Farmacia Online</span>
                     </div>
                 </div>
             </footer>
@@ -228,13 +228,13 @@ if(isset($_POST["guardar_marca"])){
 
     <script>
         $(document).ready(function() {
-            $('.menu').load('../admin/menu_component.php');
+            $('.menu').load('/menu_component.php');
         });
     </script>
 
     <script>
         $(document).ready(function() {
-            $('.nav').load('../admin/nav_component.php');
+            $('.nav').load('/nav_component.php');
         });
     </script>
 

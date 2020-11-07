@@ -1,10 +1,17 @@
-<?php
-require_once '../modelos/control_metodos.php';
-$inventarioMarca = new InventarioMarca();
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
+<?php include("../conexion/conexion.php");
+
+$modelo = new Db();
+$conexion = $modelo->conectar();
+$sentencia =  "SELECT * FROM tipo_pago";
+$resultado = $conexion->prepare($sentencia);
+$resultado->execute();
+$lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
 
 <head>
 
@@ -26,18 +33,6 @@ $inventarioMarca = new InventarioMarca();
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-  <!--//tags -->
-
-
-
-  <!--pop-up-box-->
-  <link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-  <!--//pop-up-box-->
-  <!-- price range -->
-  <link rel="stylesheet" type="text/css" href="../css/jquery-ui1.css">
-  <!-- fonts -->
-  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -55,79 +50,75 @@ $inventarioMarca = new InventarioMarca();
       <div id="content">
 
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
           <!-- Topbar Navbar -->
           <p>Perfil Administrador</p>
+          <?php /*}*/ ?>
           <ul class="navbar-nav ml-auto">
             <!-- Nav Item - User Information -->
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
-
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
-
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Perfil
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Configuración
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="../logout.php" class="dropdown-item">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Cerrar sesión
+                </a>
+              </div>
             </li>
           </ul>
         </nav>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
-              <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-primary" href="../login.html">Salir</a>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="container-fluid">
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Lista de marcas</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Lista </h6>
               <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="../forms/nuevo_marca.php" role="button">Nuevo</a>
+                <a class="btn btn-primary" href="nuevo_tipo_pago.php" role="button">Nuevo</a>
               </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Código</th>
-                      <th>Marca</th>
+                      <th>Descripción</th>
                       <th>Estado</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($inventarioMarca->obtenerTodos() as $obtener_info) { ?>
+                    <?php
+                    foreach ($lista as $dato) {
+                    ?>
+
                       <tr>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->cod_marca; ?></td>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
+                        <td><?php echo $dato["id_tipo_pago"] ?> </td>
+                        <td><?php echo $dato["descripcion"] ?> </td>
+                        <td><?php echo $dato["estado"] ?> </td>
                         <td>
-                          <button class="btn " title="Editar"><a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <i class="fa fa-pencil-alt"></i></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash-alt"></i></button>
+                          <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_tipo_pago.php?accion=1 & id_tipo_pago=<?php echo $dato["id_tipo_pago"] ?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../procesos/control_tipo_pago.php?accion=2 & id_tipo_pago=<?php echo $dato['id_tipo_pago'] ?>"></a></button></td>
                         </td>
                       </tr>
 
-
-
-
+                    <?php } ?>
                   </tbody>
-                <?php } ?>
                 </table>
               </div>
             </div>
@@ -138,33 +129,6 @@ $inventarioMarca = new InventarioMarca();
 
       </div>
       <!-- Begin Page Content -->
-      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body modal-body-sub_agile">
-              <div class="main-mailposi">
-                <span class="fa fa-envelope-o" aria-hidden="true"></span>
-              </div>
-              <div class="modal_body_left modal_body_left1">
-
-                <p>
-                  <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro?</h4>
-                </p>
-                <form action="../Eliminar/eliminar.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>" method="post">
-                  <input class="btn btn-primary" type="submit" value="Si">
-                  <input class="btn btn-primary" type="submit" value="No">
-                </form>
-
-              </div>
-            </div>
-          </div>
-          <!-- //Modal content-->
-        </div>
-      </div>
 
       <!-- /.container-fluid -->
 
@@ -176,7 +140,7 @@ $inventarioMarca = new InventarioMarca();
   <footer class="sticky-footer bg-white">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
-        <span>Copyright &copy; MiniMarket 2020</span>
+        <span>Copyright &copy; MiniMarket</span>
       </div>
     </div>
   </footer>
@@ -205,7 +169,6 @@ $inventarioMarca = new InventarioMarca();
 
   <!-- Page level plugins -->
   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="../vendor/datatables/jquery.dataTables.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->

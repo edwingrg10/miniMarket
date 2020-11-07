@@ -57,7 +57,7 @@
 				} else if ($row['cod_perfil'] == 2) {
 					header('location:index.php');
 				} else if ($row['cod_perfil'] == 3) {
-					header('location:index.php');
+					header('location:formularios/form_pedido.php');
 				}
 			}
 		} else {
