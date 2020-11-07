@@ -126,7 +126,7 @@
     //   echo($cod);
     $consultas=new consultas();
     $mensaje=$consultas->borrar_tipo_producto($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/tipo_producto.php");  
+    header ("location: http://localhost/miniMarket/admin/tipo_producto.php");  
         
        
     } 

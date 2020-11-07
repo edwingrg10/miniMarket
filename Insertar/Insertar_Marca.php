@@ -20,10 +20,10 @@ include '../conexion/conexion.php';
     if (!$crear_marca = $conn -> query($insertar_marca)) {
       echo "Marca ingresada correctamente";
       echo $insertar_marca;
-      header("Location: http://localhost:8000/miniMarket/admin/tipo_marca.php"); 
+      header("Location: http://localhost/miniMarket/admin/tipo_marca.php"); 
   } else {
       echo "Error: " . $insertar_marca . "<br>" . $conn->error;
-      header("Location:http://localhost:8000/miniMarket/admin/tipo_marca.php");
+      header("Location:http://localhost/miniMarket/admin/tipo_marca.php");
   }
    
 
