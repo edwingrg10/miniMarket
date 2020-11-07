@@ -165,7 +165,7 @@ if(isset($_POST["actualizar_tipo_producto"])){
                                                         </a>
 
                                                    
-                                                        <input type="submit" value="Guardar cambios" class="btn btn-primary sm" name="actualizar_tipo_producto">
+                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="actualizar_tipo_producto">
                                                         <hr>
                                                     </form>
                                                     <hr>

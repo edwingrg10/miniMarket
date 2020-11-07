@@ -176,12 +176,12 @@ if(isset($_POST["actualizar_tipo_est"])){
                                                             </div>
                                                             
                                                         </div>
-                                                        <a href="../tipo_establecimiento.php" class="btn btn-secondary">
+                                                        <a href="../admin/tipo_establecimiento.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 
                                                    
-                                                        <input type="submit" value="Guardar cambios" class="btn btn-primary sm" name="actualizar_tipo_est">
+                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="actualizar_tipo_est">
                                                         <hr>
                                                     </form>
                                                     <hr>

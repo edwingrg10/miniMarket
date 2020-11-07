@@ -1,4 +1,3 @@
-
 <?php
 require_once '../modelos/control_metodos.php';
 $inventarioMarca = new InventarioMarca();
@@ -27,17 +26,17 @@ $inventarioMarca = new InventarioMarca();
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-<!--//tags -->
+  <!--//tags -->
 
 
 
-	<!--pop-up-box-->
-	<link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-	<!--//pop-up-box-->
-	<!-- price range -->
-	<link rel="stylesheet" type="text/css" href="../css/jquery-ui1.css">
-	<!-- fonts -->
-	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+  <!--pop-up-box-->
+  <link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+  <!--//pop-up-box-->
+  <!-- price range -->
+  <link rel="stylesheet" type="text/css" href="../css/jquery-ui1.css">
+  <!-- fonts -->
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
 </head>
 
@@ -56,41 +55,41 @@ $inventarioMarca = new InventarioMarca();
       <div id="content">
 
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-   <!-- Topbar Navbar -->
-   <p>Perfil Administrador</p>
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Nav Item - User Information -->
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        <li class="nav-item dropdown no-arrow">
-                           
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
-                        <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
-                        </a>    
-                            <!-- Dropdown - User Information -->
-                            
-                        </li>
-                    </ul>
+          <!-- Topbar Navbar -->
+          <p>Perfil Administrador</p>
+          <ul class="navbar-nav ml-auto">
+            <!-- Nav Item - User Information -->
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
+              </a>
+              <!-- Dropdown - User Information -->
+
+            </li>
+          </ul>
         </nav>
 
-         <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="../login.html">Salir</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="../login.html">Salir</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
         <div class="container-fluid">
           <!-- DataTales Example -->
@@ -113,23 +112,23 @@ $inventarioMarca = new InventarioMarca();
                     </tr>
                   </thead>
                   <tbody>
-                  <?php foreach ($inventarioMarca->obtenerTodos() as $obtener_info) { ?>
-                    <tr>
-                      <td class="borde marInt alCen"><?php echo $obtener_info->cod_marca; ?></td>
-                      <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
-                      <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
-                      <td>
-                        <a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button></a>
-                       
-                        <button class="btn btn-danger" title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash"></i></button>                    
-                      </td>
-                    </tr>
-                    
-      
-                    
-          
+                    <?php foreach ($inventarioMarca->obtenerTodos() as $obtener_info) { ?>
+                      <tr>
+                        <td class="borde marInt alCen"><?php echo $obtener_info->cod_marca; ?></td>
+                        <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
+                        <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
+                        <td>
+                          <a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button></a>
+
+                          <button class="btn btn-danger" title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash"></i></button>
+                        </td>
+                      </tr>
+
+
+
+
                   </tbody>
-                  <?php } ?>
+                <?php } ?>
                 </table>
               </div>
             </div>
@@ -141,35 +140,35 @@ $inventarioMarca = new InventarioMarca();
       </div>
       <!-- Begin Page Content -->
       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body modal-body-sub_agile">
-					<div class="main-mailposi">
-						<span class="fa fa-envelope-o" aria-hidden="true"></span>
-					</div>
-					<div class="modal_body_left modal_body_left1">
-					
-						<p>
-							<h4 class="agileinfo_sign">Seguro que desea eliminar el registro ? </h4>
-						</p>
-						<form action="../Eliminar/eliminar.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>" method="post">
-						
-						
-							
-              <input class="btn btn-primary" type="submit" value="Si">
-              <input class="btn btn-primary" type="submit" value="No">
-						</form>
-						
-					</div>
-				</div>
-			</div>
-			<!-- //Modal content-->
-		</div>
-	</div>
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+              <div class="main-mailposi">
+                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+              </div>
+              <div class="modal_body_left modal_body_left1">
+
+                <p>
+                  <h4 class="agileinfo_sign">Seguro que desea eliminar el registro ? </h4>
+                </p>
+                <form action="../Eliminar/eliminar.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>" method="post">
+
+
+
+                  <input class="btn btn-primary" type="submit" value="Si">
+                  <input class="btn btn-primary" type="submit" value="No">
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <!-- //Modal content-->
+        </div>
+      </div>
 
       <!-- /.container-fluid -->
 

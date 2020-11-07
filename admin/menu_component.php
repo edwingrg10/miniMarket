@@ -50,7 +50,7 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Parametrizaciones</h6>
-        <a class="collapse-item" href="http://localhost/miniMarket/admin/tipo_establecimiento.php">Tipo Establecimientos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/tipo_establecimiento.php">Tipo Establecimiento</a>
         <a class="collapse-item" href="http://localhost/miniMarket/admin/tipo_producto.php">Tipo Producto</a>
         <a class="collapse-item" href="http://localhost/miniMarket/admin/tipo_marca.php">Marca</a>
         <!--<a class="collapse-item" href="perfil.php">Perfil</a>-->
