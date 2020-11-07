@@ -117,7 +117,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <tr>
                         <td><?php echo $dato["cod_tipo_producto"] ?> </td>
                         <td><?php echo $dato["desc_tipo_producto"] ?> </td>
-                        <td><?php echo $dato["estado"] ?> </td>
+                        <td>Disponible</td>
                         <td>
                           <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_producto.php?accion=1 & cod_tipo_producto=<?php echo $dato["cod_tipo_producto"] ?> "></a></button>
                           <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td>

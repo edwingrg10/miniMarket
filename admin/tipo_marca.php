@@ -116,7 +116,7 @@ $inventarioMarca = new InventarioMarca();
                       <tr>
                         <td class="borde marInt alCen"><?php echo $obtener_info->cod_marca; ?></td>
                         <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
+                        <td class="borde marInt alCen">Disponible</td>
                         <td>
                           <button class="btn " title="Editar"><a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <i class="fa fa-pencil-alt"></i></a></button>
                           <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash-alt"></i></button>
