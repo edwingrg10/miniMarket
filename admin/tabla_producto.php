@@ -125,7 +125,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $dato["cantidad_disponible"] ?> </td>
                         <td><?php echo $dato["estado"] ?> </td>
                         <td>
-                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_producto.php?accion=1 & cod_tipo_producto=<?php echo $dato["cod_producto"] ?> "></a></button>
+                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_producto.php?accion=1 & cod_producto=<?php echo $dato["cod_producto"] ?> "></a></button>
                           <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td>
                         </td>
                       </tr>

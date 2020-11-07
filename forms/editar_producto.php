@@ -6,8 +6,8 @@
 require_once ( '../Insertar/Insertar_producto.php');
 $consultas=new consultas();
 if(isset($_GET['cod_producto'])){
-    $cod=$_GET['cod_producto'];
-    $info=$consultas->buscar($cod);
+    $codigo=$_GET['cod_producto'];
+    $info=$consultas->buscar($codigo);
     
 }
 
@@ -140,7 +140,7 @@ if(isset($_POST["actualizar_producto"])){
                                             <div class="col-lg-8">
                                                 <div class="p-5">
                                                     <div class="text-left">
-                                                        <h1 class="h4 text-gray-900 mb-4">Editar Tipo Producto</h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Editar Producto</h1>
                                                     </div>
 
                                                     <!--FORMULARIO -->        
@@ -168,14 +168,14 @@ if(isset($_POST["actualizar_producto"])){
                                                         <span class="text-danger"><?php echo $error_nombre; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['nombre_producto']; ?>" name="nombre_producto" id="nombre_producto" placeholder="Nombre producto"
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['precio_ud']; ?>" name="precio" id="Precio" placeholder="Precio"
                                                                 value="<?= (isset($nombre) && !$frm_enviado)?$nombre : "" ?>">
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_nombre; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['nombre_producto']; ?>" name="nombre_producto" id="nombre_producto" placeholder="Nombre producto"
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cantidad_disponible']; ?>" name="cantidad_disponible" id="cantidad_disponible" placeholder="Nombre producto"
                                                                 value="<?= (isset($nombre) && !$frm_enviado)?$nombre : "" ?>">
                                                             </div>
                                                         </div>

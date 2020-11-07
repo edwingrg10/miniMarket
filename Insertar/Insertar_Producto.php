@@ -6,7 +6,7 @@
  
   class consultas{
 
-    public function insertar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado){
+    public function insertar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado,$imagen){
       
       $modelo=new Db();
       $conexion=$modelo->conectar();
@@ -16,15 +16,17 @@
         cod_tipo_producto,
         precio_ud,
         cantidad_disponible,
-        estado
-        ) VALUES (:codigo,:nombre_producto,:cod_tipo_producto,:precio,:cantidad_disponible,:estado_producto)";
+        estado,
+        img
+        ) VALUES (:codigo,:nombre_producto,:cod_tipo_producto,:precio,:cantidad_disponible,:estado_producto,:imagen)";
       $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':cod_producto',$codigo);
+      $resultado->bindParam(':codigo',$codigo);
       $resultado->bindParam(':nombre_producto',$nombre);
       $resultado->bindParam(':cod_tipo_producto',$tipo);
       $resultado->bindParam(':precio',$precio);
       $resultado->bindParam(':cantidad_disponible',$cantidad);
       $resultado->bindParam(':estado_producto',$estado);
+      $resultado->bindParam(':imagen',$imagen);
       
       if (!$resultado){
         return "error al crear el registro";

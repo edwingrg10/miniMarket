@@ -275,7 +275,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<?php echo "Disponible ".$dato['cantidad_disponible']; ?>
 												</h4>
 												<div class="info-product-price">
-													<span class="item_price"><?php echo $dato['precio_ud']; ?></span>
+													<span class="item_price"><?php echo '$ '.$dato['precio_ud']; ?></span>
 
 												</div>
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">

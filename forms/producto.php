@@ -17,6 +17,7 @@ if (isset($_POST["guardar_producto"])) {
     $precio = $_POST["precio"];
     $cantidad = $_POST["cantidad_disponible"];
     $estado = array();
+    $imagen = $_POST["imagen"];
 
     if (isset($_POST["estado_producto"])) {
         $estado = 1;
@@ -46,8 +47,8 @@ if (isset($_POST["guardar_producto"])) {
 
     if ($valido == 2) {
 
-        $mensaje = $consultas->insertar_producto($codigo, $nombre, $tipo, $precio, $cantidad, $estado);
-        header("location: http://localhost:8000/miniMarket/admin/producto.php");
+        $mensaje = $consultas->insertar_producto($codigo, $nombre, $tipo, $precio, $cantidad, $estado, $imagen);
+        header("location: http://localhost:8000/miniMarket/admin/tabla_producto.php");
     }
 } ?>
 
@@ -156,11 +157,28 @@ if (isset($_POST["guardar_producto"])) {
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_nombre; ?></span>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="cod_tipo_producto" id="cod_tipo_producto" placeholder="Tipo Producto" value="<?= (isset($tipo) && !$frm_enviado) ? $tipo : "" ?>">
-                                                            </div>
-                                                        </div>
+
+                                                                        <?php
+                                                                $conn = mysqli_connect("localhost", "root", "", "minimarketapp");
+                                                                $sql = "SELECT * FROM tipo_producto";
+                                                                $result = mysqli_query($conn, $sql);
+
+                                                                ?>
+
+                                                                <div class="form-group row">
+                                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                    <label for="cod_tipo_producto">Tipo Producto</label>
+                                                                    <select class="form-control" id="cod_tipo_producto" name="cod_tipo_producto">
+                                                                        <?php
+                                                                        while ($row = mysqli_fetch_array($result)) {
+                                                                            echo '<option value=' . $row['cod_tipo_producto'] . '>' . $row['desc_tipo_producto'] . '</option>';
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                    </div>
+                                                                </div>
+
+                                                        
                                                         <span class="text-danger"><?php echo $error_tipo; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -174,6 +192,13 @@ if (isset($_POST["guardar_producto"])) {
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_cantidad; ?></span>
+                                                        
+                
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" name="imagen" id="imagen" placeholder="Nombre Imagen" value="<?= (isset($imagen) && !$frm_enviado) ? $imagen : "" ?>">
+                                                            </div>
+                                                        </div>
 
 
                                                         <div class="form-group">
