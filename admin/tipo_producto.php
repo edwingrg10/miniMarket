@@ -100,8 +100,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Descripción</th>
+                      <th>Código Tipo Producto</th>
+                      <th>Descripción Tipo Producto</th>
                       <th>Estado</th>
                       <th>Acciones</th>
 
@@ -120,8 +120,8 @@
                         <td><?php echo $dato["desc_tipo_producto"] ?> </td>     
                         <td><?php echo $dato["estado"] ?> </td> 
                         <td> 
-                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_producto.php?accion=1 & cod_tipo_producto=<?php echo $dato["cod_tipo_producto"]?> "></a></button>
-                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_producto.php?accion=2 & cod_tipo_producto=<?php echo $dato['cod_tipo_producto']?>"></a></button></td> 
+                          <button class="btn btn-warning" title="Eliminar"><a href="../forms/editar_Tipo_producto.php?accion=1 & cod_tipo_producto=<?php echo $dato["cod_tipo_producto"]?> "></a><i class="fa fa-pencil-alt"></i></button>
+                          <button class="btn btn-danger" title="Eliminar"> <a  href="../Insertar/Insertar_Tipo_producto.php?accion=2 & cod_tipo_producto=<?php echo $dato['cod_tipo_producto']?>"></a><i class="fa fa-trash"></button></td> 
                         </td> 
                       </tr> 
 
