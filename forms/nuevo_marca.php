@@ -101,16 +101,14 @@
 
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
-
-                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_producto" name="estado_tipo_producto" checked>
-                                                                <label class="custom-control-label" for="estado_tipo_producto">Activo</label>
+                                                                <input type="checkbox" class="custom-control-input" checked>
+                                                                <label class="custom-control-label">Activo</label>
                                                             </div>
                                                         </div>
 
                                                         <a href="../admin/tipo_producto.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
-
 
                                                         <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_marca">
                                                         <hr>

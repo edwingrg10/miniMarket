@@ -108,8 +108,8 @@ $marca = $inventarioMarca->obtenerPorCodigo($_REQUEST['cod_marca']);
 
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_producto" name="estado_tipo_producto" checked>
-                                                                <label class="custom-control-label" for="estado_tipo_producto">Activo</label>
+                                                                <input type="checkbox" class="custom-control-input" checked>
+                                                                <label class="custom-control-label">Activo</label>
                                                             </div>
                                                         </div>
 
