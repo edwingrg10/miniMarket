@@ -99,8 +99,8 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Descripción</th>
+                      <th>Código Tipo Producto</th>
+                      <th>Descripción Tipo Producto</th>
                       <th>Estado</th>
                       <th>Acciones</th>
 
