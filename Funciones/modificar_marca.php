@@ -1,7 +1,7 @@
 <?php
-    require_once '../modelos/control_metodos.php';
-    $inventarioMarca = new InventarioMarca();
-    $marca= $inventarioMarca->obtenerPorCodigo($_REQUEST['cod_marca']);
+require_once '../modelos/control_metodos.php';
+$inventarioMarca = new InventarioMarca();
+$marca = $inventarioMarca->obtenerPorCodigo($_REQUEST['cod_marca']);
 ?>
 
 <!DOCTYPE html>
@@ -43,42 +43,42 @@
             <!-- Main Content -->
             <div id="content">
 
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-   <!-- Topbar Navbar -->
-   <p>Perfil Administrador</p>
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Topbar Navbar -->
+                    <p>Perfil Administrador</p>
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - User Information -->
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item dropdown no-arrow">
-                           
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                
-                        <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
-                        </a>    
+
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
+                            </a>
                             <!-- Dropdown - User Information -->
-                            
+
                         </li>
                     </ul>
-        </nav>
+                </nav>
 
-         <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="../login.html">Salir</a>
-        </div>
-      </div>
-    </div>
-  </div>
+                <!-- Logout Modal-->
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                <a class="btn btn-primary" href="../login.html">Salir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="container-fluid">
@@ -97,7 +97,7 @@
                                                     <form class="user" onsubmit="return validar()" action="../Funciones/metodo_modificar.php" method="get">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="cod_marca" id="cod_marca" placeholder="Código Marca" value="<?php echo $marca->cod_marca; ?>" >
+                                                                <input type="text" class="form-control form-control-user" name="cod_marca" id="cod_marca" placeholder="Código Marca" value="<?php echo $marca->cod_marca; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -105,33 +105,16 @@
                                                                 <input type="text" class="form-control form-control-user" name="nombre_marca" id="nombre_marca" placeholder="Nombre de la marca" value="<?php echo $marca->nombre_marca; ?>">
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
-                                                            <select class="form-control col-sm-3" id="id_estado" name="id_estado" value="<?php echo $marca->id_estado; ?>"required >
-                                                                <option label="ACTIVO" value="1" >ACTIVO</option>
-                                                                <option label="INACTIVO" value="2">INACTIVO</option>
-                                                                
-                                                                </select>
+                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_producto" name="estado_tipo_producto" checked>
+                                                                <label class="custom-control-label" for="estado_tipo_producto">Activo</label>
                                                             </div>
                                                         </div>
-                                                        
-                                                        
 
-                                                        <div class="form-group row">
-                                                                        <div class="col-sm-3">
-                                                                        
-                                                                        </div>
-                                                                        <div class="col-sm-3">
-                                                                        <input type="submit" value="Guardar" class="btn btn-primary  btn-block" >
-                                                                        </div>    
-                                                                        <div class="col-sm-3">
-                                                                        <input type="reset" value="Cancelar" class="btn btn-primary  btn-secondary" name="cancelar">
-                                                                        </div>
-                                                                        <div class="col-sm-3">
-                                                                        
-                                                                        </div>
-                                                                    </div>
+                                                        <input type="reset" value="Cancelar" class="btn btn-primary  btn-secondary" name="cancelar">
+                                                        <input type="submit" value="Guardar" class="btn btn-primary  btn-primary">
                                                         <hr>
                                                     </form>
                                                     <hr>

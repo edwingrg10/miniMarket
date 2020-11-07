@@ -106,7 +106,8 @@
                                                                 <label class="custom-control-label" for="estado_tipo_producto">Activo</label>
                                                             </div>
                                                         </div>
-                                                        <a href="../tipo_producto.php" class="btn btn-secondary">
+
+                                                        <a href="../admin/tipo_producto.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 
