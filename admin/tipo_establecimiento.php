@@ -120,7 +120,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $dato["estado"] ?> </td>
                         <td>
                           <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_Establecimiento.php?accion=1 & cod_tipo_est=<?php echo $dato["cod_tipo_est"] ?> "></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash"></a></button></td>
+                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td>
                         </td>
                       </tr>
 
