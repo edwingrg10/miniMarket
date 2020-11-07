@@ -120,7 +120,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $dato["estado"] ?> </td>
                         <td>
                           <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_producto.php?accion=1 & cod_tipo_producto=<?php echo $dato["cod_tipo_producto"] ?> "></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash"></a></button></td>
+                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td>
                         </td>
                       </tr>
 
@@ -208,6 +208,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
   <!-- Page level plugins -->
   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
@@ -224,6 +225,17 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
       $('.nav').load('nav_component.php');
     });
   </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').dataTable({
+        "language": {
+          "url": "dataTables.spanish.lang"
+        }
+      });
+    });
+  </script>
+
 
 </body>
 
