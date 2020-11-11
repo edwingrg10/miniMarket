@@ -17,9 +17,11 @@ if (isset($_POST['pagar'])) {
 	$fecha_pedido = $_POST['fecha_pedido'];
 	$id_usuario = $_POST['id_usuario'];
 	$estado_pedido = $_POST['estado_pedido'];
+	$medio_pago = $_POST['m_pago'];
 	$valor_con_iva = $valor_total * 1.19;
 	//registra el pedido antes de vaciar el carrito
 	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_con_iva, $estado_pedido);
+	$carrito->registro_pago($valor_con_iva, $fecha_pedido, $estado_pedido, $cod_pedido, $medio_pago);
 	//actualiza inventario del producto
 	// $lista_carrito= $carrito->ver_carrito($cod_carrito);
 
@@ -82,11 +84,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</a>
 			</h1>
 		</div>
-	
+
 		<div class="clearfix"></div>
 	</div>
 
-	
+
 
 	<!-- CARRITO-->
 	<div style="margin-top: -80px; padding: 20px;">
@@ -95,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<form action="#" method="post" class="last">
 					<input type="hidden" name="cmd" value="_cart">
 					<input type="hidden" name="display" value="1">
-					
+
 				</form>
 			</div>
 		</div>
@@ -105,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- MENU -->
 	<div class="menu"></div>
 
-	
+
 
 
 
@@ -173,112 +175,110 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<?php
 										foreach ($lista as $dato) {  ?>
 
-											<option><?php echo $dato['descripcion']; ?></option>
-										<?php } ?>
+											<option value=<?php echo $dato['id_tipo_pago']; ?>><?php echo $dato['descripcion'];
+																					} ?></option>
 
-									</select>
-
-									<div class="validate"></div>
 								</div>
-								<input type="hidden" name="cod_pedido" value=<?php echo "PED-" . $cod_carrito; ?>>
-								<input type="hidden" name="id_usuario" value="103451">
-								<input type="hidden" name="estado_pedido" value="Tramitando">
-								<div class="row-cols-2">
-									<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
-									<a href="form_pedido.php"><button type="button" class="btn btn-secondary">Cancelar</button></a>
-								</div>
-
-
-							</form>
-							<span></span>
-
 						</div>
+						<input type="hidden" name="cod_pedido" value=<?php echo "PED-" . $cod_carrito; ?>>
+						<input type="hidden" name="id_usuario" value="103451">
+						<input type="hidden" name="estado_pedido" value="Tramitando">
+						<div class="row-cols-2">
+							<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
+							<a href="form_pedido.php"><button type="button" class="btn btn-secondary">Cancelar</button></a>
+						</div>
+
+
+						</form>
+						<span></span>
 
 					</div>
 
-					<div class="col-6">
-						<div class="card">
+				</div>
+
+				<div class="col-6">
+					<div class="card">
 
 
-							<div class="card-body">
-								<div calss="container">
+						<div class="card-body">
+							<div calss="container">
 
-									<div class="row">
-										<div class="col-9">
-											<h4 class="card-title">Pedido No.</h4><br>
+								<div class="row">
+									<div class="col-9">
+										<h4 class="card-title">Pedido No.</h4><br>
 
-										</div>
-										<div class="col-3">
+									</div>
+									<div class="col-3">
 
-											<h4 class="card-title"><?php echo "PED-" . $cod_carrito; ?></h4>
-										</div>
-
+										<h4 class="card-title"><?php echo "PED-" . $cod_carrito; ?></h4>
 									</div>
 
 								</div>
 
+							</div>
 
 
-								<div class="form-group">
-									<table class="table">
-										<thead>
+
+							<div class="form-group">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Producto</th>
+											<th>Cantidad</th>
+											<th>Valor total</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach ($lista_carrito as $dato) { ?>
 											<tr>
-												<th>Producto</th>
-												<th>Cantidad</th>
-												<th>Valor total</th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php foreach ($lista_carrito as $dato) { ?>
-												<tr>
-													<td scope="row"><?php echo $dato['nombre_producto']; ?></td>
-													<td><?php echo $dato['cantidad']; ?></td>
-													<td><?php echo $dato['valor']; ?></td>
+												<td scope="row"><?php echo $dato['nombre_producto']; ?></td>
+												<td><?php echo $dato['cantidad']; ?></td>
+												<td><?php echo $dato['valor']; ?></td>
 
-
-												</tr>
-											<?php } ?>
-											<tr>
-												<td>Sub-total</td>
-												<td></td>
-												<td><?php echo $valor_total; ?></td>
 
 											</tr>
-											<tr>
-												<td>Impuestos</td>
-												<td>19%</td>
-												<td><?php echo $valor_total * 0.19; ?></td>
+										<?php } ?>
+										<tr>
+											<td>Sub-total</td>
+											<td></td>
+											<td><?php echo $valor_total; ?></td>
 
-											</tr>
+										</tr>
+										<tr>
+											<td>Impuestos</td>
+											<td>19%</td>
+											<td><?php echo $valor_total * 0.19; ?></td>
 
-											<tr>
-												<td>Total a pagar</td>
-												<td></td>
-												<td><?php echo $valor_total * 1.19; ?></td>
+										</tr>
 
-											</tr>
-										</tbody>
-									</table>
+										<tr>
+											<td>Total a pagar</td>
+											<td></td>
+											<td><?php echo $valor_total * 1.19; ?></td>
 
-
-								</div>
-
-
+										</tr>
+									</tbody>
+								</table>
 
 
 							</div>
+
+
+
+
 						</div>
-
-
 					</div>
-				</div>
 
+
+				</div>
 			</div>
 
-
-
-
 		</div>
+
+
+
+
+	</div>
 	</div>
 
 
@@ -441,7 +441,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- // JS  -->
 
 	<!-- IMPORTS -->
-	
+
 
 	<script>
 		$(document).ready(function() {
