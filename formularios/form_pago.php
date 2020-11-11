@@ -219,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<input type="hidden" name="cod_pedido" value=<?php echo "PED-" . $cod_carrito; ?>>
 						<input type="hidden" name="id_usuario" value="103451">
-						<input type="hidden" name="estado_pedido" value="Tramitando">
+						<input type="hidden" name="estado_pedido" value="Pagado">
 						<div class="row-cols-2">
 							<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
 							<a href="form_pedido.php"><button type="button" class="btn btn-secondary">Cancelar</button></a>
