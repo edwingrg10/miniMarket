@@ -151,17 +151,19 @@ class carrito_pago
         $resultado->execute();
     }
 
-    public function registro_pago($valor, $fecha_pago, $estado, $cod_pedido, $id_tipo_pago)
+    public function registro_pago($valor, $fecha_pago, $estado, $cod_pedido, $id_tipo_pago, $tipo_persona, $banco)
     {
         $modelo = new Db();
         $conexion = $modelo->conectar();
-        $sentencia = "INSERT INTO pago (valor,fecha_pago,estado,cod_pedido,id_tipo_pago) VALUES (:valor,:fecha_pago,:estado,:cod_pedido,:id_tipo_pago)";
+        $sentencia = "INSERT INTO pago (valor,fecha_pago,estado,cod_pedido,id_tipo_pago,tipo_persona,banco) VALUES (:valor,:fecha_pago,:estado,:cod_pedido,:id_tipo_pago,:tipo_persona,:banco)";
         $resultado = $conexion->prepare($sentencia);
         $resultado->bindParam(':valor', $valor);
         $resultado->bindParam(':fecha_pago', $fecha_pago);
         $resultado->bindParam(':estado', $estado);
         $resultado->bindParam(':cod_pedido', $cod_pedido);
         $resultado->bindParam(':id_tipo_pago', $id_tipo_pago);
+        $resultado->bindParam(':tipo_persona', $tipo_persona);
+        $resultado->bindParam(':banco', $banco);
         $resultado->execute();
     }
 

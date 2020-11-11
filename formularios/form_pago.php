@@ -18,10 +18,13 @@ if (isset($_POST['pagar'])) {
 	$id_usuario = $_POST['id_usuario'];
 	$estado_pedido = $_POST['estado_pedido'];
 	$medio_pago = $_POST['m_pago'];
+	$tipo_cliente = $_POST['tipo_cliente'];
+	$banco = $_POST['authorizerId'];
+
 	$valor_con_iva = $valor_total * 1.19;
 	//registra el pedido antes de vaciar el carrito
 	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_con_iva, $estado_pedido);
-	$carrito->registro_pago($valor_con_iva, $fecha_pedido, $estado_pedido, $cod_pedido, $medio_pago);
+	$carrito->registro_pago($valor_con_iva, $fecha_pedido, $estado_pedido, $cod_pedido, $medio_pago, $tipo_cliente, $banco);
 	//actualiza inventario del producto
 	// $lista_carrito= $carrito->ver_carrito($cod_carrito);
 
@@ -171,13 +174,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 									<label for="m_pago">Medio de pago</label>
-									<select class="form-control" name="m_pago" id="m_pago">
+									<select class="form-control" name="m_pago" id="m_pago" onchange="ShowSelectedPago();">
 										<?php
 										foreach ($lista as $dato) {  ?>
-
 											<option value=<?php echo $dato['id_tipo_pago']; ?>><?php echo $dato['descripcion'];
-																					} ?></option>
+																							} ?></option>
+									</select>
 
+								</div>
+								<div class="form-group" id="tipoPersona" style="visibility: hidden;">
+									<label for="tipo_cliente">Tipo Cliente</label>
+									<select class="form-control" name="tipo_cliente" id="tipo_cliente">
+										<option value="">Seleccionar</option>
+										<option value="natural">Natural</option>
+										<option value="juridica">Juridica</option>
+									</select>
+								</div>
+								<div class="form-group" id="banco" style="visibility: hidden;">
+									<label for="authorizerId">Entidad financiera autorizadora</label>
+									<select type="text" class="form-control" name="authorizerId">
+										<option value="">Seleccionar</option>
+										<option value="BANCO AGRARIO">BANCO AGRARIO</option>
+										<option value="BANCO AV VILLAS">BANCO AV VILLAS</option>
+										<option value="BANCO BBVA COLOMBIA S.A.">BANCO BBVA COLOMBIA S.A.</option>
+										<option value="BANCO CAJA SOCIAL">BANCO CAJA SOCIAL</option>
+										<option value="BANCO COLPATRIA">BANCO COLPATRIA</option>
+										<option value="BANCO COOPERATIVO COOPCENTRAL">BANCO COOPERATIVO COOPCENTRAL</option>
+										<option value="BANCO CORPBANCA S.A">BANCO CORPBANCA S.A</option>
+										<option value="BANCO DAVIVIENDA">BANCO DAVIVIENDA</option>
+										<option value="BANCO DE BOGOTA">BANCO DE BOGOTA</option>
+										<option value="BANCO DE OCCIDENTE">BANCO DE OCCIDENTE</option>
+										<option value="BANCO FALABELLA">BANCO FALABELLA</option>
+										<option value="BANCO GNB SUDAMERIS">BANCO GNB SUDAMERIS</option>
+										<option value="BANCO PICHINCHA S.A.">BANCO PICHINCHA S.A.</option>
+										<option value="BANCO POPULAR">BANCO POPULAR</option>
+										<option value="BANCO PROCREDIT">BANCO PROCREDIT</option>
+										<option value="BANCOLOMBIA">BANCOLOMBIA</option>
+										<option value="BANCOOMEVA S.A.">BANCOOMEVA S.A.</option>
+										<option value="CITIBANK">CITIBANK</option>
+										<option value="HELM BANK S.A.">HELM BANK S.A.</option>
+										<option value="NEQUI">NEQUI</option>
+									</select>
 								</div>
 						</div>
 						<input type="hidden" name="cod_pedido" value=<?php echo "PED-" . $cod_carrito; ?>>
@@ -287,6 +324,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //top products -->
 	<!-- FOOTER -->
 	<div class="footer"></div>
+
+	<script>
+		function ShowSelectedPago() {
+			var cod = document.getElementById("m_pago").value;
+			if (cod == "2") {
+				document.getElementById("tipoPersona").style.visibility = "visible";
+				document.getElementById("banco").style.visibility = "visible";
+			} else {
+				document.getElementById("tipoPersona").style.visibility = "hidden";
+				document.getElementById("banco").style.visibility = "hidden";
+			}
+		}
+	</script>
 
 	<!-- JS -->
 	<script src="../js/jquery-2.1.4.min.js"></script>
