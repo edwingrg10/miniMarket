@@ -4,7 +4,7 @@
 
 $modelo = new Db();
 $conexion = $modelo->conectar();
-$sentencia =  "SELECT * FROM tipo_establecimiento where estado = 1";
+$sentencia =  "SELECT * FROM tipo_establecimiento ";
 $resultado = $conexion->prepare($sentencia);
 $resultado->execute();
 $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -96,7 +96,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Código</th>
@@ -117,10 +117,15 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <tr>
                         <td><?php echo $dato["cod_tipo_est"] ?> </td>
                         <td><?php echo $dato["desc_tipo_est"] ?> </td>
-                        <td>Disponible</td>
+                        <td><?php echo $dato["estado"] ?> </td>
+									
+                      
+                      
+								
                         <td>
                           <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_Establecimiento.php?accion=1 & cod_tipo_est=<?php echo $dato["cod_tipo_est"] ?> "></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_Establecimiento.php?accion=2 & cod_tipo_est=<?php echo $dato['cod_tipo_est']?>"></a></button></td> 
+                         <!-- <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td> -->
                         </td>
                       </tr>
 

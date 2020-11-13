@@ -56,7 +56,7 @@
         {
             $modelo = new Db();
             $conexion = $modelo->conectar();
-            $sentencia = "SELECT * FROM productos";
+            $sentencia = "SELECT * FROM productos where estado = 1";
             $resultado = $conexion->prepare($sentencia);
             
             $resultado->execute();

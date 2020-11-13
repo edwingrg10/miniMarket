@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <?php include("../conexion/conexion.php");
 
 $modelo = new Db();
 $conexion = $modelo->conectar();
-$sentencia =  "SELECT * FROM tipo_pago";
+$sentencia =  "SELECT * FROM perfil ";
 $resultado = $conexion->prepare($sentencia);
 $resultado->execute();
 $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -50,45 +49,49 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <div id="content">
 
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
           <!-- Topbar Navbar -->
           <p>Perfil Administrador</p>
-          <?php /*}*/ ?>
           <ul class="navbar-nav ml-auto">
             <!-- Nav Item - User Information -->
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
+
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+
+                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuración
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="../logout.php" class="dropdown-item">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Cerrar sesión
-                </a>
-              </div>
+
             </li>
           </ul>
         </nav>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="../login.html">Salir</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="container-fluid">
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Lista tipos de pago</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Lista de Perfiles</h6>
               <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="nuevo_tipo_pago.php" role="button">Nuevo</a>
+                <a class="btn btn-primary" href="../forms/nuevo_tipo_perfil.php" role="button">Nuevo</a>
               </div>
             </div>
             <div class="card-body">
@@ -96,28 +99,36 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Descripción</th>
+                      <th>Código Perfil</th>
+                      <th>Descripción Perfil</th>
                       <th>Estado</th>
                       <th>Acciones</th>
+
                     </tr>
                   </thead>
+
+                  <!--Datos tomados de la base de datos-->
                   <tbody>
+
                     <?php
                     foreach ($lista as $dato) {
                     ?>
 
                       <tr>
-                        <td><?php echo $dato["id_tipo_pago"] ?> </td>
+                        <td><?php echo $dato["cod_perfil"] ?> </td>
                         <td><?php echo $dato["descripcion"] ?> </td>
-                        <td><?php echo $dato["estado"] ?> </td>
+                        <td><?php echo $dato["id_estado"] ?> </td>
                         <td>
-                          <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_tipo_pago.php?accion=1 & id_tipo_pago=<?php echo $dato["id_tipo_pago"] ?> "></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash"></a></button></td>
+                          <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_perfil.php?accion=1 & cod_perfil=<?php echo $dato["cod_perfil"] ?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_Perfil.php?accion=2 & cod_perfil=<?php echo $dato['cod_perfil']?>"></a></button></td>
                         </td>
                       </tr>
 
                     <?php } ?>
+
+
+
+
                   </tbody>
                 </table>
               </div>
@@ -128,6 +139,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
       </div>
+
       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
@@ -142,12 +154,12 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
               <div class="modal_body_left modal_body_left1">
 
                 <p>
-                  <center><h4 class="agileinfo_sign">No es posible eliminar, depende de pago</h4></center>
+                  <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro? </h4>
                 </p>
-                
-                  <center><input class="btn btn-primary" type="submit" value="OK" data-dismiss="modal"></center>
-                  
-                
+                <form action="../Insertar/Insertar_Tipo_producto.php?accion=2 & cod_tipo_producto=<?php echo $dato['cod_tipo_producto'] ?>" method="post">
+                  <input class="btn btn-primary" type="submit" value="Si">
+                  <input class="btn btn-primary" type="submit" value="No" data-dismiss="modal">
+                </form>
 
               </div>
             </div>
@@ -167,7 +179,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
   <footer class="sticky-footer bg-white">
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
-        <span>Copyright &copy; MiniMarket</span>
+        <span>Copyright &copy; MiniMarket 2020</span>
       </div>
     </div>
   </footer>
@@ -214,7 +226,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
     });
   </script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function() {
       $('#example').dataTable({
         "language": {
@@ -223,6 +235,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
       });
     });
   </script>
+
 
 </body>
 

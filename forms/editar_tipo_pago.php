@@ -222,13 +222,13 @@ if(isset($_POST["actualizar_tipo_pago"])){
 
     <script>
         $(document).ready(function() {
-            $('.menu').load('../menu_component.php');
+            $('.menu').load('../admin/menu_component.php');
         });
     </script>
 
     <script>
         $(document).ready(function() {
-            $('.nav').load('../nav_component.php');
+            $('.nav').load('../admin/nav_component.php');
         });
     </script>
 

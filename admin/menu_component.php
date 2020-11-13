@@ -50,11 +50,14 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Parametrizaciones</h6>
-        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_establecimiento.php">Tipo Establecimiento</a>
-        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_producto.php">Tipo Producto</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_establecimiento.php">Tipos de Establecimientos</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_producto.php">Tipos de Productos</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_pago.php">Tipos de Pago</a>
         <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tabla_producto.php">Productos</a>
-        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_pago.php">Tipo Pago</a>
-        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_marca.php">Marca</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_marca.php">Marcas</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/usuarios.php">Usuarios</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_perfil.php">Perfiles</a>
+        
         <!--<a class="collapse-item" href="perfil.php">Perfil</a>-->
       </div>
     </div>

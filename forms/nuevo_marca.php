@@ -1,55 +1,48 @@
 <?php
-require_once ( '../Procesos/control_marca.php');
+require_once('../Insertar/Insertar_Tipo_Marca.php');
 
-$error_cod="";
-$error_desc="";
-$frm_enviado=false;
-$consultas=new consultas();
-if(isset($_POST["guardar_marca"])){
-        
-    $codigo=$_POST["cod_marca"];
-    $desc=$_POST["nombre-marca"];
-    $estado=array();
-    
-    if (isset($_POST["estado_marca"])){
-        $estado=1;
-    }else{
-        $estado=0;
+$error_cod = "";
+$error_desc = "";
+$frm_enviado = false;
+$consultas = new consultas();
+if (isset($_POST["guardar_tipo_marca"])) {
+
+    $codigo = $_POST["cod_marca"];
+    $desc = $_POST["nombre_marca"];
+    $estado = array();
+
+    if (isset($_POST["estado_marca"])) {
+        $estado = 1;
+    } else {
+        $estado = 0;
     }
-    $valido=0;  
+    $valido = 0;
 
-    if(!$codigo==""){
-        $exist=$consultas->buscar($codigo);
-        if (!$exist){
+    if (!$codigo == "") {
+        $exist = $consultas->buscar($codigo);
+        if (!$exist) {
 
-            $valido=$valido+1;
-        }else{
-            $error_cod="El código ya existe";   
-        }  
-    }else{
-     $error_cod= "Por favor ingrese un código";
-   
-    }
-
-    if (!$desc==""){
-
-        $valido=$valido+1;
-
-    }else{
-        $error_desc="Por favor ingrese una marca";
-    
+            $valido = $valido + 1;
+        } else {
+            $error_cod = "El código ya existe";
+        }
+    } else {
+        $error_cod = "Por favor ingrese un código";
     }
 
-    if($valido==2){
-              
-        $mensaje=$consultas->insertar_marca($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/minimarket/admin/tipo_marca.php");      
-   
- 
+    if (!$desc == "") {
+
+        $valido = $valido + 1;
+    } else {
+        $error_desc = "Por favor ingrese una descripción";
     }
 
+    if ($valido == 2) {
+
+        $mensaje = $consultas->insertar_tipo_marca($codigo, $desc, $estado);
+        header("location: http://localhost:8000/miniMarket/admin/tipo_marca.php");
+    }
 } ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -91,36 +84,41 @@ if(isset($_POST["guardar_marca"])){
             <div id="content">
 
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Topbar Navbar -->
-                   <p>Perfil Administrador</p>
+                    <p>Perfil Administrador</p>
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - User Information -->
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item dropdown no-arrow">
+
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
-                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+
+                                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Perfil
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Configuración
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="../logout.php" class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Cerrar sesión
-                                </a>
-                            </div>
+
                         </li>
                     </ul>
                 </nav>
+
+                <!-- Logout Modal-->
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                                <a class="btn btn-primary" href="../login.html">Salir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="container-fluid">
                     <div class="form-wrapper">
@@ -133,39 +131,39 @@ if(isset($_POST["guardar_marca"])){
                                             <div class="col-lg-8">
                                                 <div class="p-5">
                                                     <div class="text-left">
-                                                        <h1 class="h4 text-gray-900 mb-4">Crear Marca</h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Creando Marca</h1>
                                                     </div>
-                                                    <!-- FORMULARIO -->
-                                                    <form class="user" name="insertar_marca" action="" method="post">
+
+                                                    <!--FORMULARIO -->
+
+                                                    <form class="user" name="Insertar_Tipo_Perfil" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="cod_marca" id="cod_marca" placeholder="Código"
-                                                                value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>">
+                                                                <input type="number" class="form-control form-control-user" name="cod_marca" id="cod_marca" placeholder="Código" value="<?= (isset($codigo) && !$frm_enviado) ? $codigo : "" ?>">
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_cod; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="nombre-marca" id="nombre-marca" placeholder="Descripción"
-                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
+                                                                <input type="text" class="form-control form-control-user" name="nombre_marca" id="nombre_marca" placeholder="Descripción" value="<?= (isset($desc) && !$frm_enviado) ? $desc : "" ?>">
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_desc; ?></span>
-                                                        
-                                                        
+
+
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
-                                                              
-                                                                <input type="checkbox" class="custom-control-input" id="estado_marca" name="estado_marca" checked >
+
+                                                                <input type="checkbox" class="custom-control-input" id="estado_marca" name="estado_marca" checked>
                                                                 <label class="custom-control-label" for="estado_marca">Activo</label>
                                                             </div>
                                                         </div>
-                                                        <a href="tipo_pago.php" class="btn btn-secondary">
+                                                        <a href="../tipo_perfil.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 
-                                                   
-                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_marca">
+
+                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_tipo_marca">
                                                         <hr>
                                                     </form>
                                                     <hr>

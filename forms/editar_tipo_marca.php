@@ -3,42 +3,30 @@
 <html lang="es">
 
 <?php 
-require_once ( '../Insertar/Insertar_Tipo_Establecimiento.php');
+require_once ( '../Insertar/Insertar_Tipo_Marca.php');
 $consultas=new consultas();
-if(isset($_GET['cod_tipo_est'])){
-    $cod=$_GET['cod_tipo_est'];
+if(isset($_GET['cod_marca'])){
+    $cod=$_GET['cod_marca'];
     $info=$consultas->buscar($cod);
     
-    
 }
+
 $error_cod="";
 $error_desc="";
 $frm_enviado=false;
-if(isset($_POST["actualizar_tipo_est"])){
+if(isset($_POST["actualizar_tipo_marca"])){
         
-    $codigo=$_POST["codigo_tipo_est"];
-    $desc=$_POST["desc_tipo_est"];
+    $codigo=$_POST["cod_marca"];
+    $desc=$_POST["nombre_marca"];
     $estado=array();
     
-    if (isset($_POST["estado_tipo_est"])){
+    if (isset($_POST["estado_marca"])){
         $estado=1;
     }else{
         $estado=0;
     }
     $valido=0;  
 
-    // if(!$codigo==""){
-    //     $exist=$consultas->buscar($codigo);
-    //     if (!$exist){
-
-    //         $valido=$valido+1;
-    //     }else{
-    //         $error_cod="El código ya existe";   
-    //     }  
-    // }else{
-    //  $error_cod= "Por favor ingrese un código";
-   
-    // }
 
     if (!$desc==""){
 
@@ -50,9 +38,9 @@ if(isset($_POST["actualizar_tipo_est"])){
     }
     if($valido==1){
               
-        $mensaje=$consultas->actualizar_tipo_establecimiento($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/miniMarket/admin/tipo_establecimiento.php");      
-   
+        $mensaje=$consultas->actualizar_tipo_marca($codigo,$desc,$estado);
+        header ("location: http://localhost:8000/miniMarket/admin/tipo_marca.php");      
+        
  
     }
 
@@ -146,42 +134,38 @@ if(isset($_POST["actualizar_tipo_est"])){
                                             <div class="col-lg-8">
                                                 <div class="p-5">
                                                     <div class="text-left">
-                                                        <h1 class="h4 text-gray-900 mb-4">Editar Tipo Establecimiento</h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Editar Marca</h1>
                                                     </div>
 
                                                     <!--FORMULARIO -->        
 
-                                                    <form class="user" name="Insertar_Tipo_est" action="" method="post">
+                                                    <form class="user" name="Insertar_Tipo_producto" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_tipo_est']; ?>" name="codigo_tipo_est" id="codigo_tipo_est"
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_marca']; ?>" name="cod_marca" id="cod_marca"
                                                                 value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>" readonly="disabled" >
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_est']; ?>" name="desc_tipo_est" id="desc_tipo_est" placeholder="Descripción"
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['nombre_marca']; ?>" name="nombre_marca" id="nombre_marca" placeholder="Descripción"
                                                                 value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
-                                                            
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_desc; ?></span>
-                                                        
-                                                        
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
                                                               
-                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_est" name="estado_tipo_est" checked >
-                                                                <label class="custom-control-label" for="estado_tipo_est">Activo</label>
+                                                                <input type="checkbox" class="custom-control-input" id="estado_marca" name="estado_marca" checked >
+                                                                <label class="custom-control-label" for="estado_marca">Activo</label>
                                                             </div>
-                                                            
                                                         </div>
-                                                        <a href="../admin/tipo_establecimiento.php" class="btn btn-secondary">
+                                                        <a href="../tipo_perfil.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 
                                                    
-                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="actualizar_tipo_est">
+                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="actualizar_tipo_marca">
                                                         <hr>
                                                     </form>
                                                     <hr>

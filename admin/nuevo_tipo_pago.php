@@ -139,10 +139,15 @@ if(isset($_POST["guardar_tipo_pago"])){
                                                     <form class="user" name="Insertar_Tipo_pago" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="codigo_tipo_pago" id="codigo_tipo_pago" placeholder="Código"
+                                                                <input type="number" class="form-control form-control-user" name="codigo_tipo_pago" id="codigo_tipo_pago" placeholder="Código"
                                                                 value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>">
                                                             </div>
                                                         </div>
+
+                                                        
+
+
+
                                                         <span class="text-danger"><?php echo $error_cod; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -228,13 +233,13 @@ if(isset($_POST["guardar_tipo_pago"])){
 
     <script>
         $(document).ready(function() {
-            $('.menu').load('/menu_component.php');
+            $('.menu').load('menu_component.php');
         });
     </script>
 
     <script>
         $(document).ready(function() {
-            $('.nav').load('/nav_component.php');
+            $('.nav').load('nav_component.php');
         });
     </script>
 

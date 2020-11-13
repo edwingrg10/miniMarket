@@ -1,10 +1,16 @@
-<?php
-require_once '../modelos/control_metodos.php';
-$inventarioMarca = new InventarioMarca();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+<?php include("../conexion/conexion.php");
+
+$modelo = new Db();
+$conexion = $modelo->conectar();
+$sentencia =  "SELECT * FROM marca ";
+$resultado = $conexion->prepare($sentencia);
+$resultado->execute();
+$lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
 
 <head>
 
@@ -25,18 +31,6 @@ $inventarioMarca = new InventarioMarca();
 
   <!-- Custom styles for this page -->
   <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-  <!--//tags -->
-
-
-
-  <!--pop-up-box-->
-  <link href="../css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
-  <!--//pop-up-box-->
-  <!-- price range -->
-  <link rel="stylesheet" type="text/css" href="../css/jquery-ui1.css">
-  <!-- fonts -->
-  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
 </head>
 
@@ -95,7 +89,7 @@ $inventarioMarca = new InventarioMarca();
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Lista de marcas</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Lista de Marcas</h6>
               <div class="d-flex justify-content-end">
                 <a class="btn btn-primary" href="../forms/nuevo_marca.php" role="button">Nuevo</a>
               </div>
@@ -105,29 +99,37 @@ $inventarioMarca = new InventarioMarca();
                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Marca</th>
+                      <th>Código Marca</th>
+                      <th>Descripción Marca</th>
                       <th>Estado</th>
                       <th>Acciones</th>
+
                     </tr>
                   </thead>
+
+                  <!--Datos tomados de la base de datos-->
                   <tbody>
-                    <?php foreach ($inventarioMarca->obtenerTodos() as $obtener_info) { ?>
+
+                    <?php
+                    foreach ($lista as $dato) {
+                    ?>
+
                       <tr>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->cod_marca; ?></td>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->nombre_marca; ?></td>
-                        <td class="borde marInt alCen"><?php echo $obtener_info->id_estado; ?></td>
+                        <td><?php echo $dato["cod_marca"] ?> </td>
+                        <td><?php echo $dato["nombre_marca"] ?> </td>
+                        <td><?php echo $dato["id_estado"] ?> </td>
                         <td>
-                          <button class="btn " title="Editar"><a href="../Funciones/modificar_marca.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>"> <i class="fa fa-pencil-alt"></i></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><i class="fa fa-trash-alt"></i></button>
+                          <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_tipo_marca.php?accion=1 & cod_marca=<?php echo $dato["cod_marca"] ?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_Marca.php?accion=2 & cod_marca=<?php echo $dato['cod_marca']?>"></a></button></td>
                         </td>
                       </tr>
+
+                    <?php } ?>
 
 
 
 
                   </tbody>
-                <?php } ?>
                 </table>
               </div>
             </div>
@@ -137,7 +139,7 @@ $inventarioMarca = new InventarioMarca();
 
 
       </div>
-      <!-- Begin Page Content -->
+
       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
@@ -152,11 +154,11 @@ $inventarioMarca = new InventarioMarca();
               <div class="modal_body_left modal_body_left1">
 
                 <p>
-                  <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro?</h4>
+                  <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro? </h4>
                 </p>
-                <form action="../Eliminar/eliminar.php?cod_marca=<?php echo $obtener_info->cod_marca; ?>" method="post">
+                <form action="../Insertar/Insertar_Tipo_producto.php?accion=2 & cod_tipo_producto=<?php echo $dato['cod_tipo_producto'] ?>" method="post">
                   <input class="btn btn-primary" type="submit" value="Si">
-                  <input class="btn btn-primary" type="submit" value="No">
+                  <input class="btn btn-primary" type="submit" value="No" data-dismiss="modal">
                 </form>
 
               </div>
@@ -165,6 +167,7 @@ $inventarioMarca = new InventarioMarca();
           <!-- //Modal content-->
         </div>
       </div>
+      <!-- Begin Page Content -->
 
       <!-- /.container-fluid -->
 
@@ -222,6 +225,17 @@ $inventarioMarca = new InventarioMarca();
       $('.nav').load('nav_component.php');
     });
   </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#example').dataTable({
+        "language": {
+          "url": "dataTables.spanish.lang"
+        }
+      });
+    });
+  </script>
+
 
 </body>
 

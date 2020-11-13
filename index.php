@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							<?php
 							$conn = mysqli_connect("localhost", "root", "", "minimarketapp");
-							$sql = "SELECT * FROM perfil";
+							$sql = "SELECT * FROM perfil where cod_perfil in (2,3) and id_estado = 1";
 							$result = mysqli_query($conn, $sql);
 
 							?>

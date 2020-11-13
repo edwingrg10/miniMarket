@@ -45,7 +45,7 @@ if(isset($_POST["actualizar_producto"])){
     if($valido==1){
               
         $mensaje=$consultas->actualizar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado);
-        header ("location: http://localhost/miniMarket/admin/tabla_producto.php");      
+        header ("location: http://localhost:8000/miniMarket/admin/tabla_producto.php");      
         
  
     }

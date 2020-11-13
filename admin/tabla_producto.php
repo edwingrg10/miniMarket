@@ -4,7 +4,7 @@
 
 $modelo = new Db();
 $conexion = $modelo->conectar();
-$sentencia =  "SELECT * FROM productos where estado = 1";
+$sentencia =  "SELECT * FROM productos ";
 $resultado = $conexion->prepare($sentencia);
 $resultado->execute();
 $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -89,14 +89,14 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Lista de Tipo productos</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Lista de Productos</h6>
               <div class="d-flex justify-content-end">
                 <a class="btn btn-primary" href="../forms/producto.php" role="button">Nuevo</a>
               </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Código Producto</th>
@@ -125,8 +125,8 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $dato["cantidad_disponible"] ?> </td>
                         <td><?php echo $dato["estado"] ?> </td>
                         <td>
-                          <button class="btn " title="Eliminar"><a class="fa fa-pencil-alt" href="../forms/editar_producto.php?accion=1 & cod_producto=<?php echo $dato["cod_producto"] ?> "></a></button>
-                          <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td>
+                          <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_producto.php?accion=1 & cod_producto=<?php echo $dato["cod_producto"] ?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Producto.php?accion=2 & cod_producto=<?php echo $dato['cod_producto']?>"></a></button></td>
                         </td>
                       </tr>
 
@@ -162,10 +162,11 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <p>
                   <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro? </h4>
                 </p>
-                <form action="../Insertar/Insertar_Tipo_producto.php?accion=2 & cod_tipo_producto=<?php echo $dato['cod_producto'] ?>" method="post">
+                <form action="../Insertar/Insertar_producto.php?accion=2 & cod_producto=<?php echo $dato['cod_producto'] ?>" method="post">
                   <input class="btn btn-primary" type="submit" value="Si">
                   <input class="btn btn-primary" type="submit" value="No" data-dismiss="modal">
                 </form>
+
 
               </div>
             </div>

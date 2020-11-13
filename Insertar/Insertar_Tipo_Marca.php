@@ -6,27 +6,19 @@
  
   class consultas{
 
-    public function insertar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado,$imagen){
+    public function insertar_tipo_marca($codigo,$desc,$estado){
       
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia =  "INSERT INTO productos (
-        cod_producto,
-        nombre_producto,
-        cod_tipo_producto,
-        precio_ud,
-        cantidad_disponible,
-        estado,
-        img
-        ) VALUES (:codigo,:nombre_producto,:cod_tipo_producto,:precio,:cantidad_disponible,:estado_producto,:imagen)";
+      $sentencia =  "INSERT INTO marca (
+        cod_marca,
+        nombre_marca,
+        id_estado
+        ) VALUES (:cod_marca,:nombre_marca,:estado_marca)";
       $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':codigo',$codigo);
-      $resultado->bindParam(':nombre_producto',$nombre);
-      $resultado->bindParam(':cod_tipo_producto',$tipo);
-      $resultado->bindParam(':precio',$precio);
-      $resultado->bindParam(':cantidad_disponible',$cantidad);
-      $resultado->bindParam(':estado_producto',$estado);
-      $resultado->bindParam(':imagen',$imagen);
+      $resultado->bindParam(':cod_marca',$codigo);
+      $resultado->bindParam(':nombre_marca',$desc);
+      $resultado->bindParam(':estado_marca',$estado);
       
       if (!$resultado){
         return "error al crear el registro";
@@ -39,28 +31,24 @@
 
     }
 
-    public function borrar_producto($codigo){
+    public function borrar_marca($codigo){
 
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia = "UPDATE productos SET estado = 0 WHERE cod_producto=:cod_producto";
+      $sentencia = "UPDATE marca SET id_estado = 0 WHERE cod_marca=:cod_marca";
       $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':cod_producto',$codigo);
+      $resultado->bindParam(':cod_marca',$codigo);
       $resultado->execute();
     }
 
-
-    public function actualizar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado){
+    public function actualizar_tipo_marca($codigo,$desc,$estado){
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia = "UPDATE productos SET nombre_producto=:nombre_producto, cod_tipo_producto=:cod_tipo_producto, precio_ud=:precio, cantidad_disponible=:cantidad_disponible, estado=:estado WHERE cod_producto=:cod_producto";
+      $sentencia = "UPDATE marca SET nombre_marca=:nombre_marca, id_estado=:estado_marca WHERE cod_marca=:cod_marca";
       $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':cod_producto',$codigo);
-      $resultado->bindParam(':nombre_producto',$nombre);
-      $resultado->bindParam(':cod_tipo_producto',$tipo);
-      $resultado->bindParam(':precio',$precio);
-      $resultado->bindParam(':cantidad_disponible',$cantidad);
-      $resultado->bindParam(':estado',$estado);
+      $resultado->bindParam(':cod_marca',$codigo);
+      $resultado->bindParam(':nombre_marca',$desc);
+      $resultado->bindParam(':estado_marca',$estado);
       
       if (!$resultado){
         return "error al crear el registro";
@@ -71,12 +59,14 @@
         return "registro exitoso!!";
       }
     }
-    public function buscar($codigo){
+  
+
+    public function buscar($cod){
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia ="SELECT * FROM productos WHERE cod_producto=:cod_producto";
+      $sentencia ="SELECT * FROM marca WHERE cod_marca=:cod_marca";
       $resultado=$conexion->prepare($sentencia);
-      $resultado->bindParam(':cod_producto',$codigo);
+      $resultado->bindParam(':cod_marca',$cod);
       $resultado->execute();
       $lista=$resultado->fetch();
       return $lista;
@@ -130,16 +120,16 @@
     
   // }
   //Recibe del formulario la accion 2 que significa borrar
-  if(isset($_GET['cod_producto'])){
-    $cod=$_GET['cod_producto'];
+  if(isset($_GET['cod_marca'])){
+    $cod=$_GET['cod_marca'];
     $accion=$_GET['accion'];
     
     if ($accion==2){
 
     //   echo($cod);
     $consultas=new consultas();
-    $mensaje=$consultas->borrar_producto($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/tabla_producto.php");  
+    $mensaje=$consultas->borrar_marca($cod);
+    header ("location: http://localhost:8000/miniMarket/admin/tipo_marca.php");  
         
        
     } 

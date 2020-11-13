@@ -1,25 +1,17 @@
 <?php
-require_once('../Insertar/Insertar_producto.php');
+require_once('../Insertar/Insertar_Tipo_perfil.php');
 
-$error_codigo = "";
-$error_nombre = "";
-$error_tipo = "";
-$error_precio = "";
-$error_cantidad = "";
-
+$error_cod = "";
+$error_desc = "";
 $frm_enviado = false;
 $consultas = new consultas();
-if (isset($_POST["guardar_producto"])) {
+if (isset($_POST["guardar_tipo_perfil"])) {
 
-    $codigo = $_POST["cod_producto"];
-    $nombre = $_POST["nombre_producto"];
-    $tipo = $_POST["cod_tipo_producto"];
-    $precio = $_POST["precio"];
-    $cantidad = $_POST["cantidad_disponible"];
+    $codigo = $_POST["codigo_tipo_perfil"];
+    $desc = $_POST["desc_tipo_perfil"];
     $estado = array();
-    $imagen = $_POST["imagen"];
 
-    if (isset($_POST["estado_producto"])) {
+    if (isset($_POST["estado_tipo_perfil"])) {
         $estado = 1;
     } else {
         $estado = 0;
@@ -32,23 +24,23 @@ if (isset($_POST["guardar_producto"])) {
 
             $valido = $valido + 1;
         } else {
-            $error_codigo = "El código ya existe";
+            $error_cod = "El código ya existe";
         }
     } else {
-        $error_codigo = "Por favor ingrese un código";
+        $error_cod = "Por favor ingrese un código";
     }
 
-    if (!$nombre == "") {
+    if (!$desc == "") {
 
         $valido = $valido + 1;
     } else {
-        $error_nombre = "Por favor ingrese un nombre de producto";
+        $error_desc = "Por favor ingrese una descripción";
     }
 
     if ($valido == 2) {
 
-        $mensaje = $consultas->insertar_producto($codigo, $nombre, $tipo, $precio, $cantidad, $estado, $imagen);
-        header("location: http://localhost:8000/miniMarket/admin/tabla_producto.php");
+        $mensaje = $consultas->insertar_tipo_perfil($codigo, $desc, $estado);
+        header("location: http://localhost:8000/miniMarket/admin/tipo_perfil.php");
     }
 } ?>
 
@@ -139,81 +131,39 @@ if (isset($_POST["guardar_producto"])) {
                                             <div class="col-lg-8">
                                                 <div class="p-5">
                                                     <div class="text-left">
-                                                        <h1 class="h4 text-gray-900 mb-4">Creando Productos</h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Creando Tipo Perfil</h1>
                                                     </div>
 
                                                     <!--FORMULARIO -->
 
-                                                    <form class="user" name="Insertar_producto" action="" method="post">
+                                                    <form class="user" name="Insertar_Tipo_Perfil" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="number" class="form-control form-control-user" name="cod_producto" id="cod_producto" placeholder="Código" value="<?= (isset($codigo) && !$frm_enviado) ? $codigo : "" ?>">
+                                                                <input type="number" class="form-control form-control-user" name="codigo_tipo_perfil" id="codigo_tipo_perfil" placeholder="Código" value="<?= (isset($codigo) && !$frm_enviado) ? $codigo : "" ?>">
                                                             </div>
                                                         </div>
-                                                        <span class="text-danger"><?php echo $error_codigo; ?></span>
+                                                        <span class="text-danger"><?php echo $error_cod; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="nombre_producto" id="nombre_producto" placeholder="Nombre Producto" value="<?= (isset($nombre) && !$frm_enviado) ? $nombre : "" ?>">
+                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_perfil" id="desc_tipo_perfil" placeholder="Descripción" value="<?= (isset($desc) && !$frm_enviado) ? $desc : "" ?>">
                                                             </div>
                                                         </div>
-                                                        <span class="text-danger"><?php echo $error_nombre; ?></span>
-
-                                                                        <?php
-                                                                $conn = mysqli_connect("localhost", "root", "", "minimarketapp");
-                                                                $sql = "SELECT * FROM tipo_producto";
-                                                                $result = mysqli_query($conn, $sql);
-
-                                                                ?>
-
-                                                                <div class="form-group row">
-                                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                    <label for="cod_tipo_producto">Tipo Producto</label>
-                                                                    <select class="form-control" id="cod_tipo_producto" name="cod_tipo_producto">
-                                                                        <?php
-                                                                        while ($row = mysqli_fetch_array($result)) {
-                                                                            echo '<option value=' . $row['cod_tipo_producto'] . '>' . $row['desc_tipo_producto'] . '</option>';
-                                                                        }
-                                                                        ?>
-                                                                    </select>
-                                                                    </div>
-                                                                </div>
-
-                                                        
-                                                        <span class="text-danger"><?php echo $error_tipo; ?></span>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="number" class="form-control form-control-user" name="precio" id="precio" placeholder="Precio" value="<?= (isset($precio) && !$frm_enviado) ? $precio : "" ?>">
-                                                            </div>
-                                                        </div>
-                                                        <span class="text-danger"><?php echo $error_precio; ?></span>
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="number" class="form-control form-control-user" name="cantidad_disponible" id="cantidad_disponible" placeholder="Cantidad Disponible" value="<?= (isset($cantidad) && !$frm_enviado) ? $cantidad : "" ?>">
-                                                            </div>
-                                                        </div>
-                                                        <span class="text-danger"><?php echo $error_cantidad; ?></span>
-                                                        
-                
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="imagen" id="imagen" placeholder="Nombre Imagen" value="<?= (isset($imagen) && !$frm_enviado) ? $imagen : "" ?>">
-                                                            </div>
-                                                        </div>
+                                                        <span class="text-danger"><?php echo $error_desc; ?></span>
 
 
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">
 
-                                                                <input type="checkbox" class="custom-control-input" id="estado_producto" name="estado_producto" checked>
-                                                                <label class="custom-control-label" for="estado_producto">Activo</label>
+                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_perfil" name="estado_tipo_perfil" checked>
+                                                                <label class="custom-control-label" for="estado_tipo_perfil">Activo</label>
                                                             </div>
                                                         </div>
-                                                        <a href="../producto.php" class="btn btn-secondary">
+                                                        <a href="../tipo_perfil.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 
 
-                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_producto">
+                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_tipo_perfil">
                                                         <hr>
                                                     </form>
                                                     <hr>
