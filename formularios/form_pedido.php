@@ -260,7 +260,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 							
 							<?php
 
-							for ($j = 1; $j <= 3; $j++) {
+							for ($j = 1; $j <=3; $j++) {
 
 								if ($i <= count($lista) - 1) {
 									$dato = $lista[$i];

@@ -192,7 +192,7 @@ if (isset($_POST['pagar'])) {
 								<input type="hidden" name="estado_pedido" value="Tramitando">
 								<div class="row-cols-2">
 									<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
-									<button type="button" class="btn btn-secondary">Cancelar</button>
+									<a href="form_pedido.php"><button type="button" class="btn btn-secondary" >Cancelar pago</button></a>
 								</div>
 
 
