@@ -272,8 +272,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<?php echo $dato['nombre_producto']; ?>
 												</h4>
 												<h4>
+												
 													<?php echo "Disponible ".$dato['cantidad_disponible']; ?>
 												</h4>
+
+											
+												
 												<div class="info-product-price">
 													<span class="item_price"><?php echo '$ '.$dato['precio_ud']; ?></span>
 
@@ -281,13 +285,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 													<form action="" method="GET">
 														<fieldset>
+														
+														<?php if ($dato['cantidad_disponible'] > 0) { ?>
 															<input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px">
+													<?php } else { ?>
+														<div class="alert alert-danger">    
+															<strong>AGOTADO</strong> 
+														</div>
+													<?php } ?>
+
+
+
+															<!--<input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px"-->
 															<input type="hidden" name="codigo" id="codigo" value=<?php echo $dato['cod_producto']
 																													?>>
 															<input type="hidden" name="precio" id="precio" value=<?php echo $dato['precio_ud']
 																													?>>
 															<input type="hidden" name="nombre" id="nombre" value=<?php echo $dato['nombre_producto']
-																													?>>
+																													?>>							
 															<input type="hidden" name="disponible" id="disponible" value=<?php echo $dato['cantidad_disponible']
 																															?>>
 															<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre"> <button class="btn btn-primary" title="Carrito"><i class="fa fa-shopping-cart"> </i></button></a>

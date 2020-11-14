@@ -140,9 +140,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<div class="row">
 
-					<div class="col-6">
+					<div class="col-sm-6">
 
-						<div class="form">
+						<div class="form-group">
 
 
 							<p>Completa la información para realizar el pago</p>
@@ -182,6 +182,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</select>
 
 								</div>
+								<div class="form-group" id="transferencia" style="visibility: hidden;">
+									<label for="tipo_cliente">Bancolombia Cta Ahorros - Escanea el Código</label>
+									
+									<img src="../images/QR.png">
+								</div>
 								<div class="form-group" id="tipoPersona" style="visibility: hidden;">
 									<label for="tipo_cliente">Tipo Cliente</label>
 									<select class="form-control" name="tipo_cliente" id="tipo_cliente">
@@ -216,6 +221,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<option value="NEQUI">NEQUI</option>
 									</select>
 								</div>
+								<div class="form-group" id="imagen" style="visibility: hidden;">
+									<img src="../images/pagos-pse.jpg">
+								</div>
 						</div>
 						<input type="hidden" name="cod_pedido" value=<?php echo "PED-" . $cod_carrito; ?>>
 						<input type="hidden" name="id_usuario" value="103451">
@@ -233,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				</div>
 
-				<div class="col-6">
+				<div class="col-sm-6">
 					<div class="card">
 
 
@@ -328,13 +336,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script>
 		function ShowSelectedPago() {
 			var cod = document.getElementById("m_pago").value;
+
 			if (cod == "2") {
 				document.getElementById("tipoPersona").style.visibility = "visible";
 				document.getElementById("banco").style.visibility = "visible";
+				document.getElementById("imagen").style.visibility = "visible";
+				document.getElementById("transferencia").style.visibility = "hidden";
+			} else if (cod == "3") {
+    			document.getElementById("transferencia").style.visibility = "visible";
+				document.getElementById("tipoPersona").style.visibility = "hidden";
+				document.getElementById("banco").style.visibility = "hidden";
+				document.getElementById("imagen").style.visibility = "hidden";
 			} else {
 				document.getElementById("tipoPersona").style.visibility = "hidden";
 				document.getElementById("banco").style.visibility = "hidden";
-			}
+				document.getElementById("imagen").style.visibility = "hidden";
+				document.getElementById("transferencia").style.visibility = "hidden";
+				}
+
 		}
 	</script>
 

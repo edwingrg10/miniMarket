@@ -32,9 +32,9 @@ if(isset($_POST["actualizar_tipo_usuario"])){
     $id_estado = array();
     
     if (isset($_POST["id_estado"])){
-        $estado=1;
+        $id_estado=1;
     }else{
-        $estado=0;
+        $id_estado=0;
     }
     $valido=0;  
 
@@ -217,8 +217,8 @@ if(isset($_POST["actualizar_tipo_usuario"])){
 
                                                         <?php
                                                             $conn = mysqli_connect("localhost", "root", "", "minimarketapp");
-                                                            $sql = "SELECT p.descripcion, p.cod_perfil, u.cod_perfil FROM perfil p , usuario u where p.cod_perfil = u.cod_perfil";
-                                                            /*$sql = "SELECT * FROM perfil";*/
+                                                            /*$sql = "SELECT p.descripcion, p.cod_perfil, u.cod_perfil FROM perfil p , usuario u where p.cod_perfil = u.cod_perfil";*/
+                                                            $sql = "SELECT * FROM perfil where id_estado = 1";
                                                             $result = mysqli_query($conn, $sql);
 
                                                             ?>
