@@ -23,17 +23,17 @@ if (isset($_POST['pagar'])) {
 	//actualiza inventario del producto
 	// $lista_carrito= $carrito->ver_carrito($cod_carrito);
 
-	foreach ($lista_carrito as $dato) {
+	// foreach ($lista_carrito as $dato) {
 
-		$cod_producto = $dato['cod_producto'];
-		$cantidad = $dato['cantidad'];
-		$saldos = $carrito->saldo_producto($cod_producto);
-		$saldo = $saldos['cantidad_disponible'];
-		//var_dump ($cod_producto);
-		$nuevo_saldo = $saldo - $cantidad;
+	// 	$cod_producto = $dato['cod_producto'];
+	// 	$cantidad = $dato['cantidad'];
+	// 	$saldos = $carrito->saldo_producto($cod_producto);
+	// 	$saldo = $saldos['cantidad_disponible'];
+	// 	//var_dump ($cod_producto);
+	// 	$nuevo_saldo = $saldo - $cantidad;
 
-		$carrito->actualiza_inventario($cod_producto, $nuevo_saldo);
-	}
+	// 	$carrito->actualiza_inventario($cod_producto, $nuevo_saldo);
+	// }
 
 	// cierra el carrito 
 	$carrito->carrito_cerrar($cod_carrito);
