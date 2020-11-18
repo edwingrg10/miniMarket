@@ -3,9 +3,9 @@ include("../Procesos/control_pedido.php");
 $product = new pedido;
 $carrito = new carrito;
 $valor_total = 0;
+
+
 $lista = $product->buscar_productos();
-
-
 $lista_carrito = array();
 $validacion = $carrito->validar_ult_carrito();
 $excede = "";
@@ -21,8 +21,20 @@ if ($validacion['estado'] == 1) {
 
 
 if (isset($_GET['cancelar'])) {
+	$lista_carrito = $carrito->ver_carrito($cod_carrito);
 	
+	foreach ($lista_carrito as $dato) {
+		
+		$cod_producto=$dato['cod_producto'];
+		$cantidad_carrito=$dato['cantidad'];
+		$disponible=$carrito->disponible_producto($cod_producto);
+		//echo ($disponible['cantidad_disponible']) ;
+		$nueva_cantidad=$disponible['cantidad_disponible'] + $cantidad_carrito;
+		$carrito->actualiza_inventario($cod_producto,$nueva_cantidad);
+	}
+
 	$carrito->carrito_cancelar($cod_carrito);
+	$lista = $product->buscar_productos();
 	$lista_carrito = $carrito->ver_carrito($cod_carrito);
 	header("Location: http://localhost/miniMarket/formularios/form_pedido.php");
 }
@@ -36,27 +48,56 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 	$precio = $_GET['precio'];
 	$disponible = $_GET['disponible'];
 	$nombre = $_GET['nombre'];
-
+	
 	$valor = $precio * $cantidad;
 	//valida que la cantidad no exceda el disponible
 	if ($cantidad <= $disponible) {
+		
 		//valida si esta relacion ya existe para actualizarla de lo contrario la agrega nueva
 		$contar = $carrito->contar_carrito_producto($cod_carrito, $cod_producto);
 		if ($contar == 0) {
-
+			$nueva_cantidad=$disponible-$cantidad;
 			$carrito->agregar_a_carrito($cod_carrito, $cod_producto, $cantidad, $valor);
+			echo $cod_producto;
+			//actualiza el inventario cada vez que se tome un articulo nuevo
+			$carrito->actualiza_inventario($cod_producto,$nueva_cantidad);
+
 			$lista_carrito = $carrito->ver_carrito($cod_carrito);
+			$lista = $product->buscar_productos();
 			//echo "agregado";
 		} else {
+			//si ya existe la relacion hay que volver a hacer el calculo de las cantidades
+
+			$lista_carrito = $carrito->ver_carrito_producto($cod_carrito,$cod_producto);
+			
+			$cantidad_carrito=$lista_carrito['cantidad'];
+			$disponible=$carrito->disponible_producto($cod_producto);
+			$nueva_cantidad=$disponible['cantidad_disponible'] + $cantidad_carrito;
+			$carrito->actualiza_inventario($cod_producto,$nueva_cantidad);
+			
 			$carrito->actualizar_carrito($cod_carrito, $cod_producto, $cantidad, $valor);
+
+			//vuelve y busca el disponible en base de datos para restar lo que esta llevando y actualizar de nuevo elñ inventario
+
+			$disponible=$carrito->disponible_producto($cod_producto);
+			$nueva_cantidad=$disponible['cantidad_disponible']-$cantidad;
+			
+			$carrito->actualiza_inventario($cod_producto,$nueva_cantidad);
+
 			$lista_carrito = $carrito->ver_carrito($cod_carrito);
+			$lista = $product->buscar_productos();
 			// echo "actualizado";
 		}
 	} else {
 
 		$excede = "excede la cantidad disponible de " . $nombre;
 	}
+
+
 }
+
+
+
 
 
 ?>
