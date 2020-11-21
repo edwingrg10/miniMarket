@@ -18,6 +18,10 @@ if (isset($_POST['pagar'])) {
 	$id_usuario = $_POST['id_usuario'];
 	$estado_pedido = $_POST['estado_pedido'];
 	$medio_pago = $_POST['m_pago'];
+	if ($medio_pago=="PSE"){
+		$estado_pedido="Pagado y tramitando";
+	}
+
 	$tipo_cliente = $_POST['tipo_cliente'];
 	$banco = $_POST['authorizerId'];
 
@@ -28,21 +32,21 @@ if (isset($_POST['pagar'])) {
 	//actualiza inventario del producto
 	// $lista_carrito= $carrito->ver_carrito($cod_carrito);
 
-	foreach ($lista_carrito as $dato) {
+	// foreach ($lista_carrito as $dato) {
 
-		$cod_producto = $dato['cod_producto'];
-		$cantidad = $dato['cantidad'];
-		$saldos = $carrito->saldo_producto($cod_producto);
-		$saldo = $saldos['cantidad_disponible'];
-		//var_dump ($cod_producto);
-		$nuevo_saldo = $saldo - $cantidad;
+	// 	$cod_producto = $dato['cod_producto'];
+	// 	$cantidad = $dato['cantidad'];
+	// 	$saldos = $carrito->saldo_producto($cod_producto);
+	// 	$saldo = $saldos['cantidad_disponible'];
+	// 	//var_dump ($cod_producto);
+	// 	$nuevo_saldo = $saldo - $cantidad;
 
-		$carrito->actualiza_inventario($cod_producto, $nuevo_saldo);
-	}
+	// 	$carrito->actualiza_inventario($cod_producto, $nuevo_saldo);
+	// }
 
 	// cierra el carrito 
 	$carrito->carrito_cerrar($cod_carrito);
-	header("Location: http://localhost:8000/miniMarket/vistas/vista_pedidos.php");
+	header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php");
 }
 ?>
 
@@ -145,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="form-group">
 
 
-							<p>Completa la información para realizar el pago</p>
+							<p>Completa la informaciÃ³n para realizar el pago</p>
 
 							<form action="" method="post" role="form" class="php-email-form">
 
@@ -183,7 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								</div>
 								<div class="form-group" id="transferencia" style="visibility: hidden;">
-									<label for="tipo_cliente">Bancolombia Cta Ahorros - Escanea el Código</label>
+									<label for="tipo_cliente">Bancolombia Cta Ahorros - Escanea el CÃ³digo</label>
 									
 									<img src="../images/QR.png">
 								</div>
@@ -227,7 +231,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<input type="hidden" name="cod_pedido" value=<?php echo "PED-" . $cod_carrito; ?>>
 						<input type="hidden" name="id_usuario" value="103451">
-						<input type="hidden" name="estado_pedido" value="Pagado">
+						<input type="hidden" name="estado_pedido" value="Tramitando">
 						<div class="row-cols-2">
 							<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
 							<a href="form_pedido.php"><button type="button" class="btn btn-secondary">Cancelar</button></a>
@@ -235,13 +239,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 						</form>
-						<span></span>
+						
 
 					</div>
 
-				</div>
-
-				<div class="col-sm-6">
+					<div class="col-sm-6">
 					<div class="card">
 
 
@@ -316,6 +318,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 				</div>
+
+
+				</div>
+
+				
 			</div>
 
 		</div>
@@ -473,7 +480,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //password-script -->
 
 	<!-- smoothscroll -->
-	<script src="../js/SmoothScroll.min.js"></script>
+	<!-- <script src="../js/SmoothScroll.min.js"></script> -->
 	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->

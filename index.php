@@ -335,7 +335,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //password-script -->
 
 	<!-- smoothscroll -->
-	<script src="js/SmoothScroll.min.js"></script>
+	<!-- <script src="js/SmoothScroll.min.js"></script> -->
 	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->

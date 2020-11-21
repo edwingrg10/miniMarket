@@ -55,7 +55,7 @@
 				if ($row['cod_perfil'] == 1) {
 					header('location:admin/home.php');
 				} else if ($row['cod_perfil'] == 2) {
-					header('location:index.php');
+					header('location:admin/home_vendedor.php');
 				} else if ($row['cod_perfil'] == 3) {
 					header('location:formularios/form_pedido.php');
 				}
