@@ -18,7 +18,7 @@ if (isset($_POST['pagar'])) {
 	$id_usuario = $_POST['id_usuario'];
 	$estado_pedido = $_POST['estado_pedido'];
 	$medio_pago = $_POST['m_pago'];
-	if ($medio_pago=="PSE"){
+	if ($medio_pago==2){
 		$estado_pedido="Pagado y tramitando";
 	}
 
@@ -27,8 +27,10 @@ if (isset($_POST['pagar'])) {
 
 	$valor_con_iva = $valor_total * 1.19;
 	//registra el pedido antes de vaciar el carrito
+
 	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_con_iva, $estado_pedido);
 	$carrito->registro_pago($valor_con_iva, $fecha_pedido, $estado_pedido, $cod_pedido, $medio_pago, $tipo_cliente, $banco);
+
 	//actualiza inventario del producto
 	// $lista_carrito= $carrito->ver_carrito($cod_carrito);
 
@@ -45,8 +47,8 @@ if (isset($_POST['pagar'])) {
 	// }
 
 	// cierra el carrito 
-	$carrito->carrito_cerrar($cod_carrito);
-	header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php");
+		$carrito->carrito_cerrar($cod_carrito);
+		header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php");
 }
 ?>
 
