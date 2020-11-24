@@ -60,7 +60,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 		if ($contar == 0) {
 			$nueva_cantidad = $disponible - $cantidad;
 			$carrito->agregar_a_carrito($cod_carrito, $cod_producto, $cantidad, $valor);
-			echo $cod_producto;
+			// echo $cod_producto;
 			//actualiza el inventario cada vez que se tome un articulo nuevo
 			$carrito->actualiza_inventario($cod_producto, $nueva_cantidad);
 
@@ -106,7 +106,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 <html lang="es">
 
 <head>
-	<title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+	<title>MiniMarket</title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -190,8 +190,8 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 
 	<!-- top Products -->
-	<div class="ads-grid">
-		<div class="container">
+	<div class="">
+		<div class="container-fluid">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l">Nuestros productos
 				<span class="heading-style">
@@ -202,7 +202,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 			</h3>
 			<!-- //tittle heading -->
 			<!-- product left -->
-			<div class="side-bar col-md-3">
+			<div class="side-bar col-md-2">
 
 
 				<div class="card w-50">
@@ -213,16 +213,13 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 									<h3 class="agileits-sear-head">Carrito</h3>
 
 								</div>
-								<div class="col-6">
-
-
-								</div>
+								
 
 							</div>
 						</div>
 					</div>
-					<div class="card-body">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<div class="card-body fluid">
+						<table class="table table-sm " >
 							<thead>
 								<tr>
 									<th>Producto</th>
@@ -239,7 +236,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 										<tr>
 											<td><?php echo $dato['nombre_producto']; ?></td>
 											<td><?php echo $dato['cantidad']; ?></td>
-											<td><?php echo $dato['valor']; ?></td>
+											<td><?php echo number_format( $valor=$dato['valor']);  ?></td>
 											<?php $valor_total = $valor_total + $dato['valor']; ?>
 										</tr>
 
@@ -260,10 +257,10 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 
 									<td>
-										<h5 class="agileits-sear-head">Total</h5>
+										<h5 class="agileits-sear-head"><b>Total</b></h5>
 									</td>
 									<td></td>
-									<td><?php echo $valor_total ?></td>
+									<td><b> <?php echo number_format($valor_total) ?> </b></td>
 								</tr>
 							</tbody>
 						</table>
@@ -313,7 +310,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 							<?php
 
-							for ($j = 1; $j <= 3; $j++) {
+							for ($j = 1; $j <= 4; $j++) {
 
 								if ($i <= count($lista) - 1) {
 									$dato = $lista[$i];
@@ -323,7 +320,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 									<!-- columnas -->
 
-									<div class="col-md-4 product-men">
+									<div class="col-md-3 product-men">
 										<div class="men-pro-item simpleCart_shelfItem">
 											<div class="men-thumb-item">
 												<img src=<?php echo "../images/" . $img; ?> alt="">
@@ -341,17 +338,19 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 
 												<div class="info-product-price">
-													<span class="item_price"><?php echo "$ " . $dato['precio_ud']; ?></span>
+													<span class="item_price"><?php echo "$ ".number_format( $dato['precio_ud']); ?></span>
 
 												</div>
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 													<form action="" method="GET">
 														<fieldset>
 
-															<?php if ($dato['cantidad_disponible'] > 0) { $agotado=False; ?>
+															<?php if ($dato['cantidad_disponible'] > 0) {
+																$agotado = False; ?>
 																<input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px">
-															<?php } else {  $agotado=True; ?>
-																
+															<?php } else {
+																$agotado = True; ?>
+
 																<div class="l">
 																	<!-- <strong>Agotado</strong> -->
 																	<span class="text-danger">Agotado</span>
@@ -361,17 +360,18 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 
 															<!--<input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px"-->
-															<input type="hidden" name="codigo" id="codigo" value=<?php echo $dato['cod_producto']?>>
-																													
-															<input type="hidden" name="precio" id="precio" value=<?php echo $dato['precio_ud']?>>
-																													
-															<input type="hidden" name="nombre" id="nombre" value=<?php echo $dato['nombre_producto']?>>
-																													
-															<input type="hidden" name="disponible" id="disponible" value=<?php echo $dato['cantidad_disponible']?>>
-															 															
-															<?php if ($agotado==False) 
-															{echo '<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>'; } ?>
-																		
+															<input type="hidden" name="codigo" id="codigo" value=<?php echo $dato['cod_producto'] ?>>
+
+															<input type="hidden" name="precio" id="precio" value=<?php echo $dato['precio_ud'] ?>>
+
+															<input type="hidden" name="nombre" id="nombre" value=<?php echo $dato['nombre_producto'] ?>>
+
+															<input type="hidden" name="disponible" id="disponible" value=<?php echo $dato['cantidad_disponible'] ?>>
+
+															<?php if ($agotado == False) {
+																echo '<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>';
+															} ?>
+
 														</fieldset>
 													</form>
 												</div>
@@ -402,93 +402,10 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 	<!-- //top products -->
 	<!-- special offers -->
 
-	<!-- //special offers -->
-	<!-- newsletter -->
-	<div class="footer-top">
-		<div class="container-fluid">
-			<div class="col-xs-8 agile-leftmk">
-				<h2>Get your Groceries delivered from local stores</h2>
-				<p>Free Delivery on your first order!</p>
-				<form action="#" method="post">
-					<input type="email" placeholder="E-mail" name="email" required="">
-					<input type="submit" value="Subscribe">
-				</form>
-				<div class="newsform-w3l">
-					<span class="fa fa-envelope-o" aria-hidden="true"></span>
-				</div>
-			</div>
-
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<!-- //newsletter -->
-	<!-- footer -->
-	<footer>
-		<div class="container">
-			<!-- footer first section -->
-			<p class="footer-main">
-				<span>"Grocery Shoppy"</span> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-				fugit, sed quia consequuntur
-				magni dolores eos qui ratione voluptatem sequi nesciunt.Sed ut perspiciatis unde omnis iste natus error
-				sit voluptatem
-				accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-				quasi architecto
-				beatae vitae dicta sunt explicabo.
-			</p>
-			<!-- //footer first section -->
-			<!-- footer second section -->
-			<div class="w3l-grids-footer">
-				<div class="col-xs-4 offer-footer">
-					<div class="col-xs-4 icon-fot">
-						<span class="fa fa-map-marker" aria-hidden="true"></span>
-					</div>
-					<div class="col-xs-8 text-form-footer">
-						<h3>Track Your Order</h3>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="col-xs-4 offer-footer">
-					<div class="col-xs-4 icon-fot">
-						<span class="fa fa-refresh" aria-hidden="true"></span>
-					</div>
-					<div class="col-xs-8 text-form-footer">
-						<h3>Free & Easy Returns</h3>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="col-xs-4 offer-footer">
-					<div class="col-xs-4 icon-fot">
-						<span class="fa fa-times" aria-hidden="true"></span>
-					</div>
-					<div class="col-xs-8 text-form-footer">
-						<h3>Online cancellation </h3>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<!-- //footer second section -->
-			<!-- footer third section -->
-		</div>
-	</footer>
-	<!-- //footer -->
-	<!-- copyright -->
-	<div class="copy-right">
-		<div class="container">
-			<p>© 2017 Grocery Shoppy. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
-			</p>
-		</div>
-	</div>
-	<!-- //copyright -->
-
-	<!-- js-files -->
-	<!-- jquery -->
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<!-- //jquery -->
-
-	<!-- popup modal (for signin & signup)-->
-	<script src="js/jquery.magnific-popup.js"></script>
+	<div class="footer"></div>
+<!-- JS -->
+<script src="../js/jquery-2.1.4.min.js"></script>
+	<script src="../js/jquery.magnific-popup.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('.popup-with-zoom-anim').magnificPopup({
@@ -506,13 +423,9 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 		});
 	</script>
 	<!-- Large modal -->
-	<!-- <script>
-		$('#').modal('show');
-	</script> -->
-	<!-- //popup modal (for signin & signup)-->
 
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="../js/minicart.js"></script>
 	<script>
 		paypalm.minicartk
 			.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
@@ -537,9 +450,8 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 	<!-- //cart-js -->
 
 	<!-- price range (top products) -->
-	<script src="js/jquery-ui.js"></script>
+	<script src="..7js/jquery-ui.js"></script>
 	<script>
-		//<![CDATA[ 
 		$(window).load(function() {
 			$("#slider-range").slider({
 				range: true,
@@ -553,12 +465,12 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider(
 				"values", 1));
 
-		}); //]]>
+		});
 	</script>
 	<!-- //price range (top products) -->
 
 	<!-- flexisel (for special offers) -->
-	<script src="js/jquery.flexisel.js"></script>
+	<script src="../js/jquery.flexisel.js"></script>
 	<script>
 		$(window).load(function() {
 			$("#flexiselDemo1").flexisel({
@@ -602,18 +514,17 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
 			else
 				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
 		}
 	</script>
 	<!-- //password-script -->
 
 	<!-- smoothscroll -->
-	<!-- <script src="js/SmoothScroll.min.js"></script> -->
+	<!-- <script src="../js/SmoothScroll.min.js"></script> -->
 	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->
-	<script src="js/move-top.js"></script>
-	<script src="js/easing.js"></script>
+	<script src="../js/move-top.js"></script>
+	<script src="../js/easing.js"></script>
 	<script>
 		jQuery(document).ready(function($) {
 			$(".scroll").click(function(event) {
@@ -630,14 +541,6 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 	<!-- smooth-scrolling-of-move-up -->
 	<script>
 		$(document).ready(function() {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-			};
-			*/
 			$().UItoTop({
 				easingType: 'easeOutQuart'
 			});
@@ -649,20 +552,20 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
-	<!-- //js-files -->
+
+	<!-- // JS  -->
 
 	<!-- IMPORTS -->
-	<script>
-		$(document).ready(function() {
-			$('.menu').load('../templates/header.php');
-		});
-	</script>
+
 
 	<script>
 		$(document).ready(function() {
 			$('.footer').load('../templates/footer.php');
 		});
 	</script>
+	
+
+
 </body>
 
 </html>
