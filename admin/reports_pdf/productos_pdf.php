@@ -17,7 +17,7 @@ class PDF extends FPDF
         // Salto de línea
         $this->Ln(30);
 
-        $this->Cell(200, 10, 'Reporte de Establecimientos', 5, 6, 'C');
+        $this->Cell(200, 10, 'Reporte de Tipo Establecimientos', 5, 6, 'C');
 
         $this->Ln(5);
 
