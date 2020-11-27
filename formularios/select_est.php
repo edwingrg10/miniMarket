@@ -1,11 +1,14 @@
 <?php
 include("../Procesos/control_pedido.php");
 $product = new pedido;
+if (isset($_GET['id'])){
+  $id=$_GET['id'];
 
+}
 $lista = $product->buscar_tipo_est();
 $error="";
 if(isset($_POST['enter'])){
-  
+  $id=$_GET['id'];
   $est=$_POST['est'];
   $tipo_est=$_POST['tipo_est'];
   
@@ -13,7 +16,7 @@ if(isset($_POST['enter'])){
     $error ="Debe seleccionar un establecimiento";
 
   }else{
-    header("Location: http://localhost/miniMarket/formularios/form_pedido.php?est=$est");
+    header("Location: http://localhost/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
   }
 }
 
@@ -84,7 +87,7 @@ if(isset($_POST['enter'])){
 
       <form class="p-5" action="" method="post">
 
-
+        <input type="hidden" name="id" value=<?php echo $id ?>>
 
 
 
@@ -106,10 +109,11 @@ if(isset($_POST['enter'])){
         <div class="form-group">
           <legend class="col-form-legend col-sm-1-4">Selecciona el establecimiento</legend>
         </div>
-
+                                                                  
         <div class="form-group col-sm-4" id="select_est"></div>
 
         <div class="form-group col-md-4">
+         
           <button type="submit" class="btn btn-primary " id="enter" name="enter">Entrar</button>
         </div>
 

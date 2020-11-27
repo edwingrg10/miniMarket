@@ -61,7 +61,7 @@
 
 					header ("location:vendedor/home_vendedor.php?id=$id");
 				} else if ($row['cod_perfil'] == 3) {
-					header('location:formularios/select_est.php');
+					header("location:formularios/select_est.php?id=$id");
 				}
 			}
 		} else {

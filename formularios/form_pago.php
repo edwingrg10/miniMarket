@@ -11,7 +11,17 @@ if (isset($_GET['cod_carrito'])) {
 	$cod_carrito = $_GET['cod_carrito'];
 	$valor_total = $_GET['valor_total'];
 	$est=$_GET['est'];
+	$id=$_GET['id'];
 	$lista_carrito = $carrito->ver_carrito($cod_carrito);
+	$lista_n=$tipo->buscar_usuario($id);
+	// var_dump($lista);
+	$pnombre=$lista_n['primer_nombre'];
+	
+	$papellido=$lista_n['primer_apellido'];
+	$sapellido=$lista_n['segundo_apellido'];
+	$direccion=$lista_n['direccion'];
+
+
 }
 
 if (isset($_POST['pagar'])) {
@@ -32,7 +42,7 @@ if (isset($_POST['pagar'])) {
 	$valor_con_iva = $valor_total * 1.19;
 	//registra el pedido antes de vaciar el carrito
 
-	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_con_iva, $estado_pedido,$est);
+	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id, $valor_con_iva, $estado_pedido,$est);
 	$carrito->registro_pago($valor_con_iva, $fecha_pedido, $estado_pedido, $cod_pedido, $medio_pago, $tipo_cliente, $banco);
 
 	//actualiza inventario del producto
@@ -52,7 +62,7 @@ if (isset($_POST['pagar'])) {
 
 	// cierra el carrito 
 		$carrito->carrito_cerrar($cod_carrito);
-		header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php?user=$id_usuario");
+		header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php?id=$id");
 }
 ?>
 
@@ -161,19 +171,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<div class="form-group">
 									<label for="name">Nombres</label>
-									<input type="text" name="nombres" class="form-control" id="name" value="JUAN DAVID" data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly="disabled" />
+									<input type="text" name="nombres" class="form-control" id="name" value=<?php  echo $pnombre ; ?> data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly="disabled" />
 									<div class="validate"></div>
 								</div>
 								<div class="form-group">
 									<label for="primer_ap">Primer apellido</label>
-									<input type="text" name="primer_ap" class="form-control" id="primer_ap" value="DIAZ" data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly="disabled" />
+									<input type="text" name="primer_ap" class="form-control" id="primer_ap" value=<?php  echo $papellido ; ?> data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly="disabled" />
 									<div class="validate"></div>
 								</div>
 								<div class="form-group">
 									<label for="segundo_ap">Segundo apellido</label>
-									<input type="text" name="segundo_ap" class="form-control" id="segundo_ap" value="VASQUEZ" data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly="disabled" />
+									<input type="text" name="segundo_ap" class="form-control" id="segundo_ap" value=<?php  echo $sapellido ; ?> data-rule="minlen:4" data-msg="Please enter at least 4 chars" readonly="disabled" />
 									<div class="validate"></div>
 								</div>
+								<div class="form-group">
+									<label for="segundo_ap">Direecion de envio</label>
+									
+									<input type="text" name="segundo_ap" class="form-control" id="direccion" value=<?php  echo $direccion ; ?>  data-msg="Please enter at least 4 chars" readonly="" />
+									<div class="validate"></div>
+								</div>
+								input
+
+
+
 								<div class="form-group">
 									<label for="fecha_pedido">Fecha</label>
 
@@ -240,7 +260,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="hidden" name="estado_pedido" value="Tramitando">
 						<div class="row-cols-2">
 							<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
-							<a href="form_pedido.php?est=<?php echo $est ?>"><button type="button" class="btn btn-secondary">Cancelar</button></a>
+							<a href="form_pedido.php?est=<?php echo $est."&id=".$id ?>"><button type="button" class="btn btn-secondary">Cancelar</button></a>
 						</div>
 
 
@@ -286,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<tr>
 												<td scope="row"><?php echo $dato['nombre_producto']; ?></td>
 												<td><?php echo $dato['cantidad']; ?></td>
-												<td><?php echo $dato['valor']; ?></td>
+												<td><?php echo "$ ".number_format( $dato['valor']); ?></td>
 
 
 											</tr>
@@ -294,20 +314,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<tr>
 											<td>Sub-total</td>
 											<td></td>
-											<td><?php echo $valor_total; ?></td>
+											<td><?php echo "$ ". number_format( $valor_total); ?></td>
 
 										</tr>
 										<tr>
 											<td>Impuestos</td>
 											<td>19%</td>
-											<td><?php echo $valor_total * 0.19; ?></td>
+											<td><?php echo "$ ". number_format( $valor_total * 0.19); ?></td>
 
 										</tr>
 
 										<tr>
 											<td>Total a pagar</td>
 											<td></td>
-											<td><?php echo $valor_total * 1.19; ?></td>
+											<td><?php echo "$ ". number_format($valor_total * 1.19); ?></td>
 
 										</tr>
 									</tbody>

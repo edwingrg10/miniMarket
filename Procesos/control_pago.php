@@ -106,6 +106,20 @@ class consultas
         $lista = $resultado->fetchAll();
         return $lista;
     }
+
+    public function buscar_usuario($cod_usuario)
+        {
+            $modelo = new Db();
+            $conexion = $modelo->conectar();
+            $sentencia = "SELECT * FROM usuario where id_usuario=(:cod_usuario)";
+            $resultado = $conexion->prepare($sentencia);
+            $resultado->bindParam(":cod_usuario",$cod_usuario);
+            $resultado->execute();
+            $lista = $resultado->fetch();
+            return $lista;
+
+        }
+
 }
 
 class carrito_pago

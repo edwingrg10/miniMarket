@@ -1,6 +1,6 @@
 <?php
 include("../Procesos/control_pedido.php");
-
+$id = $_GET['id'];
 $est = $_GET['est'];
 
 $product = new pedido;
@@ -41,7 +41,7 @@ if (isset($_GET['cancelar'])) {
 	$carrito->carrito_cancelar($cod_carrito);
 	$lista = $product->buscar_inventario($est);
 	$lista_carrito = $carrito->ver_carrito($cod_carrito);
-	header("Location: http://localhost/miniMarket/formularios/form_pedido.php?est=$est");
+	header("Location: http://localhost/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
 }
 
 
@@ -95,7 +95,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 		}
 	} else {
 
-		$excede = "excede la cantidad disponible de " . $nombre;
+		$excede = "Excede la cantidad disponible de " . $nombre;
 	}
 }
 
@@ -284,12 +284,12 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 					</div>
 
 					<div class="card-footer">
-						<a href="form_pago.php?cod_carrito=<?php echo $cod_carrito . '&est=' . $est . '&valor_total=' . $valor_total; ?>"><button type="button" class="btn-sm btn-outline-success" <?php if ($valor_total > 0) {
+						<a href="form_pago.php?cod_carrito=<?php echo $cod_carrito . '&est=' . $est .'&id='.$id. '&valor_total=' . $valor_total; ?>"><button type="button" class="btn-sm btn-outline-success" <?php if ($valor_total > 0) {
 																																																		echo "enabled";
 																																																	} else {
 																																																		echo "disabled";
 																																																	} ?>>Confirmar pedido</button></a>
-						<a href="form_pedido.php?cancelar=True&est=<?php echo $est ?>"><button type="button" class="btn-sm btn-outline-danger">Cancelar pedido</button></a>
+						<a href="form_pedido.php?cancelar=True&est=<?php echo $est . '&id='.$id ?>"><button type="button" class="btn-sm btn-outline-danger">Cancelar pedido</button></a>
 
 					</div>
 
@@ -381,8 +381,9 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 															<input type="hidden" name="disponible" id="disponible" value=<?php echo $dato['cantidad_disponible'] ?>>
 															<input type="hidden" name="est" id="est" value=<?php echo $est ?>>
+															<input type="hidden" name="id" id="id" value=<?php echo $id ?>>
 															<?php if ($agotado == False) {
-																echo '<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre&est=est"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>';
+																echo '<a href="form_pedido.php?id=id&cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre&est=est"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>';
 															} ?>
 
 														</fieldset>

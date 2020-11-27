@@ -130,6 +130,21 @@
 
         }
 
+        public function buscar_pedidos($cod_est){
+            $modelo = new Db();
+            $conexion = $modelo->conectar();
+            $sentencia =  "SELECT ";
+            $resultado = $conexion->prepare($sentencia);
+            $resultado->bindParam(':cod_est', $cod_est);
+            $resultado->bindParam(':cod_producto',$cod_producto);
+            $resultado->bindParam(':cantidad_disponible',$cantidad);
+      
+            $resultado->execute();
+
+        }
+
+
+
 
 
 

@@ -16,6 +16,13 @@ if (isset($_POST['inventario'])) {
   header("Location: http://localhost/miniMarket/vendedor/inventario.php?id=$id");
 }
 
+if (isset($_POST['pedido'])) {
+  $id = $_POST['id'];
+  header("Location: http://localhost/miniMarket/vendedor/pedido_vendedor.php?id=$id");
+}
+
+
+
 ?>
 
 
