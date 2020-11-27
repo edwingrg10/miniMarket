@@ -51,7 +51,7 @@ if (isset($_POST["guardar_tipo_usuario"])) {
     if ($valido == 2) {
 
         $mensaje = $consultas->insertar_tipo_usuario($id_usuario, $cedula, $primer_apellido, $segundo_apellido, $primer_nombre, $segundo_nombre, $direccion, $celular, $telefono, $fecha_nacimiento, $correo, $contrasena, $cod_perfil, $id_estado);
-        header("location: http://localhost:8000/miniMarket/admin/usuarios.php");
+        header("location: http://localhost/miniMarket/admin/usuarios.php");
     }
 } ?>
 

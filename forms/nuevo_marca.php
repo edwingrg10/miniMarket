@@ -40,7 +40,7 @@ if (isset($_POST["guardar_tipo_marca"])) {
     if ($valido == 2) {
 
         $mensaje = $consultas->insertar_tipo_marca($codigo, $desc, $estado);
-        header("location: http://localhost:8000/miniMarket/admin/tipo_marca.php");
+        header("location: http://localhost/miniMarket/admin/tipo_marca.php");
     }
 } ?>
 

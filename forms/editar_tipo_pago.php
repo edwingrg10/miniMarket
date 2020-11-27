@@ -36,7 +36,7 @@ if(isset($_POST["actualizar_tipo_pago"])){
     if($valido==1){
               
         $mensaje=$consultas->actualizar_tipo_pago($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/minimarket/admin/tipo_pago.php");        
+        header ("location: http://localhost/minimarket/admin/tipo_pago.php");        
         
  
     }

@@ -2,13 +2,34 @@
 
 include("../Procesos/control_vendedor.php");
 
+
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+
 $mercado = new mercado;
-$lista = $mercado->buscar_productos();
+$lista=$mercado->buscar_establecimiento($id);
+$cod_est=$lista['codigo_est'];
+$lista = $mercado->buscar_inventario($cod_est);
+}
+
+
+if(isset($_GET['codigo'])){
+  $cod_producto=$_GET['codigo'];
+  $cod_est=$_GET['cod_est'];
+  $cantidad=$_GET['cantidad'];
+  $id=$_GET['id'];
+  $mercado->actualiza_inventario($cod_producto,$cod_est,$cantidad);
+  $lista = $mercado->buscar_inventario($cod_est);
+ 
+
+}
+
+
 
 ?>
 
 
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -42,6 +63,15 @@ $lista = $mercado->buscar_productos();
           <ul class="navbar-nav ml-auto">
             <!-- Nav Item - User Information -->
             <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+
+              <a class="nav-link dropdown-toggle" href=<?php echo "home_vendedor.php?id=$id"; ?> id="userDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal">Inicio<i class="fas fa-fw fa-home"></i></span></h4>
+              </a>
+              <!-- Dropdown - User Information -->
+
+            </li>
             <li class="nav-item dropdown no-arrow">
 
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,15 +110,32 @@ $lista = $mercado->buscar_productos();
               <h3>Bienvenido a MiniMarket</h3>
             </center>
             <center>
-              <h4>Vendedor </h4>
+              <h4>Inventario </h4>
             </center>
 
-
           </div>
+
         </div>
+
+      </div>
+
+    </div>
+
+   
+  </div>
+
+   <div class="card">
+      <div class="card-body">
+        <blockquote class="blockquote">
+           
+          <footer class="card-blockquote">Explora <cite title="Source title">nuevos productos!</cite></footer>
+          <br>
+          <a name="" id="" class="btn btn-primary" href=<?php echo "vendedor_productos.php?id=$id";?> role="button">Agregar productos</a>
+        </blockquote>
       </div>
     </div>
-  </div>
+
+ 
   <div class="container-fluid p-5">
     <div class="agileinfo-ads-display col-md-12">
       <!-- codigo php aqui controlando filas y columnas -->
@@ -101,92 +148,87 @@ $lista = $mercado->buscar_productos();
 
 
         <!-- INICIO DE SECCION TABLA -->
-       
-
-          <!-- primera fila -->
-          <div class="row">
-
-            <?php
-
-            for ($j = 1; $j <= 4; $j++) {
-
-              if ($i <= count($lista) - 1) {
-                $dato = $lista[$i];
-                $img = $dato['img'];
-
-            ?>
-
-                <!-- columnas -->
-
-                <div class="col-md-3 product-men">
-                  <div class="men-pro-item simpleCart_shelfItem">
-                    <div class="men-thumb-item">
-                      <img src=<?php echo "../images/" . $img; ?> alt="">
-
-                    </div>
-                    <div class="item-info-product ">
-                      <h4>
-                        <?php echo $dato['nombre_producto']; ?>
-                      </h4>
-                      <h4>
-
-                        <?php echo "Disponible " . $dato['cantidad_disponible']; ?>
-                      </h4>
 
 
+        <!-- primera fila -->
+        <div class="row">
 
-                      <div class="info-product-price">
-                        <span class="item_price"><?php echo "$ " . number_format($dato['precio_ud']); ?></span>
+          <?php
 
-                      </div>
-                      <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                        <form action="" method="GET">
-                          <fieldset>
+          for ($j = 1; $j <= 4; $j++) {
 
-                            <?php if ($dato['cantidad_disponible'] > 0) {
-                              $agotado = False; ?>
-                              <input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px">
-                            <?php } else {
-                              $agotado = True; ?>
+            if ($i <= count($lista) - 1) {
+              $dato = $lista[$i];
+              $img = $dato['img'];
 
-                              <div class="l">
-                                <!-- <strong>Agotado</strong> -->
-                                <span class="text-danger">Agotado</span>
-                              </div>
-                            <?php } ?>
+          ?>
+
+              <!-- columnas -->
+
+              <div class="col-md-3 product-men">
+                <div class="men-pro-item simpleCart_shelfItem">
+                  <div class="men-thumb-item">
+                    <img src=<?php echo "../images/" . $img; ?> alt="">
+
+                  </div>
+                  <div class="item-info-product ">
+                    <h4>
+                      <?php echo $dato['nombre_producto']; ?>
+                    </h4>
+                    <h4>
+
+                      <?php echo "Disponible " . $dato['cantidad_disponible']; ?>
+                      
+                    </h4>
+                    <span class="text-danger"><?php if($dato['cantidad_disponible']<10){ echo "Tienes pocas cantidades";}  ?></span>
 
 
-
-                            <!--<input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px"-->
-                            <input type="hidden" name="codigo" id="codigo" value=<?php echo $dato['cod_producto'] ?>>
-
-                            <input type="hidden" name="precio" id="precio" value=<?php echo $dato['precio_ud'] ?>>
-
-                            <input type="hidden" name="nombre" id="nombre" value=<?php echo $dato['nombre_producto'] ?>>
-
-                            <input type="hidden" name="disponible" id="disponible" value=<?php echo $dato['cantidad_disponible'] ?>>
-
-                            <?php if ($agotado == False) {
-                              echo '<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>';
-                            } ?>
-
-                          </fieldset>
-                        </form>
-                      </div>
+                    <div class="info-product-price">
+                      <span class="item_price"><?php echo "$ " . number_format($dato['precio_ud']); ?></span>
 
                     </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                      <form action="" method="GET">
+                        <fieldset>
+
+                            <input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px">
+                       
+                       
+
+
+
+                          <!--<input type="number" min="0" name="cantidad" id="cantidad" style="width : 60px"-->
+                          <input type="hidden" name="codigo" id="codigo" value=<?php echo $dato['cod_producto'] ?>>
+
+                          
+
+                          
+
+                          <input type="hidden" name="cod_est" id="cod_est" value=<?php echo $cod_est ?>>
+                          <input type="hidden" name="id" id="id" value=<?php echo $id ?>>
+                     
+
+                          
+                          <a href="inventario.php?cod=codigo&cantidad=cantidad&cod_est=cod_est&id=id"> <button class="btn btn-success"  title="inventario" ><i class="fas fa-redo"> </i></button></a>
+                          
+
+                        </fieldset>
+                      </form>
+                    </div>
+
                   </div>
                 </div>
+              </div>
 
-            <?php
-                $i = $i + 1;
-              }
-            } ?>
-            <div class="clearfix"></div>
-          </div>
+          <?php
+              $i = $i + 1;
+            }
+          } ?>
+          <div class="clearfix"></div>
+        </div>
 
-          <!-- FIN DE LA TABLA -->
-        
+        <!-- FIN DE LA TABLA -->
+
         <!-- FIN DE SECCION TABLA -->
       <?php } ?>
 

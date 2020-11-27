@@ -50,7 +50,7 @@ if(isset($_POST["actualizar_tipo_usuario"])){
     if($valido==1){
               
         $mensaje=$consultas->actualizar_tipo_usuario($id_usuario, $cedula, $primer_apellido, $segundo_apellido, $primer_nombre, $segundo_nombre, $direccion, $celular, $telefono, $fecha_nacimiento, $correo, $contrasena, $cod_perfil, $id_estado);
-        header ("location: http://localhost:8000/miniMarket/admin/usuarios.php");      
+        header ("location: http://localhost/miniMarket/admin/usuarios.php");      
         
  
     }
@@ -243,7 +243,7 @@ if(isset($_POST["actualizar_tipo_usuario"])){
                                                                 <label class="custom-control-label" for="id_estado">Activo</label>
                                                             </div>
                                                         </div>
-                                                        <a href="../usuarios.php" class="btn btn-secondary">
+                                                        <a href="../admin/usuarios.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 

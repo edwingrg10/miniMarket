@@ -40,7 +40,7 @@ if (isset($_POST["guardar_tipo_perfil"])) {
     if ($valido == 2) {
 
         $mensaje = $consultas->insertar_tipo_perfil($codigo, $desc, $estado);
-        header("location: http://localhost:8000/miniMarket/admin/tipo_perfil.php");
+        header("location: http://localhost/miniMarket/admin/tipo_perfil.php");
     }
 } ?>
 

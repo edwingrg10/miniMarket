@@ -24,13 +24,13 @@
             }
         }
 
-        public function buscar_pedidos()
+        public function buscar_pedidos($id_usuario)
         {
             $modelo = new Db();
             $conexion = $modelo->conectar();
-            $sentencia = "SELECT * FROM pedidos";
+            $sentencia = "SELECT * FROM pedidos where id_usuario=(:id_usuario)";
             $resultado = $conexion->prepare($sentencia);
-            
+            $resultado->bindParam(':id_usuario', $id_usuario);
             $resultado->execute();
             $lista = $resultado->fetchAll();
             return $lista;
@@ -59,6 +59,47 @@
             $sentencia = "SELECT * FROM productos";
             $resultado = $conexion->prepare($sentencia);
             
+            $resultado->execute();
+            $lista = $resultado->fetchAll();
+            return $lista;
+
+        }
+
+
+        public function buscar_establecimiento($tipo)
+        {
+            $modelo = new Db();
+            $conexion = $modelo->conectar();
+            $sentencia = "SELECT * FROM establecimiento where cod_tipo_est=(:tipo_est)";
+            $resultado = $conexion->prepare($sentencia);
+            $resultado->bindParam(':tipo_est', $tipo);
+            $resultado->execute();
+            $lista = $resultado->fetchAll();
+            return $lista;
+
+        }
+
+        public function buscar_tipo_est()
+        {
+            $modelo = new Db();
+            $conexion = $modelo->conectar();
+            $sentencia = "SELECT * FROM tipo_establecimiento";
+            $resultado = $conexion->prepare($sentencia);
+            $resultado->execute();
+            $lista = $resultado->fetchAll();
+            return $lista;
+
+        }
+
+        public function buscar_inventario($cod_est)
+        {
+            $modelo = new Db();
+            $conexion = $modelo->conectar();
+            $sentencia = "SELECT productos.cod_producto,productos.nombre_producto,productos.cod_tipo_producto,productos.precio_ud,
+            productos.estado,productos.img,establecimiento_producto.cantidad_disponible from establecimiento_producto JOIN productos 
+            ON productos.cod_producto=establecimiento_producto.cod_producto where establecimiento_producto.cod_est=(:cod_est) ";
+            $resultado = $conexion->prepare($sentencia);
+            $resultado->bindParam(":cod_est",$cod_est);
             $resultado->execute();
             $lista = $resultado->fetchAll();
             return $lista;
@@ -145,12 +186,13 @@
                      
         }
         
-        public function actualiza_inventario($cod_producto,$cantidad){
+        public function actualiza_inventario($cod_producto,$cod_est,$cantidad){
             $modelo = new Db();
             $conexion = $modelo->conectar();
-            $sentencia = "UPDATE productos SET cantidad_disponible=(:cantidad) where cod_producto=(:cod_producto)";
+            $sentencia = "UPDATE establecimiento_producto SET cantidad_disponible=(:cantidad) where cod_producto=(:cod_producto) and cod_est=(:cod_est)";
             $resultado = $conexion->prepare($sentencia);
             $resultado->bindParam('cod_producto',$cod_producto);
+            $resultado->bindParam('cod_est',$cod_est);
             $resultado->bindParam(':cantidad',$cantidad);
             $resultado->execute();
 
@@ -206,29 +248,37 @@
 
         }
 
-        public function disponible_producto($cod_producto){
+        public function disponible_producto($cod_producto,$cod_est){
             $modelo=new Db();
             $conexion=$modelo->conectar();
-            $sentencia="SELECT cantidad_disponible FROM productos WHERE cod_producto=(:cod_producto)";
+            $sentencia="SELECT cantidad_disponible FROM establecimiento_producto WHERE cod_producto=(:cod_producto) and cod_est=(:cod_est)";
             $resultado=$conexion->prepare($sentencia);
-            $resultado->bindParam('cod_producto', $cod_producto);
+            $resultado->bindParam('cod_producto',$cod_producto);
+            $resultado->bindParam('cod_est',$cod_est);
             $resultado->execute();
             $disponible=$resultado->fetch();
             return $disponible;
 
         }
 
-      
-
-
-
-
-
-
+ 
 
     }   
 
- 
-?>    
-    
-  
+    if(isset($_POST['establecimiento'])){
+     $est=$_POST['establecimiento'];
+     $query= new pedido;
+     
+     $result=$query->buscar_establecimiento($est);
+     
+     $cadena_a="<select class='form-control' id='est' name='est'>";
+      $cadena="'<option value=0> Seleciona una opcion</option>";  
+      foreach ($result as $dato){
+          
+        $cadena.='<option value='. $dato['codigo_est'].'>'. $dato['nombre_est'].'</option>';
+
+      }        
+        
+      echo $cadena_a.$cadena.'</select>';
+
+    }

@@ -66,8 +66,10 @@
 			$passHash = password_hash($contrasena, PASSWORD_DEFAULT);
 
 			// Query to send Name, Email and Password hash to the database
-			$query = "INSERT INTO usuario (cedula, primer_apellido, segundo_apellido, primer_nombre, segundo_nombre, direccion, celular, telefono, fecha_nacimiento, correo, contrasena, cod_perfil, id_estado) 
-	VALUES ('$cedula', '$primer_apellido', '$segundo_apellido', '$primer_nombre', '$segundo_nombre', '$direccion', '$celular', '$telefono', '$fecha_nacimiento', '$correo', '$passHash', '$id_perfil', '$id_estado')";
+			$query = "INSERT INTO usuario (cedula, primer_apellido, segundo_apellido, primer_nombre, segundo_nombre, direccion, 
+			celular, telefono, fecha_nacimiento, correo, contrasena, cod_perfil, id_estado) 
+			VALUES ('$cedula', '$primer_apellido', '$segundo_apellido', '$primer_nombre', '$segundo_nombre', 
+			'$direccion', '$celular', '$telefono', '$fecha_nacimiento', '$correo', '$passHash', '$id_perfil', '$id_estado')";
 
 			if (mysqli_query($conn, $query)) {
 				echo '<script type="text/javascript">
@@ -78,6 +80,25 @@ window.location.href="login.html";
 			}
 		}
 		mysqli_close($conn);
+
+		if ($id_perfil==2){
+
+			$modelo = new Db();
+			$conexion = $modelo->conectar();
+			$sentencia = "SELECT id_usuario FROM usuario WHERE cedula =(:cedula)";
+			$resultado = $conexion->prepare($sentencia);
+			$resultado->bindParam(":cedula",$cedula);
+			$resultado->execute();
+			$lista = $resultado->fetch();
+			$id=$lista['id_usuario'];
+
+			header("Location: http://localhost/miniMarket/vendedor/establecimiento.php?id=$id");
+			
+		}
+
+		
+
+
 		?>
 	</div>
 	<!-- Optional JavaScript -->

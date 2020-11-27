@@ -4,9 +4,13 @@ include("../Procesos/control_pago.php");
 $tipo = new consultas;
 $lista = $tipo->buscar_tipos();
 $carrito = new carrito_pago;
+
+
+
 if (isset($_GET['cod_carrito'])) {
 	$cod_carrito = $_GET['cod_carrito'];
 	$valor_total = $_GET['valor_total'];
+	$est=$_GET['est'];
 	$lista_carrito = $carrito->ver_carrito($cod_carrito);
 }
 
@@ -28,7 +32,7 @@ if (isset($_POST['pagar'])) {
 	$valor_con_iva = $valor_total * 1.19;
 	//registra el pedido antes de vaciar el carrito
 
-	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_con_iva, $estado_pedido);
+	$carrito->registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_con_iva, $estado_pedido,$est);
 	$carrito->registro_pago($valor_con_iva, $fecha_pedido, $estado_pedido, $cod_pedido, $medio_pago, $tipo_cliente, $banco);
 
 	//actualiza inventario del producto
@@ -48,7 +52,7 @@ if (isset($_POST['pagar'])) {
 
 	// cierra el carrito 
 		$carrito->carrito_cerrar($cod_carrito);
-		header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php");
+		header("Location: http://localhost/miniMarket/vistas/vista_pedidos.php?user=$id_usuario");
 }
 ?>
 
@@ -236,7 +240,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="hidden" name="estado_pedido" value="Tramitando">
 						<div class="row-cols-2">
 							<button type="submit" class="btn btn-primary" name="pagar">Efectuar pago</button>
-							<a href="form_pedido.php"><button type="button" class="btn btn-secondary">Cancelar</button></a>
+							<a href="form_pedido.php?est=<?php echo $est ?>"><button type="button" class="btn btn-secondary">Cancelar</button></a>
 						</div>
 
 

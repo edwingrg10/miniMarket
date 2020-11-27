@@ -48,7 +48,7 @@ if (isset($_POST["guardar_producto"])) {
     if ($valido == 2) {
 
         $mensaje = $consultas->insertar_producto($codigo, $nombre, $tipo, $precio, $cantidad, $estado, $imagen);
-        header("location: http://localhost:8000/miniMarket/admin/tabla_producto.php");
+        header("location: http://localhost/miniMarket/admin/tabla_producto.php");
     }
 } ?>
 
@@ -208,7 +208,7 @@ if (isset($_POST["guardar_producto"])) {
                                                                 <label class="custom-control-label" for="estado_producto">Activo</label>
                                                             </div>
                                                         </div>
-                                                        <a href="../producto.php" class="btn btn-secondary">
+                                                        <a href="../admin/tabla_producto.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 

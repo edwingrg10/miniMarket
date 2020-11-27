@@ -1,8 +1,8 @@
 <?php  
 include("../Procesos/control_pedido.php");
 $pedido=new pedido;
-
-$lista_pedidos=$pedido->buscar_pedidos();
+$user=$_GET['user'];
+$lista_pedidos=$pedido->buscar_pedidos($user);
 
 
 
@@ -64,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="../Formularios/form_pedido.php">Inicio
+									<a class="nav-stylehead" href="../Formularios/select_est.php">Inicio
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>

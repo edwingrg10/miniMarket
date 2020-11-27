@@ -39,7 +39,7 @@ if(isset($_POST["actualizar_tipo_marca"])){
     if($valido==1){
               
         $mensaje=$consultas->actualizar_tipo_marca($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/miniMarket/admin/tipo_marca.php");      
+        header ("location: http://localhost/miniMarket/admin/tipo_marca.php");      
         
  
     }
