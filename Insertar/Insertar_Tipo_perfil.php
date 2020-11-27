@@ -129,7 +129,7 @@
     //   echo($cod);
     $consultas=new consultas();
     $mensaje=$consultas->borrar_perfil($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/tipo_perfil.php");  
+    header ("location: http://localhost/miniMarket/admin/tipo_perfil.php");  
         
        
     } 

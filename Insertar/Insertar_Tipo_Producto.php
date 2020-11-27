@@ -35,7 +35,7 @@
 
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia = "UPDATE tipo_producto SET estado = 0 WHERE cod_tipo_producto=:cod_tipo_producto";
+      $sentencia = "DELETE FROM tipo_producto WHERE cod_tipo_producto=:cod_tipo_producto";
       $resultado=$conexion->prepare($sentencia);
       $resultado->bindParam(':cod_tipo_producto',$codigo);
       $resultado->execute();
@@ -126,7 +126,7 @@
     //   echo($cod);
     $consultas=new consultas();
     $mensaje=$consultas->borrar_tipo_producto($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/tipo_producto.php");  
+    header ("location: http://localhost/miniMarket/admin/tipo_producto.php");  
         
        
     } 

@@ -51,7 +51,7 @@ if(isset($_POST["actualizar_tipo_est"])){
     if($valido==1){
               
         $mensaje=$consultas->actualizar_tipo_establecimiento($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/miniMarket/admin/tipo_establecimiento.php");      
+        header ("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");      
    
  
     }

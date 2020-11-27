@@ -114,7 +114,8 @@ class carrito_pago
     {
         $modelo = new Db();
         $conexion = $modelo->conectar();
-        $sentencia = "SELECT productos.cod_producto,productos.nombre_producto,cantidad,valor from carrito_producto JOIN productos ON productos.cod_producto=carrito_producto.cod_producto where carrito_producto.cod_carrito=(:cod_carrito) ";
+        $sentencia = "SELECT productos.cod_producto,productos.nombre_producto,cantidad,valor from carrito_producto 
+        JOIN productos ON productos.cod_producto=carrito_producto.cod_producto where carrito_producto.cod_carrito=(:cod_carrito) ";
         $resultado = $conexion->prepare($sentencia);
         $resultado->bindParam(':cod_carrito', $cod_carrito);
         $resultado->execute();
@@ -136,11 +137,11 @@ class carrito_pago
         $resultado->execute();
     }
 
-    public function registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_total, $estado_pedido)
+    public function registro_pedido($cod_pedido, $fecha_pedido, $cod_carrito, $id_usuario, $valor_total, $estado_pedido,$cod_est)
     {
         $modelo = new Db();
         $conexion = $modelo->conectar();
-        $sentencia = "INSERT INTO pedidos (cod_pedido,fecha_pedido,cod_carrito,id_usuario,valor_pedido,estado) VALUES (:cod_pedido,:fecha_pedido,:cod_carrito,:id_usuario,:valor_total,:estado_pedido)";
+        $sentencia = "INSERT INTO pedidos (cod_pedido,fecha_pedido,cod_carrito,id_usuario,valor_pedido,estado,cod_est) VALUES (:cod_pedido,:fecha_pedido,:cod_carrito,:id_usuario,:valor_total,:estado_pedido,:cod_est)";
         $resultado = $conexion->prepare($sentencia);
         $resultado->bindParam(':cod_pedido', $cod_pedido);
         $resultado->bindParam(':fecha_pedido', $fecha_pedido);
@@ -148,6 +149,7 @@ class carrito_pago
         $resultado->bindParam(':id_usuario', $id_usuario);
         $resultado->bindParam(':valor_total', $valor_total);
         $resultado->bindParam(':estado_pedido', $estado_pedido);
+        $resultado->bindParam(':cod_est', $cod_est);
         $resultado->execute();
     }
 
@@ -155,7 +157,8 @@ class carrito_pago
     {
         $modelo = new Db();
         $conexion = $modelo->conectar();
-        $sentencia = "INSERT INTO pago (valor,fecha_pago,estado,cod_pedido,id_tipo_pago,tipo_persona,banco) VALUES (:valor,:fecha_pago,:estado,:cod_pedido,:id_tipo_pago,:tipo_persona,:banco)";
+        $sentencia = "INSERT INTO pago (valor,fecha_pago,estado,cod_pedido,id_tipo_pago,tipo_persona,banco) VALUES 
+        (:valor,:fecha_pago,:estado,:cod_pedido,:id_tipo_pago,:tipo_persona,:banco)";
         $resultado = $conexion->prepare($sentencia);
         $resultado->bindParam(':valor', $valor);
         $resultado->bindParam(':fecha_pago', $fecha_pago);
@@ -200,6 +203,6 @@ if (isset($_GET['id_tipo_pago'])) {
         //   echo($cod);
         $consultas = new consultas();
         $mensaje = $consultas->borrar_tipo_pago($cod);
-        header("location: http://localhost:8000/minimarket/admin/tipo_pago.php");
+        header("location: http://localhost/minimarket/admin/tipo_pago.php");
     }
 }

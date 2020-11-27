@@ -53,7 +53,8 @@
     public function actualizar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado){
       $modelo=new Db();
       $conexion=$modelo->conectar();
-      $sentencia = "UPDATE productos SET nombre_producto=:nombre_producto, cod_tipo_producto=:cod_tipo_producto, precio_ud=:precio, cantidad_disponible=:cantidad_disponible, estado=:estado WHERE cod_producto=:cod_producto";
+      $sentencia = "UPDATE productos SET nombre_producto=:nombre_producto, cod_tipo_producto=:cod_tipo_producto, precio_ud=:precio, 
+      cantidad_disponible=:cantidad_disponible, estado=:estado WHERE cod_producto=:cod_producto";
       $resultado=$conexion->prepare($sentencia);
       $resultado->bindParam(':cod_producto',$codigo);
       $resultado->bindParam(':nombre_producto',$nombre);
@@ -139,7 +140,7 @@
     //   echo($cod);
     $consultas=new consultas();
     $mensaje=$consultas->borrar_producto($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/tabla_producto.php");  
+    header ("location: http://localhost/miniMarket/admin/tabla_producto.php");  
         
        
     } 

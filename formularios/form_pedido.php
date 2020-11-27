@@ -1,9 +1,12 @@
 <?php
 include("../Procesos/control_pedido.php");
+
+$est = $_GET['est'];
+
 $product = new pedido;
 $carrito = new carrito;
 $valor_total = 0;
-$lista = $product->buscar_productos();
+$lista = $product->buscar_inventario($est);
 
 
 
@@ -29,16 +32,16 @@ if (isset($_GET['cancelar'])) {
 
 		$cod_producto = $dato['cod_producto'];
 		$cantidad_carrito = $dato['cantidad'];
-		$disponible = $carrito->disponible_producto($cod_producto);
+		$disponible = $carrito->disponible_producto($cod_producto, $est);
 		//echo ($disponible['cantidad_disponible']) ;
 		$nueva_cantidad = $disponible['cantidad_disponible'] + $cantidad_carrito;
-		$carrito->actualiza_inventario($cod_producto, $nueva_cantidad);
+		$carrito->actualiza_inventario($cod_producto, $est, $nueva_cantidad);
 	}
 
 	$carrito->carrito_cancelar($cod_carrito);
-	$lista = $product->buscar_productos();
+	$lista = $product->buscar_inventario($est);
 	$lista_carrito = $carrito->ver_carrito($cod_carrito);
-	header("Location: http://localhost/miniMarket/formularios/form_pedido.php");
+	header("Location: http://localhost/miniMarket/formularios/form_pedido.php?est=$est");
 }
 
 
@@ -62,10 +65,10 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 			$carrito->agregar_a_carrito($cod_carrito, $cod_producto, $cantidad, $valor);
 			// echo $cod_producto;
 			//actualiza el inventario cada vez que se tome un articulo nuevo
-			$carrito->actualiza_inventario($cod_producto, $nueva_cantidad);
+			$carrito->actualiza_inventario($cod_producto, $est, $nueva_cantidad);
 
 			$lista_carrito = $carrito->ver_carrito($cod_carrito);
-			$lista = $product->buscar_productos();
+			$lista = $product->buscar_inventario($est);
 			//echo "agregado";
 		} else {
 			//si ya existe la relacion hay que volver a hacer el calculo de las cantidades
@@ -73,21 +76,21 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 			$lista_carrito = $carrito->ver_carrito_producto($cod_carrito, $cod_producto);
 
 			$cantidad_carrito = $lista_carrito['cantidad'];
-			$disponible = $carrito->disponible_producto($cod_producto);
+			$disponible = $carrito->disponible_producto($cod_producto, $est);
 			$nueva_cantidad = $disponible['cantidad_disponible'] + $cantidad_carrito;
-			$carrito->actualiza_inventario($cod_producto, $nueva_cantidad);
+			$carrito->actualiza_inventario($cod_producto, $est, $nueva_cantidad);
 
 			$carrito->actualizar_carrito($cod_carrito, $cod_producto, $cantidad, $valor);
 
 			//vuelve y busca el disponible en base de datos para restar lo que esta llevando y actualizar de nuevo el inventario
 
-			$disponible = $carrito->disponible_producto($cod_producto);
+			$disponible = $carrito->disponible_producto($cod_producto, $est);
 			$nueva_cantidad = $disponible['cantidad_disponible'] - $cantidad;
 
-			$carrito->actualiza_inventario($cod_producto, $nueva_cantidad);
+			$carrito->actualiza_inventario($cod_producto, $est, $nueva_cantidad);
 
 			$lista_carrito = $carrito->ver_carrito($cod_carrito);
-			$lista = $product->buscar_productos();
+			$lista = $product->buscar_inventario($est);
 			// echo "actualizado";
 		}
 	} else {
@@ -163,11 +166,21 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
+
+								<li class="active">
+
+									<a class="nav-stylehead" href="select_est.php">Establecimientos
+										<span class="sr-only">(current)</span>
+									</a>
+								</li>
+
 								<li class="active">
 									<a class="nav-stylehead" href="../index.php">Cerrar sesion
 										<span class="sr-only">(current)</span>
 									</a>
+
 								</li>
+
 
 							</ul>
 						</div>
@@ -213,13 +226,13 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 									<h3 class="agileits-sear-head">Carrito</h3>
 
 								</div>
-								
+
 
 							</div>
 						</div>
 					</div>
 					<div class="card-body fluid">
-						<table class="table table-sm " >
+						<table class="table table-sm ">
 							<thead>
 								<tr>
 									<th>Producto</th>
@@ -236,7 +249,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 										<tr>
 											<td><?php echo $dato['nombre_producto']; ?></td>
 											<td><?php echo $dato['cantidad']; ?></td>
-											<td><?php echo number_format( $valor=$dato['valor']);  ?></td>
+											<td><?php echo number_format($valor = $dato['valor']);  ?></td>
 											<?php $valor_total = $valor_total + $dato['valor']; ?>
 										</tr>
 
@@ -271,12 +284,12 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 					</div>
 
 					<div class="card-footer">
-						<a href="form_pago.php?cod_carrito=<?php echo $cod_carrito . '&valor_total=' . $valor_total; ?>"><button type="button" class="btn-sm btn-outline-success" <?php if ($valor_total > 0) {
-																																														echo "enabled";
-																																													} else {
-																																														echo "disabled";
-																																													} ?>>Confirmar pedido</button></a>
-						<a href="form_pedido.php?cancelar=True"><button type="button" class="btn-sm btn-outline-danger">Cancelar pedido</button></a>
+						<a href="form_pago.php?cod_carrito=<?php echo $cod_carrito . '&est=' . $est . '&valor_total=' . $valor_total; ?>"><button type="button" class="btn-sm btn-outline-success" <?php if ($valor_total > 0) {
+																																																		echo "enabled";
+																																																	} else {
+																																																		echo "disabled";
+																																																	} ?>>Confirmar pedido</button></a>
+						<a href="form_pedido.php?cancelar=True&est=<?php echo $est ?>"><button type="button" class="btn-sm btn-outline-danger">Cancelar pedido</button></a>
 
 					</div>
 
@@ -338,7 +351,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 
 												<div class="info-product-price">
-													<span class="item_price"><?php echo "$ ".number_format( $dato['precio_ud']); ?></span>
+													<span class="item_price"><?php echo "$ " . number_format($dato['precio_ud']); ?></span>
 
 												</div>
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -367,9 +380,9 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 															<input type="hidden" name="nombre" id="nombre" value=<?php echo $dato['nombre_producto'] ?>>
 
 															<input type="hidden" name="disponible" id="disponible" value=<?php echo $dato['cantidad_disponible'] ?>>
-
+															<input type="hidden" name="est" id="est" value=<?php echo $est ?>>
 															<?php if ($agotado == False) {
-																echo '<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>';
+																echo '<a href="form_pedido.php?cod=codigo&cantidad=cantidad&precio=precio&disponible=disponible&nombre=nombre&est=est"> <button class="btn btn-primary"  title="Carrito" ><i class="fa fa-shopping-cart"> </i></button></a>';
 															} ?>
 
 														</fieldset>
@@ -403,8 +416,8 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 	<!-- special offers -->
 
 	<div class="footer"></div>
-<!-- JS -->
-<script src="../js/jquery-2.1.4.min.js"></script>
+	<!-- JS -->
+	<script src="../js/jquery-2.1.4.min.js"></script>
 	<script src="../js/jquery.magnific-popup.js"></script>
 	<script>
 		$(document).ready(function() {
@@ -563,7 +576,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 			$('.footer').load('../templates/footer.php');
 		});
 	</script>
-	
+
 
 
 </body>

@@ -43,7 +43,7 @@ if(isset($_POST["guardar_tipo_pago"])){
     if($valido==2){
               
         $mensaje=$consultas->insertar_tipo_pago($codigo,$desc,$estado);
-        header ("location: http://localhost:8000/minimarket/admin/tipo_pago.php");      
+        header ("location: http://localhost/minimarket/admin/tipo_pago.php");      
    
  
     }

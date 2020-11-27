@@ -28,11 +28,14 @@
 		$contrasena = $_POST['contrasena'];
 
 		// Query sent to database
-		$result = mysqli_query($conn, "SELECT cedula, correo, contrasena, cod_perfil FROM usuario WHERE correo = '$correo'");
+		$result = mysqli_query($conn, "SELECT id_usuario, cedula, correo, contrasena, cod_perfil FROM usuario WHERE correo = '$correo'");
 
 		// Variable $row contiene el resultado de la consulta a la BD
 		$row = mysqli_fetch_assoc($result);
 		$num_row = mysqli_num_rows($result);
+
+		$id=$row['id_usuario'];
+		
 
 
 		// Variable $hash toma la contraseña encriptada para poder ser verificada
@@ -55,9 +58,10 @@
 				if ($row['cod_perfil'] == 1) {
 					header('location:admin/home.php');
 				} else if ($row['cod_perfil'] == 2) {
-					header('location:admin/home_vendedor.php');
+
+					header ("location:vendedor/home_vendedor.php?id=$id");
 				} else if ($row['cod_perfil'] == 3) {
-					header('location:formularios/form_pedido.php');
+					header('location:formularios/select_est.php');
 				}
 			}
 		} else {

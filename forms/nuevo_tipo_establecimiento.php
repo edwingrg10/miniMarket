@@ -41,7 +41,7 @@ if (isset($_POST["guardar_tipo_est"])) {
 
 
         $mensaje = $consultas->insertar_tipo_establecimiento($codigo, $desc, $estado);
-        header("location: http://localhost:8000/miniMarket/admin/tipo_establecimiento.php");
+        header("location: http://localhost/miniMarket/admin/tipo_establecimiento.php");
     }
 } ?>
 

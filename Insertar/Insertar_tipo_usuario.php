@@ -163,7 +163,7 @@
     //   echo($cod);
     $consultas=new consultas();
     $mensaje=$consultas->borrar_usuario($cod);
-    header ("location: http://localhost:8000/miniMarket/admin/usuarios.php");  
+    header ("location: http://localhost/miniMarket/admin/usuarios.php");  
         
        
     } 
