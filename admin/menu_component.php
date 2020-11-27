@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -57,8 +56,21 @@
         <a class="collapse-item" href="http://localhost/miniMarket/admin/tipo_marca.php">Marcas</a>
         <a class="collapse-item" href="http://localhost/miniMarket/admin/usuarios.php">Usuarios</a>
         <a class="collapse-item" href="http://localhost/miniMarket/admin/tipo_perfil.php">Perfiles</a>
-        
+
         <!--<a class="collapse-item" href="perfil.php">Perfil</a>-->
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Consultas e informes</span>
+    </a>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Parametrizaciones</h6>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_establecimientos.php">Tipo Establecimientos</a>
       </div>
     </div>
   </li>
