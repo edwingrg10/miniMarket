@@ -165,9 +165,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="form-group">
 
 
-							<p>Completa la informaciÃ³n para realizar el pago</p>
+							<p>Completa la informacion para realizar el pago</p>
 
-							<form action="" method="post" role="form" class="php-email-form">
+							<form action="" method="post"  >
 
 								<div class="form-group">
 									<label for="name">Nombres</label>
@@ -187,10 +187,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="form-group">
 									<label for="segundo_ap">Direecion de envio</label>
 									
-									<input type="text" name="segundo_ap" class="form-control" id="direccion" value=<?php  echo $direccion ; ?>  data-msg="Please enter at least 4 chars" readonly="" />
+									<input type="text" name="segundo_ap" class="" id="direccion" value=<?php  echo $direccion ; ?>  data-msg="Please enter at least 4 chars" readonly="" />
 									<div class="validate"></div>
 								</div>
-								input
+								<div class="form-group">
+									<label for="segundo_ap">Direecion de envio</label>
+									
+									<input type="text" name="segundo_ap" class="" id="direccion"   data-msg="Please enter at least 4 chars" readonly="" />
+									<div class="validate"></div>
+								</div>
+
 
 
 
