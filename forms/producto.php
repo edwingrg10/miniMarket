@@ -5,7 +5,7 @@ $error_codigo = "";
 $error_nombre = "";
 $error_tipo = "";
 $error_precio = "";
-$error_cantidad = "";
+$error_unidad = "";
 
 $frm_enviado = false;
 $consultas = new consultas();
@@ -15,7 +15,7 @@ if (isset($_POST["guardar_producto"])) {
     $nombre = $_POST["nombre_producto"];
     $tipo = $_POST["cod_tipo_producto"];
     $precio = $_POST["precio"];
-    $cantidad = $_POST["cantidad_disponible"];
+    $unidad = $_POST["unidad_medida"];
     $estado = array();
     $imagen = $_POST["imagen"];
 
@@ -47,7 +47,7 @@ if (isset($_POST["guardar_producto"])) {
 
     if ($valido == 2) {
 
-        $mensaje = $consultas->insertar_producto($codigo, $nombre, $tipo, $precio, $cantidad, $estado, $imagen);
+        $mensaje = $consultas->insertar_producto($codigo, $nombre, $tipo, $precio, $unidad, $estado, $imagen);
         header("location: http://localhost/miniMarket/admin/tabla_producto.php");
     }
 } ?>
@@ -188,10 +188,10 @@ if (isset($_POST["guardar_producto"])) {
                                                         <span class="text-danger"><?php echo $error_precio; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="number" class="form-control form-control-user" name="cantidad_disponible" id="cantidad_disponible" placeholder="Cantidad Disponible" value="<?= (isset($cantidad) && !$frm_enviado) ? $cantidad : "" ?>">
+                                                                <input type="text" class="form-control form-control-user" name="unidad_medida" id="unidad_medida" placeholder="Unidad de medida" value="<?= (isset($unidad) && !$frm_enviado) ? $unidad : "" ?>">
                                                             </div>
                                                         </div>
-                                                        <span class="text-danger"><?php echo $error_cantidad; ?></span>
+                                                        <span class="text-danger"><?php echo $error_unidad; ?></span>
                                                         
                 
                                                         <div class="form-group row">

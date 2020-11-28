@@ -45,6 +45,7 @@ if(isset($_GET['codigo'])){
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -72,15 +73,7 @@ if(isset($_GET['codigo'])){
               <!-- Dropdown - User Information -->
 
             </li>
-            <li class="nav-item dropdown no-arrow">
-
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
-              </a>
-              <!-- Dropdown - User Information -->
-
-            </li>
+           
           </ul>
         </nav>
 
@@ -184,7 +177,7 @@ if(isset($_GET['codigo'])){
 
 
                     <div class="info-product-price">
-                      <span class="item_price"><?php echo "$ " . number_format($dato['precio_ud']); ?></span>
+                      <span class="item_price"><?php echo "$ " . number_format($dato['precio_ud'])." por ".$dato['unidad_medida'] ; ?></span>
 
                     </div>
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">

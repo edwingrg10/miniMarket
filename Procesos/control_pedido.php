@@ -96,7 +96,7 @@
             $modelo = new Db();
             $conexion = $modelo->conectar();
             $sentencia = "SELECT productos.cod_producto,productos.nombre_producto,productos.cod_tipo_producto,productos.precio_ud,
-            productos.estado,productos.img,establecimiento_producto.cantidad_disponible from establecimiento_producto JOIN productos 
+            productos.estado,productos.img,productos.unidad_medida,establecimiento_producto.cantidad_disponible from establecimiento_producto JOIN productos 
             ON productos.cod_producto=establecimiento_producto.cod_producto where establecimiento_producto.cod_est=(:cod_est) ";
             $resultado = $conexion->prepare($sentencia);
             $resultado->bindParam(":cod_est",$cod_est);

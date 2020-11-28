@@ -187,16 +187,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="form-group">
 									<label for="segundo_ap">Direecion de envio</label>
 									
-									<input type="text" name="segundo_ap" class="" id="direccion" value=<?php  echo $direccion ; ?>  data-msg="Please enter at least 4 chars" readonly="" />
+									<h4><?php  echo $direccion ; ?></h4>
 									<div class="validate"></div>
 								</div>
-								<div class="form-group">
-									<label for="segundo_ap">Direecion de envio</label>
-									
-									<input type="text" name="segundo_ap" class="" id="direccion"   data-msg="Please enter at least 4 chars" readonly="" />
-									<div class="validate"></div>
-								</div>
+								
 
+								
 
 
 

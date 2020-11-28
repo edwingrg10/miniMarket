@@ -169,7 +169,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 								<li class="active">
 
-									<a class="nav-stylehead" href="select_est.php">Establecimientos
+									<a class="nav-stylehead" href=<?php echo "select_est.php?id=$id"?>>Establecimientos
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
@@ -351,7 +351,7 @@ if (isset($_GET['codigo']) && $_GET['cantidad'] != "") {
 
 
 												<div class="info-product-price">
-													<span class="item_price"><?php echo "$ " . number_format($dato['precio_ud']); ?></span>
+													<span class="item_price"><?php echo "$ " . number_format($dato['precio_ud'])." por ". $dato['unidad_medida']; ?></span>
 
 												</div>
 												<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">

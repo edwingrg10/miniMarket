@@ -6,7 +6,7 @@
  
   class consultas{
 
-    public function insertar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado,$imagen){
+    public function insertar_producto($codigo,$nombre,$tipo,$precio,$unidad,$estado,$imagen){
       
       $modelo=new Db();
       $conexion=$modelo->conectar();
@@ -15,16 +15,16 @@
         nombre_producto,
         cod_tipo_producto,
         precio_ud,
-        cantidad_disponible,
+        unidad_medida,
         estado,
         img
-        ) VALUES (:codigo,:nombre_producto,:cod_tipo_producto,:precio,:cantidad_disponible,:estado_producto,:imagen)";
+        ) VALUES (:codigo,:nombre_producto,:cod_tipo_producto,:precio,:unidad_medida,:estado_producto,:imagen)";
       $resultado=$conexion->prepare($sentencia);
       $resultado->bindParam(':codigo',$codigo);
       $resultado->bindParam(':nombre_producto',$nombre);
       $resultado->bindParam(':cod_tipo_producto',$tipo);
       $resultado->bindParam(':precio',$precio);
-      $resultado->bindParam(':cantidad_disponible',$cantidad);
+      $resultado->bindParam(':unidad_medida',$unidad);
       $resultado->bindParam(':estado_producto',$estado);
       $resultado->bindParam(':imagen',$imagen);
       
@@ -50,17 +50,17 @@
     }
 
 
-    public function actualizar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado){
+    public function actualizar_producto($codigo,$nombre,$tipo,$precio,$unidad,$estado){
       $modelo=new Db();
       $conexion=$modelo->conectar();
       $sentencia = "UPDATE productos SET nombre_producto=:nombre_producto, cod_tipo_producto=:cod_tipo_producto, precio_ud=:precio, 
-      cantidad_disponible=:cantidad_disponible, estado=:estado WHERE cod_producto=:cod_producto";
+      unidad_medida=:unidad_medida, estado=:estado WHERE cod_producto=:cod_producto";
       $resultado=$conexion->prepare($sentencia);
       $resultado->bindParam(':cod_producto',$codigo);
       $resultado->bindParam(':nombre_producto',$nombre);
       $resultado->bindParam(':cod_tipo_producto',$tipo);
       $resultado->bindParam(':precio',$precio);
-      $resultado->bindParam(':cantidad_disponible',$cantidad);
+      $resultado->bindParam(':unidad_medida',$unidad);
       $resultado->bindParam(':estado',$estado);
       
       if (!$resultado){

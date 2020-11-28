@@ -1,21 +1,19 @@
 <?php
 include("../Procesos/control_pedido.php");
 $product = new pedido;
-if (isset($_GET['id'])){
-  $id=$_GET['id'];
-
+if (isset($_GET['id'])) {
+  $id = $_GET['id'];
 }
 $lista = $product->buscar_tipo_est();
-$error="";
-if(isset($_POST['enter'])){
-  $id=$_GET['id'];
-  $est=$_POST['est'];
-  $tipo_est=$_POST['tipo_est'];
-  
-  if ($est==0){
-    $error ="Debe seleccionar un establecimiento";
+$error = "";
+if (isset($_POST['enter'])) {
+  $id = $_GET['id'];
+  $est = $_POST['est'];
+  $tipo_est = $_POST['tipo_est'];
 
-  }else{
+  if ($est == 0) {
+    $error = "Debe seleccionar un establecimiento";
+  } else {
     header("Location: http://localhost/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
   }
 }
@@ -50,7 +48,33 @@ if(isset($_POST['enter'])){
 
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <!-- Topbar Navbar -->
+          <p>Bienvenido!</p>
+          <ul class="navbar-nav ml-auto">
+            <!-- Nav Item - User Information -->
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
 
+              <a class="nav-link dropdown-toggle" href=<?php echo "../vistas/vista_pedidos.php?id=$id"; ?> id="" role="button" aria-haspopup="true" aria-expanded="false">
+
+                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal">Pedidos<i class="fas fa-history"></i></span></h4>
+              </a>
+              <!-- Dropdown - User Information -->
+
+            </li>
+            <li class="nav-item dropdown no-arrow">
+
+              <a class="nav-link dropdown-toggle" href="../index.php" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
+              </a>
+              <!-- Dropdown - User Information -->
+
+            </li>
+
+          </ul>
+        </nav>
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
           <!-- Topbar Navbar -->
@@ -109,15 +133,16 @@ if(isset($_POST['enter'])){
         <div class="form-group">
           <legend class="col-form-legend col-sm-1-4">Selecciona el establecimiento</legend>
         </div>
-                                                                  
+
         <div class="form-group col-sm-4" id="select_est"></div>
 
         <div class="form-group col-md-4">
-         
+
           <button type="submit" class="btn btn-primary " id="enter" name="enter">Entrar</button>
+
         </div>
 
-        <span class="text-danger"><?php  echo $error ?></span>
+        <span class="text-danger"><?php echo $error ?></span>
 
 
 
@@ -130,7 +155,7 @@ if(isset($_POST['enter'])){
   <script type="text/javascript">
     $(document).ready(function() {
       recargar_lista();
-      $('#tipo_est').change(function(){
+      $('#tipo_est').change(function() {
         recargar_lista();
 
       })

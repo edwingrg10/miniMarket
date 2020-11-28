@@ -15,7 +15,7 @@ $error_codigo = "";
 $error_nombre = "";
 $error_tipo = "";
 $error_precio = "";
-$error_cantidad = "";
+$error_unidad = "";
 $frm_enviado=false;
 if(isset($_POST["actualizar_producto"])){
         
@@ -23,7 +23,7 @@ if(isset($_POST["actualizar_producto"])){
     $nombre = $_POST["nombre_producto"];
     $tipo = $_POST["cod_tipo_producto"];
     $precio = $_POST["precio"];
-    $cantidad = $_POST["cantidad_disponible"];
+    $unidad = $_POST["unidad_medida"];
     $estado=array();
     
     if (isset($_POST["estado_producto"])){
@@ -44,7 +44,7 @@ if(isset($_POST["actualizar_producto"])){
     }
     if($valido==1){
               
-        $mensaje=$consultas->actualizar_producto($codigo,$nombre,$tipo,$precio,$cantidad,$estado);
+        $mensaje=$consultas->actualizar_producto($codigo,$nombre,$tipo,$precio,$unidad,$estado);
         header ("location: http://localhost/miniMarket/admin/tabla_producto.php");      
         
  
@@ -162,7 +162,7 @@ if(isset($_POST["actualizar_producto"])){
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
                                                                 <input type="text" class="form-control form-control-user" value="<?php echo $info['cod_tipo_producto']; ?>" name="cod_tipo_producto" id="cod_tipo_producto" placeholder="Tipo producto"
-                                                                value="<?= (isset($nombre) && !$frm_enviado)?$nombre : "" ?>">
+                                                                value="<?= (isset($nombre) && !$frm_enviado)?$nombre : "" ?>" readonly="disabled" >
                                                             </div>
                                                         </div>
                                                         <span class="text-danger"><?php echo $error_nombre; ?></span>
@@ -175,7 +175,7 @@ if(isset($_POST["actualizar_producto"])){
                                                         <span class="text-danger"><?php echo $error_nombre; ?></span>
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['cantidad_disponible']; ?>" name="cantidad_disponible" id="cantidad_disponible" placeholder="Nombre producto"
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['unidad_medida']; ?>" name="unidad_medida" id="unidad_medida" placeholder="Unidad de medida"
                                                                 value="<?= (isset($nombre) && !$frm_enviado)?$nombre : "" ?>">
                                                             </div>
                                                         </div>
@@ -187,7 +187,7 @@ if(isset($_POST["actualizar_producto"])){
                                                                 <label class="custom-control-label" for="estado_producto">Activo</label>
                                                             </div>
                                                         </div>
-                                                        <a href="../tipo_producto.php" class="btn btn-secondary">
+                                                        <a href="../admin/tabla_producto.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 

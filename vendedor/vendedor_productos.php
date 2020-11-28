@@ -16,7 +16,9 @@ if (isset($_GET['cod'])){
 
 $lista=$mercado->buscar_establecimiento($id);
 $cod_est=$lista['codigo_est'];
-$lista=$mercado->buscar_productos($cod_est);
+$cod_tipo_pr=$lista['cod_tipo_est'];
+
+$lista=$mercado->buscar_productos($cod_est,$cod_tipo_pr);
 
 
 
@@ -144,6 +146,7 @@ $lista=$mercado->buscar_productos($cod_est);
                       <th>Código</th>
                       <th>Descripción</th>
                       <th>Precio unitario</th>
+                      <th>Unidad de medida</th>
                       <th>Acciones</th>
 
                     </tr>
@@ -161,13 +164,13 @@ $lista=$mercado->buscar_productos($cod_est);
                         <td><?php echo $cod ?> </td>
                         <td><?php echo $dato["nombre_producto"] ?> </td>
                         <td><?php echo "$". number_format( $dato["precio_ud"] )?> </td>
-									
+                        <td><?php echo $dato["unidad_medida"] ?> </td>
                       
                       
 
                         <td>
                           
-                          <button class="btn " title="Editar">add <a class="fas fa-plus" href=<?php echo "vendedor_productos.php?est=$cod_est&cod=$cod&id=$id";?>></a></button>
+                          <button class="btn " title="Editar">Agregar <a class="fas fa-plus" href=<?php echo "vendedor_productos.php?est=$cod_est&cod=$cod&id=$id";?>></a></button>
                          
                          <!-- <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td> -->
                         </td>

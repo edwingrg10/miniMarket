@@ -1,48 +1,42 @@
-<?php
-require_once('../Insertar/Insertar_Tipo_producto.php');
+<?php 
 
-$error_cod = "";
-$error_desc = "";
-$frm_enviado = false;
-$consultas = new consultas();
-if (isset($_POST["guardar_tipo_producto"])) {
+include("../Procesos/control_vendedor.php");
 
-    $codigo = $_POST["codigo_tipo_producto"];
-    $desc = $_POST["desc_tipo_producto"];
-    $estado = array();
 
-    if (isset($_POST["estado_tipo_producto"])) {
-        $estado = 1;
-    } else {
-        $estado = 0;
-    }
-    $valido = 0;
-
-    if (!$codigo == "") {
-        $exist = $consultas->buscar($codigo);
-        if (!$exist) {
-
-            $valido = $valido + 1;
-        } else {
-            $error_cod = "El código ya existe";
-        }
-    } else {
-        $error_cod = "Por favor ingrese un código";
+if(isset($_GET['id'])){
+    $cod=$_GET['cod_pedido'];
+    $id = $_GET['id'];
+    
+    $mercado = new mercado;
+    $lista=$mercado->buscar_establecimiento($id);
+    $cod_est=$lista['codigo_est'];
+    
+ 
     }
 
-    if (!$desc == "") {
+ 
 
-        $valido = $valido + 1;
-    } else {
-        $error_desc = "Por favor ingrese una descripción";
-    }
 
-    if ($valido == 2) {
 
-        $mensaje = $consultas->insertar_tipo_producto($codigo, $desc, $estado);
-        header("location: http://localhost/miniMarket/admin/tipo_producto.php");
-    }
-} ?>
+$frm_enviado=false;
+if(isset($_POST["actualizar_pedido"])){
+        
+    $codigo=$_POST["cod_pedido"];
+    $estado_pedido=$_POST["estado_pedido"];
+    $cod_est=$_POST['cod_est'];
+    
+    $mercado->actualizar_pedido($cod_est,$codigo,$estado_pedido);
+    header ("location: http://localhost/miniMarket/vendedor/gestion_pedido.php?id=$id");        
+        
+ 
+    
+
+
+}
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -55,7 +49,7 @@ if (isset($_POST["guardar_tipo_producto"])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MiniMarket</title>
+    <title>Medik Farmacia</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -84,41 +78,36 @@ if (isset($_POST["guardar_tipo_producto"])) {
             <div id="content">
 
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
                     <!-- Topbar Navbar -->
-                    <p>Perfil Administrador</p>
+                   <p>Perfil Administrador</p>
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - User Information -->
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item dropdown no-arrow">
-
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>
                             <!-- Dropdown - User Information -->
-
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="../logout.php" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesión
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </nav>
-
-                <!-- Logout Modal-->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                                <a class="btn btn-primary" href="../login.html">Salir</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="container-fluid">
                     <div class="form-wrapper">
@@ -131,39 +120,36 @@ if (isset($_POST["guardar_tipo_producto"])) {
                                             <div class="col-lg-8">
                                                 <div class="p-5">
                                                     <div class="text-left">
-                                                        <h1 class="h4 text-gray-900 mb-4">Creando Tipo Producto</h1>
+                                                        <h1 class="h4 text-gray-900 mb-4">Editar</h1>
                                                     </div>
-
-                                                    <!--FORMULARIO -->
-
-                                                    <form class="user" name="Insertar_Tipo_producto" action="" method="post">
+                                                    <!-- FORMULARIO -->
+                                                    <form class="user" name="Insertar_Tipo_pago" action="" method="post">
                                                         <div class="form-group row">
                                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="number" class="form-control form-control-user" name="codigo_tipo_producto" id="codigo_tipo_producto" placeholder="Código" value="<?= (isset($codigo) && !$frm_enviado) ? $codigo : "" ?>">
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $cod; ?>" name="cod_pedido" id="cod_pedido"
+                                                                value="<?= (isset($codigo) && !$frm_enviado)?$codigo : "" ?>" readonly="disabled" >
                                                             </div>
                                                         </div>
-                                                        <span class="text-danger"><?php echo $error_cod; ?></span>
                                                         <div class="form-group row">
-                                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                                <input type="text" class="form-control form-control-user" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción" value="<?= (isset($desc) && !$frm_enviado) ? $desc : "" ?>">
-                                                            </div>
+                                                           <div class="col-5">
+                                                             <label for="estado_pedido"></label>
+                                                             <select class="form-control" name="estado_pedido" id="estado_pedido">
+                                                               <option>Tramitando</option>
+                                                               <option>Despachado</option>
+                                                               <option>Entregado</option>
+                                                             </select>
+                                                           </div>
                                                         </div>
-                                                        <span class="text-danger"><?php echo $error_desc; ?></span>
-
-
-                                                        <div class="form-group">
-                                                            <div class="custom-control custom-checkbox">
-
-                                                                <input type="checkbox" class="custom-control-input" id="estado_tipo_producto" name="estado_tipo_producto" checked>
-                                                                <label class="custom-control-label" for="estado_tipo_producto">Activo</label>
-                                                            </div>
-                                                        </div>
-                                                        <a href="../admin/tipo_producto.php" class="btn btn-secondary">
+                                                       
+                                                        
+                                                        <a href="gestion_pedido.php" class="btn btn-secondary">
                                                             Cancelar
                                                         </a>
 
-
-                                                        <input type="submit" value="Guardar" class="btn btn-primary sm" name="guardar_tipo_producto">
+                                                        <input type="hidden" name="cod_est" id="cod_est" value=<?php echo $cod_est ?>>
+                                                        <input type="hidden" name="id" id="id" value=<?php echo $id ?>>
+                                                        
+                                                        <input type="submit" value="Guardar cambios" class="btn btn-primary sm" name="actualizar_pedido">
                                                         <hr>
                                                     </form>
                                                     <hr>
@@ -188,7 +174,7 @@ if (isset($_POST["guardar_tipo_producto"])) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; MiniMarket 2020</span>
+                        <span>Copyright &copy; Medik Farmacia Online</span>
                     </div>
                 </div>
             </footer>
@@ -226,13 +212,13 @@ if (isset($_POST["guardar_tipo_producto"])) {
 
     <script>
         $(document).ready(function() {
-            $('.menu').load('../admin/menu_component.php');
+            $('.menu').load('../menu_component.php');
         });
     </script>
 
     <script>
         $(document).ready(function() {
-            $('.nav').load('../admin/nav_component.php');
+            $('.nav').load('../nav_component.php');
         });
     </script>
 

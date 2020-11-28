@@ -103,7 +103,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <th>Nombre Producto</th>
                       <th>Tipo producto</th>
                       <th>Precio</th>
-                      <th>Cantidad Disponible</th>
+                      <th>Unidad de medida</th>
                       <th>Estado</th>
                       <th>Acciones</th>
 
@@ -122,7 +122,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $dato["nombre_producto"] ?> </td>
                         <td><?php echo $dato["cod_tipo_producto"] ?> </td>
                         <td><?php echo $dato["precio_ud"] ?> </td>
-                        <td><?php echo $dato["cantidad_disponible"] ?> </td>
+                        <td><?php echo $dato["unidad_medida"] ?> </td>
                         <td><?php echo $dato["estado"] ?> </td>
                         <td>
                           <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_producto.php?accion=1 & cod_producto=<?php echo $dato["cod_producto"] ?> "></a></button>

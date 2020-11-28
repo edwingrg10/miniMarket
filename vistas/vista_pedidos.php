@@ -1,8 +1,8 @@
 <?php  
 include("../Procesos/control_pedido.php");
 $pedido=new pedido;
-$user=$_GET['user'];
-$lista_pedidos=$pedido->buscar_pedidos($user);
+$id=$_GET['id'];
+$lista_pedidos=$pedido->buscar_pedidos($id);
 
 
 
@@ -64,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="../Formularios/select_est.php">Inicio
+									<a class="nav-stylehead" href=<?php echo "../Formularios/select_est.php?id=$id"?>>Inicio
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
@@ -92,6 +92,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- //navigation -->
+	
 	<!-- banner -->
 
 	<!-- //banner -->
@@ -134,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <tr>
                                     <td scope="row"><?php echo $dato['cod_pedido'] ; ?></td>
                                     <td><?php echo $dato['fecha_pedido'] ; ?></td>
-                                    <td><?php echo $dato['valor_pedido'] ; ?></td>
+                                    <td><?php echo "$ ". number_format( $dato['valor_pedido']) ; ?></td>
                                     <td><?php echo $dato['estado'] ; ?></td>
                                 </tr>
                                 <?php  } ?>
