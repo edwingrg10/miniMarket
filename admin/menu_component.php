@@ -70,7 +70,14 @@
     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Parametrizaciones</h6>
-        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/reporte_establecimientos.php">Tipo Establecimientos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_tipo_establecimientos.php">Tipo Establecimientos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_establecimientos.php">Establecimientos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_tipo_productos.php">Tipo Productos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_productos.php">Productos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_pedidos.php">Pedidos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_tipo_pago.php">Tipo Pago</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_pago.php">Pago</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_marca.php">Marca</a>
       </div>
     </div>
   </li>

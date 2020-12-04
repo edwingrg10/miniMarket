@@ -4,7 +4,7 @@
 
 $modelo = new Db();
 $conexion = $modelo->conectar();
-$sentencia =  "SELECT * FROM establecimiento ";
+$sentencia =  "SELECT * FROM pedidos ";
 $resultado = $conexion->prepare($sentencia);
 $resultado->execute();
 $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -89,9 +89,9 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Establecimientos</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Pedidos</h6>
               <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="reports_pdf/establecimiento_pdf.php" target="_blank" role="button"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <a class="btn btn-primary" href="reports_pdf/pedidos_pdf.php" target="_blank" role="button"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z" />
                   </svg>Exportar PDF</a>
@@ -103,8 +103,8 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                   <thead>
                     <tr>
                       <th>Código</th>
-                      <th>Descripción</th>
-                      <th>Tipo Establecimiento</th>
+                      <th>Fecha</th>
+                      <th>Valor</th>
                       <th>Estado</th>
                     </tr>
                   </thead>
@@ -117,9 +117,9 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     ?>
 
                       <tr>
-                        <td><?php echo $dato["codigo_est"] ?> </td>
-                        <td><?php echo $dato["nombre_est"] ?> </td>
-                        <td><?php echo $dato["cod_tipo_est"] ?> </td>
+                        <td><?php echo $dato["cod_pedido"] ?> </td>
+                        <td><?php echo $dato["fecha_pedido"] ?> </td>
+                        <td><?php echo $dato["valor_pedido"] ?> </td>
                         <td><?php echo $dato["estado"] ?> </td>
                       </tr>
 
