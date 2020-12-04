@@ -1,13 +1,3 @@
-<?php /*
-include('../dbcon.php');
-include('../session.php');
-
-$result = mysqli_query($con, "select * from usuario where idUsuario='$session_id'") or die('Error In Session');
-$row = mysqli_fetch_array($result);
-$query = "SELECT * FROM perfil";
-$usuarios = mysqli_query($con, $query);
-$numfilas = mysqli_num_rows($usuarios);*/
-?>
 <html lang="en">
 
 <head>
@@ -59,9 +49,35 @@ $numfilas = mysqli_num_rows($usuarios);*/
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Parametrizaciones</h6>
-        <a class="collapse-item" href="tipo_establecimiento.php">Tipo Establecimientos</a>
-        <a class="collapse-item" href="establecimienot.php">Establecimientos</a>
-        <a class="collapse-item" href="perfil.php">Perfil</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_establecimiento.php">Tipos de Establecimientos</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_producto.php">Tipos de Productos</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_pago.php">Tipos de Pago</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tabla_producto.php">Productos</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_marca.php">Marcas</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/usuarios.php">Usuarios</a>
+        <a class="collapse-item" href="http://localhost:8000/miniMarket/admin/tipo_perfil.php">Perfiles</a>
+
+        <!--<a class="collapse-item" href="perfil.php">Perfil</a>-->
+      </div>
+    </div>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseTwo">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Consultas e informes</span>
+    </a>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Parametrizaciones</h6>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_tipo_establecimientos.php">Tipo Establecimientos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_establecimientos.php">Establecimientos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_tipo_productos.php">Tipo Productos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_productos.php">Productos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_pedidos.php">Pedidos</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_tipo_pago.php">Tipo Pago</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_pago.php">Pago</a>
+        <a class="collapse-item" href="http://localhost/miniMarket/admin/reporte_marca.php">Marca</a>
       </div>
     </div>
   </li>

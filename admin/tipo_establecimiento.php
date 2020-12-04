@@ -1,6 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
+<?php include("../conexion/conexion.php");
+
+$modelo = new Db();
+$conexion = $modelo->conectar();
+$sentencia =  "SELECT * FROM tipo_establecimiento ";
+$resultado = $conexion->prepare($sentencia);
+$resultado->execute();
+$lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
 
 <head>
 
@@ -39,37 +49,41 @@
       <div id="content">
 
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
           <!-- Topbar Navbar -->
-        <p>Perfil Administrador</p>
-          <?php /*}*/ ?>
+          <p>Perfil Administrador</p>
           <ul class="navbar-nav ml-auto">
             <!-- Nav Item - User Information -->
             <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow">
+
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+
+                <h4><span class="mr-4 d-none d-lg-inline text-dark large" data-toggle="modal" data-target="#logoutModal">Salir <i class="fas fa-fw fa-power-off"></i></span></h4>
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuración
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="../logout.php" class="dropdown-item">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Cerrar sesión
-                </a>
-              </div>
+
             </li>
           </ul>
         </nav>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Desea cerrar sesión ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Seleccione "Salir" si quiere cerrar sesión.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                <a class="btn btn-primary" href="../login.html">Salir</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="container-fluid">
           <!-- DataTales Example -->
@@ -77,84 +91,49 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Lista de Establecimientos</h6>
               <div class="d-flex justify-content-end">
-                <a class="btn btn-primary" href="forms/nuevo_tipo_establecimiento.php" role="button">Nuevo</a>
+                <a class="btn btn-primary" href="../forms/nuevo_tipo_establecimiento.php" role="button">Nuevo</a>
               </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Nombre</th>
-                      <th>Ubicación</th>
-                      <th>Nombre Propietario</th>
+                      <th>Código</th>
+                      <th>Descripción</th>
+                      <th>Estado</th>
                       <th>Acciones</th>
+
                     </tr>
                   </thead>
+
+                  <!--Datos tomados de la base de datos-->
                   <tbody>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MiniMarket</td>
-                      <td>Robledo</td>
-                      <td>Edwin Garzón</td>
-                      <td>
-                        <button class="btn btn-warning" title="Editar"><i class="fa fa-pencil-alt"></i></button>
-                        <button class="btn btn-danger" title="Eliminar"><i class="fa fa-trash"></i></button>
-                      </td>
-                    </tr>
+
+                    <?php
+                    foreach ($lista as $dato) {
+                    ?>
+
+                      <tr>
+                        <td><?php echo $dato["cod_tipo_est"] ?> </td>
+                        <td><?php echo $dato["desc_tipo_est"] ?> </td>
+                        <td><?php echo $dato["estado"] ?> </td>
+									
+                      
+                      
+								
+                        <td>
+                          <button class="btn " title="Editar"><a class="fa fa-pencil-alt" href="../forms/editar_Tipo_Establecimiento.php?accion=1 & cod_tipo_est=<?php echo $dato["cod_tipo_est"] ?> "></a></button>
+                          <button class="btn " title="Eliminar"> <a class="fa fa-trash" href="../Insertar/Insertar_Tipo_Establecimiento.php?accion=2 & cod_tipo_est=<?php echo $dato['cod_tipo_est']?>"></a></button></td> 
+                         <!-- <button class="btn " title="Eliminar" data-toggle="modal" data-target="#myModal2"><a class="fa fa-trash-alt"></a></button></td> -->
+                        </td>
+                      </tr>
+
+                    <?php } ?>
+
+
+
+
                   </tbody>
                 </table>
               </div>
@@ -164,6 +143,34 @@
         </div>
 
 
+      </div>
+
+      <div class="modal fade" id="myModal2" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+              <div class="main-mailposi">
+                <span class="fa fa-envelope-o" aria-hidden="true"></span>
+              </div>
+              <div class="modal_body_left modal_body_left1">
+
+                <p>
+                  <h4 class="agileinfo_sign">¿Seguro que desea eliminar el registro? </h4>
+                </p>
+                <form action="../Insertar/Insertar_Tipo_Establecimiento.php?accion=2 & cod_tipo_est=<?php echo $dato['cod_tipo_est'] ?>" method="post">
+                  <input class="btn btn-primary" type="submit" value="Si">
+                  <input class="btn btn-primary" type="submit" value="No" data-dismiss="modal">
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <!-- //Modal content-->
+        </div>
       </div>
       <!-- Begin Page Content -->
 
@@ -206,6 +213,7 @@
 
   <!-- Page level plugins -->
   <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../vendor/datatables/jquery.dataTables.js"></script>
   <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
