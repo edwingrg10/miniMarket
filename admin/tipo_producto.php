@@ -92,6 +92,7 @@ $lista = $resultado->fetchAll(PDO::FETCH_ASSOC);
               <h6 class="m-0 font-weight-bold text-primary">Lista de Tipo productos</h6>
               <div class="d-flex justify-content-end">
                 <a class="btn btn-primary" href="../forms/nuevo_tipo_producto.php" role="button">Nuevo</a>
+                <a class="btn btn-primary" href="../forms/nuevo_tipo_producto.php" role="button">Cancelar</a>
               </div>
             </div>
             <div class="card-body">

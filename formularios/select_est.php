@@ -14,7 +14,7 @@ if (isset($_POST['enter'])) {
   if ($est == 0) {
     $error = "Debe seleccionar un establecimiento";
   } else {
-    header("Location: http://localhost/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
+    header("Location: http://localhost:8000/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
   }
 }
 

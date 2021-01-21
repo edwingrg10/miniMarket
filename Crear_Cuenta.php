@@ -71,6 +71,8 @@
 			VALUES ('$cedula', '$primer_apellido', '$segundo_apellido', '$primer_nombre', '$segundo_nombre', 
 			'$direccion', '$celular', '$telefono', '$fecha_nacimiento', '$correo', '$passHash', '$id_perfil', '$id_estado')";
 
+
+
 			if (mysqli_query($conn, $query)) {
 				echo '<script type="text/javascript">
 alert("Su cuenta ha sido creada con exito. BIENVENIDO a MiniMarket");
@@ -79,7 +81,8 @@ window.location.href="login.html";
 				echo "Error: " . $query . "<br>" . mysqli_error($conn);
 			}
 		}
-		mysqli_close($conn);
+		echo $query;
+		//mysqli_close($conn);
 
 		if ($id_perfil==2){
 
@@ -92,7 +95,7 @@ window.location.href="login.html";
 			$lista = $resultado->fetch();
 			$id=$lista['id_usuario'];
 
-			header("Location: http://localhost/miniMarket/vendedor/establecimiento.php?id=$id");
+			header("Location: http://localhost:8000/miniMarket/vendedor/establecimiento.php?id=$id");
 			
 		}
 

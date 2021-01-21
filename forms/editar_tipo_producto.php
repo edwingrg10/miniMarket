@@ -152,6 +152,31 @@ if(isset($_POST["actualizar_tipo_producto"])){
                                                                 value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
                                                             </div>
                                                         </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" value="" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="SKU"
+                                                                value="SKU">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_producto']; ?>" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_producto']; ?>" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <input type="text" class="form-control form-control-user" value="<?php echo $info['desc_tipo_producto']; ?>" name="desc_tipo_producto" id="desc_tipo_producto" placeholder="Descripción"
+                                                                value="<?= (isset($desc) && !$frm_enviado)?$desc : "" ?>">
+                                                            </div>
+                                                        </div>
+
                                                         <span class="text-danger"><?php echo $error_desc; ?></span>
                                                         <div class="form-group">
                                                             <div class="custom-control custom-checkbox">

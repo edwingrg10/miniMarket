@@ -41,7 +41,7 @@ if (isset($_GET['cancelar'])) {
 	$carrito->carrito_cancelar($cod_carrito);
 	$lista = $product->buscar_inventario($est);
 	$lista_carrito = $carrito->ver_carrito($cod_carrito);
-	header("Location: http://localhost/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
+	header("Location: http://localhost:8000/miniMarket/formularios/form_pedido.php?id=$id&est=$est");
 }
 
 
